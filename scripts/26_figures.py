@@ -1,8 +1,8 @@
-"""Figures 2-7 and the graphical abstract (aggregated data only: medians, intervals, contours).
+"""Figures 2-7 (aggregated data only: medians, intervals, contours).
 
 Elsevier sizes (190 mm double column, 90 mm single column), sans-serif text >= 6 pt, colour-blind-safe palette
 (Okabe-Ito for groups; purple for the annotation shortcut; indigo for the annotation-free model), PNG at 300 dpi
-and vector PDF. Figure 1 is produced by 31_fig1_overview.py.
+and vector PDF. Figure 1 and the graphical abstract are produced by 31_fig1_overview.py.
   Fig. 2  Annotation shortcut: regimes, density, text vs audio, ablation by regime, taxonomy, ablation by category
   Fig. 3  Text ablation (training CV and single test evaluation) and token weights of the probe
   Fig. 4  Zero-shot local language models
@@ -489,62 +489,10 @@ def fig4_llm_zero_shot():
 
 
 
-
-def graphical_abstract_elsevier():
-    """Résumé graphique au format Elsevier : 13 × 5,2 cm (ratio 1328 × 531 px), lisible à taille réelle."""
-    conv = pd.read_csv(R / "06_pause_annotation" / "annotation_by_convention_diagnosis_train.csv")
-    cv8 = pd.read_csv(R / "08_text_asr" / "results_train.csv")
-    te = pd.read_csv(R / "14_final_test" / "test_binary.csv").set_index("modèle")
-    fig = plt.figure(figsize=(130 * MM, 52 * MM))
-    gs = fig.add_gridspec(1, 3, wspace=.6, left=.11, right=.99, top=.8, bottom=.2, width_ratios=[1, 1, .9])
-    heads = [("Hidden shortcut", ACC_AUDIT), ("A transparent probe reads it", ACC_AUDIT), ("Annotation-free control", ACC_BASE)]
-    for k, (h, col) in enumerate(heads):
-        fig.text(.02 + k * .345, .93, f"{k + 1}  {h}", fontsize=7.5, weight="bold", color=col, va="center")
-    ax = fig.add_subplot(gs[0, 0])
-    sess = pd.read_csv(R / "29_regime_checks" / "A_regime_sessions_train.csv").set_index("diagnosis")
-    shares = [100 - sess.loc[g, "pct_sessions_regime_Pat_majorité"] for g in GROUP]
-    ax.barh(range(3)[::-1], shares, color=list(GROUP.values()), height=.6)
-    for i, v in enumerate(shares):
-        ax.text(v + 1.5, 2 - i, f"{v:.0f}%", va="center", fontsize=6.5)
-    ax.set_yticks(range(3)[::-1], list(GROUP))
-    ax.set_xlim(0, 65)
-    ax.set_xticks([])
-    ax.spines["bottom"].set_visible(False)
-    ax.grid(False)
-    ax.set_xlabel("sessions transcribed\nwithout pause annotations", fontsize=6.2)
-    ax = fig.add_subplot(gs[0, 1])
-    for t in ["SFT", "PFT", "CTD"]:
-        r = cv8[(cv8.task == t) & (cv8.cible == "HC vs MCI+Dementia")].set_index("condition")
-        a, b = r.loc["m_raw"].AUC_mean, r.loc["m_clean"].AUC_mean
-        ax.plot([0, 1], [a, b], "-", color=GRID, lw=1.4, zorder=1)
-        ax.plot([0], [a], "o", color=ACC_AUDIT, ms=4, zorder=2)
-        ax.plot([1], [b], "o", color=INK2, ms=4, zorder=2)
-    ax.set_xticks([0, 1], ["with", "without"])
-    ax.set_xlabel("pause annotations", fontsize=6.2)
-    ax.set_ylabel("text AUC", fontsize=6.5)
-    ax.set_ylim(.54, .83)
-    ax.set_yticks([.6, .7, .8])
-    ax.set_xlim(-.3, 1.3)
-    ax.grid(axis="x", visible=False)
-    ax.text(.5, .815, "−0.07 to −0.11", ha="center", fontsize=6.5, weight="bold", color=ACC_AUDIT)
-    ax.text(.5, .547, 'top TF-IDF feature in every fold:\n"seconds"', ha="center", va="bottom", fontsize=5.6,
-            color=INK, bbox=dict(boxstyle="round,pad=.25", fc="#f8eaf2", ec="none"))
-    ax = fig.add_subplot(gs[0, 2])
-    ax.set_axis_off()
-    e = te.loc["B_G_nocov"]
-    ax.text(.5, .86, "speech → Whisper + VAD\n→ healthy norms → logit", ha="center", va="top", fontsize=6.2, color=INK2)
-    ax.text(.5, .38, f"{e.AUC:.2f}", ha="center", fontsize=17, weight="bold", color=ACC_BASE)
-    ax.text(.5, .2, "test AUC without any human\nannotation; similar in both\ntranscription regimes", ha="center", va="top",
-            fontsize=5.8, color=INK)
-    fig.savefig(OUT / "graphical_abstract_elsevier.png", dpi=600)
-    fig.savefig(OUT / "graphical_abstract_elsevier.pdf")
-    plt.close(fig)
-
-
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     CACHE.mkdir(parents=True, exist_ok=True)
-    for f in (graphical_abstract_elsevier, fig2_annotation_shortcut, fig3_text_ablation, fig4_llm_zero_shot,
+    for f in (fig2_annotation_shortcut, fig3_text_ablation, fig4_llm_zero_shot,
               fig5_silence, fig6_interpretable_model, fig7_test_set):
         f()
         print(f"{f.__name__} ok", flush=True)

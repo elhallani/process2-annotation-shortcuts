@@ -1,4 +1,6 @@
-"""Figure 1: illustrated study overview (drawn icons, numbered steps, coloured panels).
+"""Figure 1 (illustrated study overview) and the graphical abstract (Elsevier format, 13 x 5.2 cm).
+
+Drawn icons, numbered steps and coloured panels.
 
 Aggregated numbers only, read from results/. Transcript icons are schematic; the "3 s" tags illustrate the format
 of timed pause annotations and contain no real content. Coordinates in millimetres (190 x 150 mm)."""
@@ -320,5 +322,82 @@ def main():
     print("fig1 ok", json.dumps({k: round(v, 1) for k, v in no_ann.items()}))
 
 
+def graphical_abstract():
+    """Graphical abstract, Elsevier format (13 x 5.2 cm): problem -> evidence -> annotation-free control."""
+    sess = pd.read_csv(R / "29_regime_checks" / "A_regime_sessions_train.csv").set_index("diagnosis")
+    no_ann = {g: 100 - sess.loc[g, "pct_sessions_regime_Pat_majorité"] for g in ("HC", "MCI", "Dementia")}
+    tok = pd.read_csv(R / "30_tfidf_token_weights" / "named_annotation_tokens_train.csv")
+    sft = tok[tok.task == "SFT"].set_index("token").coef_median
+    te = pd.read_csv(R / "14_final_test" / "test_binary.csv").set_index("modèle").loc["B_G_nocov"]
+    abl = pd.read_csv(R / "35_ablation_by_category" / "ablation_by_category_train.csv")
+    abl = abl[abl.version.isin(["sans timed", "sans procedure"])].groupby("version").perte_vs_ref.max()
+    GW, GH_ = 130, 52
+    fig = plt.figure(figsize=(GW * MM, GH_ * MM))
+    ax = fig.add_axes([0, 0, 1, 1])
+    ax.set_xlim(0, GW)
+    ax.set_ylim(0, GH_)
+    ax.set_axis_off()
+    txt(ax, GW / 2, 48.6, "Do speech benchmarks measure cognition, or how the speech was transcribed?", 7.6, INK,
+        "bold", "center")
+    cards = [(2, OR, OR_BG, "1", "Two ways to transcribe"), (45.5, OR, OR_BG, "2", "Text models learn them"),
+             (89, BL, BL_BG, "3", "Annotation-free control")]
+    for x0, ec, fc, k, title in cards:
+        card(ax, x0, 8.5, 39, 36, fc, ec, lw=.9, ls=(0, (4, 2)), r=2)
+        ax.add_patch(Circle((x0 + 4, 40.6), 2.2, fc=ec, ec="none", zorder=5))
+        txt(ax, x0 + 4, 40.6, k, 7, "white", "bold", "center")
+        txt(ax, x0 + 7.5, 40.6, title, 7, INK, "bold")
+    arrow(ax, 41.3, 26.5, 45.2, 26.5, OR, 1.6, ms=9)
+    arrow(ax, 84.8, 26.5, 88.7, 26.5, OR, 1.6, ms=9)
+
+    # 1 : deux conventions, inégales entre groupes
+    doc(ax, 6, 25, 10, 12, INK2, tag="3 s", tag_rows=(1, 3), n=5)
+    doc(ax, 25, 25, 10, 12, INK2, n=5)
+    txt(ax, 11, 22.8, "pauses written", 6, OR, "bold", "center")
+    txt(ax, 30, 22.8, "no pauses", 6, INK2, "bold", "center")
+    txt(ax, 4.5, 19.4, "sessions without annotations", 6, INK2)
+    for k, (g, c) in enumerate([("HC", GH), ("MCI", GM), ("Dementia", GR)]):
+        yy = 16.6 - k * 2.6
+        txt(ax, 4.5, yy, g if g != "Dementia" else "Dem.", 6, INK2)
+        ax.add_patch(Rectangle((12, yy - .9), no_ann[g] / 100 * 22, 1.8, fc=c, ec="none", zorder=5))
+        txt(ax, 12.6 + no_ann[g] / 100 * 22, yy, f"{no_ann[g]:.0f}%", 6, INK, "bold")
+
+    # 2 : la sonde transparente lit les annotations
+    z0 = 66.5
+    txt(ax, z0 - .6, 36.2, "← healthy", 6, BL, ha="right")
+    txt(ax, z0 + .6, 36.2, "impaired →", 6, OR)
+    for k, (lab, key) in enumerate([("seconds", "seconds"), ("second", "second"), ("buzzer", "buzzer")]):
+        v = sft[key] / sft["seconds"]
+        yy = 33 - k * 3.1
+        ax.add_patch(Rectangle((z0 if v > 0 else z0 + v * 13, yy - 1.05), abs(v) * 13, 2.1, fc=OR, ec="none", zorder=5))
+        txt(ax, 49, yy, f'"{lab}"', 6, OR, "bold")
+    ax.plot([z0, z0], [25.5, 35], color=INK2, lw=.6, zorder=6)
+    txt(ax, 65, 22, "removing annotations", 6, INK2, ha="center")
+    txt(ax, 65, 18.4, "AUC −0.07 to −0.12", 9, OR, "bold", "center")
+    txt(ax, 65, 14.6, f"timed pauses −{abl['sans timed']:.2f} · timer −{abl['sans procedure']:.2f}", 6, INK, ha="center")
+    txt(ax, 65, 11.4, "only where annotations exist", 6, INK2, ha="center", style="italic")
+
+    # 3 : contrôle sans annotation humaine
+    card(ax, 92, 25.5, 13, 9, "white", "#c3bfe6", lw=.6, r=1.2, z=3)
+    wave(ax, 93, 27, 11, 6, BL, seed=5, silences=[(.3, .45), (.7, .8)])
+    txt(ax, 98.5, 23.2, "audio only", 6, INK2, ha="center")
+    arrow(ax, 105.5, 30, 110.2, 30, BL, 1.1, ms=6)
+    gauge(ax, 118.5, 28.2, 5.5)
+    txt(ax, 118.5, 23.2, "risk score", 6, INK2, ha="center")
+    txt(ax, 108.5, 37.2, "ASR + VAD → healthy norms", 6, INK2, ha="center")
+    txt(ax, 108.5, 17.2, f"{te.AUC:.2f}", 15, BL, "bold", "center")
+    txt(ax, 108.5, 12.6, f"test AUC [{te.AUC_lo:.2f}, {te.AUC_hi:.2f}]", 6.3, INK, "bold", "center")
+    txt(ax, 108.5, 10.2, "same under both conventions", 6, INK2, ha="center", style="italic")
+
+    # recommandation
+    card(ax, 2, 1.2, 126, 5.6, GY_BG, MUTED, lw=.6, r=1.4)
+    txt(ax, GW / 2, 4, "Measure pauses from audio  ·  document transcription conventions  ·  report annotation-free "
+        "controls", 6.4, INK, "bold", "center")
+    for ext in ("png", "pdf"):
+        fig.savefig(f26.OUT / f"graphical_abstract_elsevier.{ext}", dpi=600 if ext == "png" else None)
+    plt.close(fig)
+    print("graphical abstract ok")
+
+
 if __name__ == "__main__":
     main()
+    graphical_abstract()
