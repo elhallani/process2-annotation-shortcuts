@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "Annotation Shortcuts in Speech-Based Cognitive Impairment Detection: code and aggregated results"
+version: 1.0.0
+date-released: 2026-10-12
+license: MIT
+repository-code: "https://github.com/elhallani/process2-annotation-shortcuts"
+keywords:
+  - cognitive impairment
+  - dementia
+  - speech
+  - shortcut learning
+  - transcription
+  - benchmark audit
+authors:
+  - family-names: El Hallani
+    given-names: Anass
+    orcid: "https://orcid.org/0009-0007-3449-4327"
+    affiliation: "Machine Intelligence Laboratory (LIM), FSTM, Hassan II University of Casablanca, Morocco"
+  - family-names: Chakhtouna
+    given-names: Adil
+    orcid: "https://orcid.org/0000-0001-5280-6020"
+    affiliation: "Machine Intelligence Laboratory (LIM), FSTM, Hassan II University of Casablanca, Morocco"
+  - family-names: Adib
+    given-names: Abdellah
+    orcid: "https://orcid.org/0000-0002-0670-7221"
+    affiliation: "Machine Intelligence Laboratory (LIM), FSTM, Hassan II University of Casablanca, Morocco"

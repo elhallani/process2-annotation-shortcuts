@@ -1,0 +1,43 @@
+{
+  "title": "Annotation Shortcuts in Speech-Based Cognitive Impairment Detection: code and aggregated results",
+  "upload_type": "software",
+  "version": "1.0.0",
+  "description": "<p>Analysis code, frozen configurations and aggregated results for the study <em>Annotation Shortcuts in Speech-Based Cognitive Impairment Detection: An Audit of PROCESS-2 and an Interpretable Annotation-Free Baseline</em>.</p><p>The study audits the PROCESS-2 corpus and shows that timed pause annotations follow two transcription conventions whose use depends on diagnosis, that supervised text classifiers exploit them (mainly through timed pauses and a timer marker), and that an interpretable model built without any human annotation reaches a test AUC of 0.81.</p><p>No participant data are included: PROCESS-2 is distributed by its authors under a data use agreement.</p>",
+  "creators": [
+    {
+      "name": "El Hallani, Anass",
+      "affiliation": "Team Data Science and Artificial Intelligence, Machine Intelligence Laboratory (LIM), Faculty of Sciences and Technologies of Mohammedia, Hassan II University of Casablanca, Morocco",
+      "orcid": "0009-0007-3449-4327"
+    },
+    {
+      "name": "Chakhtouna, Adil",
+      "affiliation": "Team Data Science and Artificial Intelligence, Machine Intelligence Laboratory (LIM), Faculty of Sciences and Technologies of Mohammedia, Hassan II University of Casablanca, Morocco",
+      "orcid": "0000-0001-5280-6020"
+    },
+    {
+      "name": "Adib, Abdellah",
+      "affiliation": "Team Data Science and Artificial Intelligence, Machine Intelligence Laboratory (LIM), Faculty of Sciences and Technologies of Mohammedia, Hassan II University of Casablanca, Morocco",
+      "orcid": "0000-0002-0670-7221"
+    }
+  ],
+  "keywords": [
+    "cognitive impairment",
+    "dementia",
+    "speech",
+    "shortcut learning",
+    "transcription",
+    "verbal fluency",
+    "speech recognition",
+    "benchmark audit",
+    "PROCESS-2"
+  ],
+  "license": "MIT",
+  "related_identifiers": [
+    {
+      "identifier": "arXiv:2605.14888",
+      "relation": "references",
+      "resource_type": "publication-preprint"
+    }
+  ],
+  "notes": "Supported by the National Center for Scientific and Technical Research (CNRST) of Morocco through the PhD-Associate Scholarship (PASS) program."
+}

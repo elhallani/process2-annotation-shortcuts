@@ -4,7 +4,7 @@
 
 **An Audit of PROCESS-2 and an Interpretable Annotation-Free Baseline**
 
-Anass El Hallani · Adil Chakhtouna · Abdellah Adib
+[Anass El Hallani](https://orcid.org/0009-0007-3449-4327) · [Adil Chakhtouna](https://orcid.org/0000-0001-5280-6020) · [Abdellah Adib](https://orcid.org/0000-0002-0670-7221)
 
 Machine Intelligence Laboratory (LIM), Faculty of Sciences and Technologies of Mohammedia, Hassan II University of Casablanca
 
@@ -12,6 +12,7 @@ Machine Intelligence Laboratory (LIM), Faculty of Sciences and Technologies of M
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.11-orange)
 ![Data](https://img.shields.io/badge/data-PROCESS--2%20(DUA%2C%20not%20included)-lightgrey)
 ![Paper](https://img.shields.io/badge/paper-in%20preparation-yellow)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 </div>
 
@@ -159,6 +160,11 @@ If you use this code or build on the audit, please cite:
 
 Please also cite the corpus: Pahar et al., *PROCESS-2: A Benchmark Speech Corpus for Early Cognitive Impairment
 Detection*, arXiv:2605.14888, 2026.
+
+## License
+
+The code is released under the [MIT License](LICENSE). The PROCESS-2 data are not covered by this license and
+remain subject to the data use agreement of their authors.
 
 ## Acknowledgements
 
