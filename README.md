@@ -13,6 +13,7 @@ Machine Intelligence Laboratory (LIM), Faculty of Sciences and Technologies of M
 ![Data](https://img.shields.io/badge/data-PROCESS--2%20(DUA%2C%20not%20included)-lightgrey)
 ![Paper](https://img.shields.io/badge/paper-in%20preparation-yellow)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23323163.svg)](https://doi.org/10.5281/zenodo.23323163)
 
 </div>
 
@@ -153,7 +154,8 @@ If you use this code or build on the audit, please cite:
   title  = {Annotation Shortcuts in Speech-Based Cognitive Impairment Detection:
             An Audit of {PROCESS-2} and an Interpretable Annotation-Free Baseline},
   year   = {2026},
-  note   = {Manuscript in preparation},
+  note   = {Code and aggregated results, version 1.0.0},
+  doi    = {10.5281/zenodo.23323164},
   url    = {https://github.com/elhallani/process2-annotation-shortcuts}
 }
 ```
