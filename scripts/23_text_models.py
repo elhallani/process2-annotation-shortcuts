@@ -1,15 +1,9 @@
-"""Modèles texte sur transcriptions WHISPER (aucune annotation humaine) — TRAIN uniquement, EXPLORATOIRE.
-Modèles texte complémentaires (étapes 0–2).
+"""Text models on Whisper transcripts, without any human annotation (training set, exploratory).
 
-Textes : Whisper-medium horodaté (11_clinical pour SFT/PFT ; transcrit ici pour CTD, même réglage).
-Pauses mesurées (VAD de 01_audit) insérées entre mots : « , » (0,5–2 s) et « ... » (> 2 s) ; temps des mots
-interpolés dans leur segment Whisper.
-Modèles, mêmes 5 × 5 folds que le modèle principal (t04.folds, graine 42) :
-  distilbert_asr, distilbert_asr_pauses, roberta_asr_pauses (fine-tuning, 1 graine/fold, tête 3 classes,
-  score binaire 1 − P(HC)) ; mpnet_asr_pauses (all-mpnet-base-v2 gelé + LR) ;
-  fusion = moyenne (poids fixes 0,5/0,5) du modèle principal B_G_nocov et du meilleur modèle texte par tâche.
-Comparaisons : Nadeau–Bengio contre B_G_nocov (AUC 2 classes), Holm.
-"""
+Texts: time-stamped Whisper-medium transcripts; pauses measured by VAD inserted between words ("," for 0.5-2 s,
+"..." for > 2 s). Models on the same 5 x 5 folds as the decision model: fine-tuned DistilBERT and RoBERTa,
+frozen all-mpnet-base-v2 with logistic regression, and a fixed 0.5/0.5 fusion with the decision model.
+Comparisons: corrected resampled t-test against the decision model, Holm correction."""
 
 import hashlib
 import importlib.util

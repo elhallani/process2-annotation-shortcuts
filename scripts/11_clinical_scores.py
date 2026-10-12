@@ -1,16 +1,14 @@
-"""Étape 1b — Score clinique des fluences (mots valides distincts) à partir de Whisper avec horodatage.
+"""Clinical fluency score (distinct valid words) from time-stamped Whisper transcripts.
 
-A. Whisper medium (en) sur SFT et PFT, segments horodatés → data/derived/asr_whisper_ts/ (non versionné, jamais affiché).
-B. Score dans la fenêtre min(durée, 45 s) (mots datés par interpolation uniforme dans leur segment) :
-   SFT : noms d'animaux (WordNet, hyperonyme animal.n.01 ; bigrammes testés d'abord), distincts par lemme.
-   PFT : mots anglais commençant par « p » (WordNet ou liste nltk words), noms propres exclus (majuscule hors début
-         de segment), distincts par racine (Porter).
-   + répétitions (valides non distincts) et intrusions (mots de contenu non valides).
-C. Validation (train) : même score sur les transcriptions manuelles nettoyées (enregistrement entier) vs Whisper
-   (enregistrement entier) ; corrélation avec les unités VAD.
-D. Indices normatifs G/D (src/normative.py, cross-fitting HC) pour le score clinique, comme 09_normative.
-Aucun texte affiché ni écrit dans results/ : seulement des comptes et des métriques.
-"""
+A. Whisper-medium on SFT and PFT with segment timestamps -> data/derived/asr_whisper_ts/ (not versioned).
+B. Score within min(duration, 45 s), word times interpolated within their segment:
+   SFT: animal names (WordNet hypernym animal.n.01, bigrams tested first), distinct by lemma;
+   PFT: English words starting with "p" (WordNet or the NLTK word list), proper nouns excluded, distinct by stem;
+   plus repetitions and intrusions.
+C. Validation (training set): the same scoring rules on cleaned manual transcripts versus Whisper; correlation with
+   VAD units.
+D. Normative G and D indices for the clinical score (src/normative.py).
+Only counts and metrics are written to results/."""
 
 import json
 import re

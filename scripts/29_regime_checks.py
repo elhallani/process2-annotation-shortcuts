@@ -1,26 +1,16 @@
-"""Contrôles complémentaires du raccourci de transcription. Parties A–G : TRAIN uniquement.
-Partie H : TEST, EXPLORATOIRE (test consommé le 2026-10-02 ; pipeline figé de configs/final.yaml ; aucune décision).
+"""Checks of the transcription-regime shortcut. Parts A-G and I: training set. Part H: test set,
+exploratory (frozen pipeline of configs/final.yaml; no decision).
 
-A. Régime au niveau SESSION : sessions mixtes (préfixe dans 1 ou 2 des 3 fichiers), % par session et par groupe,
-   OR de l'assignation au régime selon le diagnostic pour deux définitions (majorité ≥ 2/3, au moins un fichier).
-B. Modèle principal sans annotation À L'INTÉRIEUR de chaque régime (prédictions hors-fold P_main, 5 × 5) ;
-   le score du modèle prédit-il le régime à diagnostic égal ?
-C. Le régime est-il prévisible depuis l'audio, à diagnostic égal (dans les HC, puis dans MCI+Dementia) ?
-   Descripteurs de canal ; variables du modèle principal ; embeddings non-parole (contexte complet, 24) ; embeddings
-   non-parole ISOLÉS (28, si disponibles).
-D. Le régime est-il prévisible depuis les transcriptions NETTOYÉES (TF-IDF mots ; n-grammes de caractères
-   sensibles à la casse et à la ponctuation) ? Référence : brut (attendu ≈ 1) et Whisper.
-E. TF-IDF multi-tâches (concaténation par tâche ; fusion tardive) pour manuel brut, nettoyé, Whisper,
-   Whisper + pauses mesurées ; mêmes folds que le modèle principal ; Nadeau–Bengio vs principal.
-F. IC 95 % des différences DistilBERT brut − nettoyé (18_distilbert_5x5) reconstruits depuis le t de Nadeau–Bengio.
-G. AUC < 0,5 : description des variables (âge, pauses PFT) par groupe.
-I. Traits de style des transcriptions nettoyées par régime (liste fixée a priori : longueur, hésitations,
-   fragments, ponctuation, majuscules, lignes) ; version « stricte » (minuscules, ponctuation, hésitations et
-   fragments retirés) : prédiction du régime (dans les HC) et du diagnostic (5 × 5 CV).
-H. EXPLORATOIRE (test) : composition du test vs train (régimes, durées, MMSE, fluence) ; modèle principal et TF-IDF
-   brut/nettoyé dans chaque régime ; matrice de confusion 3 classes du modèle principal.
-Aucun texte affiché ni écrit ; sorties agrégées seulement.
-"""
+A. Session-level regime: mixed sessions, percentages by group, odds ratio of regime assignment by diagnosis.
+B. Decision model within each regime; does its score predict the regime at equal diagnosis?
+C. Is the regime predictable from audio at equal diagnosis (channel, model predictors, non-speech embeddings)?
+D. Is the regime predictable from cleaned transcripts (word and character TF-IDF)?
+E. Multi-task TF-IDF (concatenation and late fusion) on the folds of the decision model.
+F. 95% CIs of the DistilBERT raw - cleaned differences.
+G. Descriptive statistics for below-chance single-variable AUCs.
+I. Style traits of cleaned transcripts by regime and a strict cleaning (regime and diagnosis prediction).
+H. Test-set composition, models within each regime, three-class confusion matrix.
+Aggregated outputs only."""
 
 import importlib.util
 import json

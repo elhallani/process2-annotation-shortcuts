@@ -1,14 +1,12 @@
-"""Contrôle de non-parole — les embeddings « non-parole » isolent-ils vraiment le silence ? TRAIN uniquement.
+"""Non-speech control that isolates silence before encoding (training set).
 
-Dans 24/25, l'audio COMPLET passait dans l'encodeur (attention globale) et seules les trames de non-parole étaient
-moyennées : ces trames encodent le contexte de parole voisin. Contrôles, même fenêtre min(durée, 45 s), même VAD :
-  (a) ISOLÉ   : seuls les segments de non-parole (VAD, rétrécis de 0,1 s de chaque côté pour éviter les bords de
-                mots ; segments < 0,2 s ignorés) sont extraits, concaténés (fondu de 5 ms), puis encodés ;
-  (b) MASQUÉ  : la parole est remplacée par du silence numérique (zéros), la durée est conservée ; pooling sur les
-                trames de non-parole.
-Covariable de contrôle : durée de non-parole par tâche (log), seule et ajoutée aux embeddings.
-Mêmes folds 5 × 5 et même chaîne (StandardScaler + PCA(32) + LR pondérée) que 24_acoustic_models.
-"""
+In 24/25 the whole recording was encoded and only non-speech frames were pooled, so these frames carry speech
+context through self-attention. Controls, same window and VAD:
+  (a) isolated: non-speech segments (shrunk by 0.1 s on each side; segments < 0.2 s dropped) are cut out,
+      concatenated with 5-ms fades and encoded on their own;
+  (b) masked: speech is replaced by digital silence and the duration is kept; pooling over non-speech frames.
+Reference covariate: non-speech duration per task, alone and fused with the embeddings. Same 5 x 5 folds and
+pipeline (StandardScaler, PCA(32), weighted logistic regression) as 24_acoustic_models."""
 
 import importlib.util
 import json

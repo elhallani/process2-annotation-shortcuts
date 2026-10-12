@@ -1,12 +1,10 @@
-"""Le TF-IDF + LR comme sonde transparente : quel poids portent les tokens issus des annotations ? TRAIN uniquement.
+"""The TF-IDF + logistic-regression probe as a transparent instrument: weight of annotation tokens.
 
-Pour chaque tâche, TF-IDF + LR (configuration de 04_text_artifact) est ajusté sur les transcriptions manuelles BRUTES
-dans chacun des 25 folds d'entraînement (5 × 5). Un token est classé « annotation » (règle fixée a priori) si au moins
-90 % de ses occurrences dans le corpus d'entraînement se trouvent à l'intérieur de (), [], <> ou {} ; les nombres
-sont aussi rapportés séparément. Sorties AGRÉGÉES : part de la masse |coef| portée par les tokens d'annotation, nombre
-de tokens d'annotation parmi les 20 plus forts poids, rang et signe médians de quelques tokens d'annotation.
-Seuls des tokens classés « annotation » sont nommés (jamais un mot de contenu).
-"""
+For each task, the probe (configuration of 04_text_artifact) is fitted on raw manual transcripts in each of the 25
+training folds. A token is an annotation token when at least 90% of its training occurrences fall inside (), [], <>
+or {} (rule fixed in advance). Aggregated outputs: share of the absolute weight carried by annotation tokens,
+annotation tokens among the 20 strongest weights, and median rank and sign of selected annotation tokens.
+Only annotation tokens are named, never content words."""
 
 import importlib.util
 import json

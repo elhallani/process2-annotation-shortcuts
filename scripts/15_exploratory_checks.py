@@ -1,12 +1,10 @@
-"""Vérifications EXPLORATOIRES (TRAIN uniquement, ajoutées après l'évaluation du test ; aucune décision n'en dépend).
+"""Exploratory checks on the training set (added after the test evaluation; no decision depends on them).
 
-A. Corrélation SFT–PFT chez les HC avec les comptages MANUELS (mots valides, enregistrement entier), comparée aux
-   comptages Whisper (enregistrement entier et fenêtre 45 s) ; brute et partielle (âge, sexe).
-B. AUC (HC vs MCI+Dementia) du comptage Whisper vs du comptage manuel, par tâche : différence appariée,
-   IC bootstrap (2000) et permutation appariée (1000, échange des scores par participant).
-E. Gain de la fusion (B_G + WavLM centré) sur B_G en 3 classes : macro-F1, accuracy équilibrée et AUC sur les
-   prédictions hors-fold (mêmes 5 × 5 folds que 12_wavlm), permutation appariée (1000).
-"""
+A. SFT-PFT correlation in HC with manual counts of valid words, compared with Whisper counts (raw and partial on
+   age and sex).
+B. AUC of the Whisper count versus the manual count per task: paired difference, bootstrap CI and paired
+   permutation test.
+E. Gain of fusing the decision model with WavLM in three classes (macro-F1, balanced accuracy, AUC)."""
 
 import importlib.util
 import json

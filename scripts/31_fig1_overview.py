@@ -1,7 +1,7 @@
-"""Fig. 1 — Vue d'ensemble de l'étude, en schéma illustré (icônes dessinées, étapes numérotées, panneaux colorés).
-Chiffres agrégés uniquement, lus dans results/. Les « transcriptions » dessinées sont des icônes (lignes grises) et un
-exemple de FORMAT d'annotation « (3 seconds) » : aucun contenu réel. Coordonnées en millimètres (190 × 150 mm).
-"""
+"""Figure 1: illustrated study overview (drawn icons, numbered steps, coloured panels).
+
+Aggregated numbers only, read from results/. Transcript icons are schematic; the "3 s" tags illustrate the format
+of timed pause annotations and contain no real content. Coordinates in millimetres (190 x 150 mm)."""
 
 import importlib.util
 import json
@@ -13,7 +13,7 @@ import pandas as pd
 from matplotlib.patches import Arc, Circle, Ellipse, FancyArrowPatch, FancyBboxPatch, Polygon, Rectangle, Wedge
 
 ROOT = Path(__file__).resolve().parents[1]
-spec = importlib.util.spec_from_file_location("f26", ROOT / "scripts" / "26_figures_v2.py")
+spec = importlib.util.spec_from_file_location("f26", ROOT / "scripts" / "26_figures.py")
 f26 = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(f26)
 plt, R, MM = f26.plt, f26.R, f26.MM

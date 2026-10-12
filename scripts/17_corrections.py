@@ -1,16 +1,12 @@
-"""Analyses complémentaires et corrections méthodologiques.
+"""Complementary analyses of the transcription shortcut and of the decision model.
 
-TRAIN uniquement, sauf F (marqué EXPLORATOIRE : pipeline figé de configs/final.yaml, aucune décision).
-A. Ablation texte à régime de transcription égal : manuel brut vs manuel nettoyé, TF-IDF + LR, 5 × 5 CV,
-   sur tous / régime « Pat: » (préfixe présent) / régime sans préfixe.
-B. Test t corrigé de Nadeau–Bengio (différences par fold) + permutation appariée ; Holm par famille :
-   famille « artefact » (brut − nettoyé, 3 tâches, tous) ; famille « modèle » (C − B, B_nocov − B, B_nocov − A).
-C. GLM des pauses annotées sur TOUS les fichiers : interaction diagnostic × régime ; surdispersion (Poisson vs
-   binomiale négative).
-D. Calibration du modèle principal en CV (probabilités hors-fold moyennées sur les répétitions).
-E. G (score clinique) ↔ MMSE chez MCI + Dementia ; AUC séparées HC vs MCI et HC vs Dementia (modèle principal, CV).
-F. EXPLORATOIRE (test) : calibration du modèle principal figé ; vérifie que l'AUC test retrouvée = 0,811.
-"""
+Training set, except F (exploratory: frozen pipeline of configs/final.yaml, no decision).
+A. Text ablation within each transcription regime (raw versus cleaned manual transcripts, TF-IDF + LR, 5 x 5 CV).
+B. Corrected resampled t-test (Nadeau-Bengio) on fold-wise differences and paired permutation; Holm correction.
+C. Count models of annotated pauses: regime assignment by diagnosis, and annotation density within the regime.
+D. Cross-validated calibration of the decision model.
+E. G-MMSE correlation in MCI and dementia; separate AUCs for HC vs MCI and HC vs dementia.
+F. Exploratory test-set calibration of the frozen model."""
 
 import importlib.util
 import json

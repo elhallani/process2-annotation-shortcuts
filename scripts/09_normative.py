@@ -1,10 +1,9 @@
-"""Étapes 2–3 — Modèle normatif HC et indices D (dissociation SFT–PFT) / G (niveau global). TRAIN uniquement.
+"""Healthy-control normative model and indices D (SFT-PFT dissociation) and G (global level). Training set.
 
-Normes ajustées sur les HC du train (Huber), scores des HC par cross-fitting (src/normative.py).
-Descriptif seulement : aucune décision ni seuil n'est choisi ici ; l'évaluation prédictive (normes réapprises
-dans chaque fold) relève de l'étape 4/6.
-Sorties agrégées : results/09_normative/ ; scores par participant : results/cache/09_normative/.
-"""
+Norms are fitted on training HC (Huber regression) and HC scores are cross-fitted (src/normative.py). Descriptive
+only: no decision or threshold is chosen here; predictive evaluation, with norms refitted in each fold, is done in
+10_model.
+Outputs: results/09_normative/; per-participant scores in results/cache/09_normative/."""
 
 import json
 import sys

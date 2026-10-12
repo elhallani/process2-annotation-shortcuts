@@ -1,7 +1,7 @@
-"""Piste d'amélioration : score clinique avec openai/whisper-large-v3-turbo (fp16, 4 Go) au lieu de whisper-medium.
-EXPLORATOIRE, évaluation sur le TRAIN uniquement (les fluences du test sont transcrites pour le cache, jamais évaluées).
-Réutilise 11_clinical_scores (non modifié) en changeant seulement le modèle et le dossier de sortie.
-Sorties : data/derived/asr_whisper_turbo_ts/ ; results/cache/22_whisper_turbo/clinical_turbo.csv (valid_per_s_turbo) ;
+"""Clinical fluency score with openai/whisper-large-v3-turbo instead of whisper-medium (exploratory).
+
+Reuses 11_clinical_scores unchanged, with another model and output folder; evaluated on the training set only.
+Outputs: data/derived/asr_whisper_turbo_ts/ (not versioned); results/cache/22_whisper_turbo/clinical_turbo.csv;
 results/22_whisper_turbo/validation_train.csv."""
 
 import importlib.util

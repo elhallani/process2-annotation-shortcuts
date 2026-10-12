@@ -1,9 +1,8 @@
-"""DistilBERT en 5 × 5 (correction de la revue : 1 seule répétition dans 04_text_artifact). TRAIN uniquement.
+"""Fine-tuned DistilBERT with 5 x 5 cross-validation (training set).
 
-Réutilise 04_text_artifact (non modifié, son empreinte figure dans la provenance du test) avec n_repeats = 5.
-Versions : a_raw (manuel brut) et b_nomarks (préfixes + annotations retirés). Tête 3 classes ; score binaire = 1 − P(HC).
-Comparaison a_raw − b_nomarks : test t corrigé de Nadeau–Bengio sur les 25 folds + permutation appariée.
-"""
+Reuses 04_text_artifact unchanged (its hash is part of the test provenance) with five repetitions. Versions: raw
+manual transcripts and transcripts with labels and annotations removed. Three-class head; binary score
+1 - P(HC). Raw minus cleaned: corrected resampled t-test over 25 folds and paired permutation test."""
 
 import importlib.util
 import json

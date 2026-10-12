@@ -1,11 +1,9 @@
-"""Validation de la taxonomie des annotations (32_marker_inventory) par 3 LLM locaux, à l'aveugle.
+"""Blind validation of the annotation taxonomy (32_marker_inventory) by three local language models.
 
-Chaque forme d'annotation distincte (normalisée : minuscules, chiffres → N ; présentée avec N = 3) est classée par
-chaque LLM dans 6 catégories, sans voir la règle. Score = log-probabilité de chaque lettre de réponse, moyennée sur
-deux ordres des options (biais de position). Données strictement locales (DUA) : modèles open-weights, aucune API.
-Sorties AGRÉGÉES : formes nommées (≥ 5 fichiers) avec règle et choix des LLM ; formes rares (< 5 fichiers) : seulement
-des tableaux croisés de comptes (jamais la forme) ; accord règle–LLM et LLM–LLM (kappa de Cohen).
-"""
+Each distinct normalised annotation form (presented with N = 3) is classified into six categories without access to
+the rule. Score = log-probability of each answer letter, averaged over two option orders. Strictly local
+open-weight models, no API. Aggregated outputs: named forms (>= 5 files) with the rule and the model choices;
+rare forms only as cross-tabulated counts (never the form itself); rule-model and model-model Cohen's kappa."""
 
 import gc
 import importlib.util

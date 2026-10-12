@@ -1,10 +1,9 @@
-"""Étape 0g — Transcriptions automatiques Whisper (contrôle sans annotation de transcripteur).
+"""Automatic transcription with Whisper (control without transcriber annotations).
 
-openai/whisper-medium (comme la baseline officielle), anglais, fp16 sur GPU, décodage long-form natif.
-Les transcriptions sont des données dérivées des participants : écrites dans data/derived/asr_whisper/
-(non versionné, jamais affiché). Reprise possible : les fichiers déjà présents sont sautés.
-Sortie agrégée : results/07_asr_whisper/ (WER vs transcription manuelle nettoyée, par tâche × diagnostic, train).
-"""
+openai/whisper-medium (as in the official baseline), English, fp16 on GPU, native long-form decoding. Transcripts
+are participant-derived data: they are written to data/derived/asr_whisper/ (not versioned). Already transcribed
+files are skipped, so the run can be resumed.
+Output: results/07_asr_whisper/ (word error rate against cleaned manual transcripts, by task and diagnosis)."""
 
 import json
 import re

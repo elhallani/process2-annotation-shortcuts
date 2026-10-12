@@ -1,6 +1,7 @@
-"""Contrôle de raccourci (EXPLORATOIRE, train) : encodeur Whisper-small couches 8 et 10 sur les trames de NON-PAROLE
-seulement (même fenêtre, même pooling que 24_acoustic_models). Si l'AUC reste proche de celle de la parole, la
-représentation capte surtout l'environnement d'enregistrement."""
+"""Full-context non-speech control for the Whisper-small encoder (training set).
+
+Layers 8 and 10 pooled over non-speech frames only, with the same window and pooling as 24_acoustic_models.
+See 28_nonspeech_isolated for the control that isolates silence before encoding."""
 
 import importlib.util
 import json

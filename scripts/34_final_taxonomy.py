@@ -1,9 +1,8 @@
-"""Taxonomie finale des marqueurs de transcription (1200 fichiers, train + test).
+"""Final taxonomy of transcription markers (1200 files, training and test sets).
 
-Catégorie de chaque forme d'annotation : règle (32_marker_inventory) pour les formes nommées (≥ 5 fichiers) ; vote
-majoritaire des 3 LLM locaux (33_llm_validate_taxonomy, cache) pour les formes rares. Préfixes de locuteur ajoutés.
-Sorties AGRÉGÉES : part des annotations par catégorie ; % de fichiers et de participants par groupe ; par split.
-"""
+Category of each annotation form: the predefined rule for named forms (>= 5 files) and the majority vote of the three
+local language models for rare forms; speaker labels added. Aggregated outputs: share of annotations by category,
+and percentage of files and participants by group and split."""
 
 import importlib.util
 import json

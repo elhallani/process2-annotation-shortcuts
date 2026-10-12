@@ -1,15 +1,14 @@
-"""Étape 0d — Seconde voix : conventions des transcriptions, diarisation pyannote, vérification manuelle.
+"""Second voices: transcript speaker labels, pyannote diarisation and blind listening check.
 
-Usage : python scripts/03_second_voice.py --stage {transcripts,diarize,sample,kappa,all}
+Usage: python scripts/03_second_voice.py --stage {transcripts,diarize,sample,kappa,all}
 
-  transcripts  Comptes agrégés des marques de locuteur / annotations dans les .txt (aucun contenu affiché ni écrit).
-  diarize      Diarisation pyannote (speaker-diarization-community-1) des 1200 enregistrements ;
-               enregistrement marqué si un locuteur non principal totalise ≥ 3 s ; session marquée si ≥ 1 tâche marquée.
-  sample       30 identifiants du TRAIN (15 sessions marquées, 15 non), ordre aléatoire, écrits dans
-               results/01_audit/manual_check_ids.txt SANS le statut (écoute en aveugle). Clé dans results/cache/.
-  kappa        Accord (kappa de Cohen) entre notes/manual_check.csv (colonnes participant_id, second_voice ∈ {0,1})
-               et les marqueurs automatiques (pyannote, ECAPA strict, transcriptions).
-"""
+  transcripts  Aggregated counts of speaker labels and bracketed annotations (no text displayed or written).
+  diarize      pyannote diarisation (speaker-diarization-community-1) of the 1200 recordings; a recording is
+               flagged when a non-main speaker totals >= 3 s, and a session when at least one task is flagged.
+  sample       30 training sessions (15 flagged, 15 not) in random order for blind listening; the list is kept
+               out of version control.
+  kappa        Cohen's kappa between the listening sheet and the automatic markers (pyannote, strict ECAPA,
+               transcript labels)."""
 
 import argparse
 import importlib.util

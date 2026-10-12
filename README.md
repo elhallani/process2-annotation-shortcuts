@@ -16,7 +16,7 @@ Machine Intelligence Laboratory (LIM), Faculty of Sciences and Technologies of M
 </div>
 
 <p align="center">
-  <img src="results/figures_v2/graphical_abstract_elsevier.png" width="820" alt="Graphical abstract">
+  <img src="results/figures/graphical_abstract_elsevier.png" width="820" alt="Graphical abstract">
 </p>
 
 ## Overview
@@ -45,7 +45,7 @@ participant data.
 ## Method at a glance
 
 <p align="center">
-  <img src="results/figures_v2/fig1_system_overview.png" width="820" alt="Study overview">
+  <img src="results/figures/fig1_system_overview.png" width="820" alt="Study overview">
 </p>
 
 * **A. Shortcut audit.** Transcription regimes; a transparent TF-IDF + logistic-regression probe; ablations by
@@ -70,7 +70,7 @@ participant data.
 │   ├── stats.py        ICC, corrected resampled t-test, Holm correction, permutation tests
 │   └── text.py         transcript cleaning (speaker labels and annotations removed)
 ├── scripts/            one script per analysis step, numbered in execution order (00–35)
-├── results/            aggregated outputs only (CSV, JSON) and figures (results/figures_v2/)
+├── results/            aggregated outputs only (CSV, JSON) and figures (results/figures/)
 ├── requirements.txt
 └── README.md
 ```
@@ -115,7 +115,7 @@ Scripts are numbered in execution order, and each one writes its configuration n
 | Frozen speech embeddings and non-speech controls | `12`, `24`, `25`, `28` | `results/28_nonspeech_isolated` |
 | Zero-shot local LLMs and taxonomy validation | `27`, `33` | `results/27_llm`, `results/33_llm_validate_taxonomy` |
 | Regime checks, probe weights, marker taxonomy, ablation by category | `29`, `30`, `32`, `34`, `35` | `results/29_regime_checks` to `results/35_ablation_by_category` |
-| Figures | `26`, `31` | `results/figures_v2/` |
+| Figures | `26`, `31` | `results/figures/` |
 
 Example:
 
@@ -123,8 +123,12 @@ Example:
 python scripts/06_pause_annotation.py
 python scripts/10_model.py --config configs/model_clinical_v2.yaml
 python scripts/35_ablation_by_category.py
-python scripts/26_figures_v2.py && python scripts/31_fig1_overview.py
+python scripts/26_figures.py && python scripts/31_fig1_overview.py
 ```
+
+The files whose SHA-256 hashes are recorded in `results/14_final_test/provenance.json` (for example
+`configs/final.yaml`, `src/text.py` and `scripts/10_model.py`) are frozen: they are kept byte-for-byte as they
+were when the test set was evaluated, including their original (French) comments.
 
 `scripts/14_final_test.py` refuses to run if `results/14_final_test/` already exists, because the official test
 set was evaluated once with the configuration frozen in `configs/final.yaml`. Long GPU jobs can be wrapped with

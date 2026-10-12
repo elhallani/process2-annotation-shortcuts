@@ -1,14 +1,13 @@
-"""Étape 0b — Audit : VAD, début/fin des enregistrements, empreinte du canal, seconde voix, test de raccourci.
+"""Audit of recordings: voice activity, recording onsets and offsets, channel fingerprint, second voices,
+and shortcut test.
 
-Sorties AGRÉGÉES dans results/01_audit/ ; valeurs par enregistrement uniquement dans results/cache/01_audit/
-(non versionné, jamais affiché). Le test de raccourci n'utilise que le TRAIN.
-
-Étapes (chacune mise en cache ; supprimer le fichier de cache pour recalculer) :
-  A. VAD Silero + empreinte du canal par enregistrement (CPU, parallèle)
-  B. Empreintes vocales ECAPA par segment (GPU)
-  C. Regroupement des locuteurs par session (3 tâches d'un participant ensemble) → seconde voix
-  D. Agrégats : profils début/fin, ICC du canal, proportions seconde voix, test de raccourci
-"""
+Steps (each cached; delete the cache file to recompute):
+  A. Silero VAD and channel fingerprint per recording (CPU, parallel).
+  B. ECAPA speaker embeddings per speech segment (GPU).
+  C. Speaker clustering per session (the three tasks of a participant together) to flag second voices.
+  D. Aggregates: onset/offset profiles, channel ICC, second-voice rates, and a shortcut test that predicts
+     diagnosis from sex, channel, second voice and duration only (training set).
+Outputs: aggregated results in results/01_audit/; per-recording values in results/cache/01_audit/ (not versioned)."""
 
 import json
 import sys

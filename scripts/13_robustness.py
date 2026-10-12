@@ -1,11 +1,9 @@
-"""Étape 7 (partielle) — Équité par sexe et analyses de sensibilité du modèle principal (TRAIN uniquement).
+"""Fairness by sex and sensitivity analyses of the decision model (training set).
 
-Modèle : B_G de configs/model_clinical.yaml (G + CTD + âge/sexe ; normes réapprises dans chaque fold).
-1. Équité : probabilités hors-fold moyennées sur les 5 répétitions (une prédiction par participant) ;
-   AUC, BAcc, sensibilité, spécificité par sexe ; IC 95 % et écart hommes − femmes par bootstrap (2000).
-2. Sensibilité : seconde voix (union pyannote ≥ 3 s, ECAPA strict, transcription dialoguée) ; fluence courte (< 45 s).
-   (a) exclusion à l'évaluation seulement (mêmes prédictions) ; (b) validation croisée refaite sans les exclus.
-"""
+1. Fairness: out-of-fold probabilities averaged over the five repetitions; AUC, balanced accuracy, sensitivity and
+   specificity by sex, with bootstrap 95% CIs and the men - women gap.
+2. Sensitivity: second voices (pyannote >= 3 s, strict ECAPA, dialogue transcripts) and short fluency recordings
+   (< 45 s), (a) excluded at evaluation only and (b) excluded and cross-validation refitted."""
 
 import argparse
 import importlib.util

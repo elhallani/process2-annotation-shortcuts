@@ -1,10 +1,9 @@
-"""Étape 0a — Inventaire structurel de PROCESS-2.
+"""Structural inventory of PROCESS-2.
 
-Vérifie la structure de data/PROCESS-2/ sans jamais afficher de donnée individuelle.
-Toutes les sorties sont agrégées (comptes, percentiles) et écrites dans results/00_inventory/.
-Les transcriptions (*.txt) ne sont jamais ouvertes : seules leur présence et leur taille non nulle
-sont vérifiées. Les .wav ne sont lus que via leur en-tête (durée, fréquence, canaux).
-"""
+Checks the layout of data/PROCESS-2/ without displaying any individual data. Transcripts are never opened (only
+their presence and non-zero size are checked); audio files are read through their header only (duration, sampling
+rate, channels).
+Output: aggregated counts and percentiles in results/00_inventory/."""
 
 import json
 import re

@@ -1,8 +1,9 @@
 {
-  "contenu": "figures agrégées uniquement (aucun point individuel)",
-  "palette": {
-    "HC": "#2a78d6",
-    "MCI": "#eb6834",
-    "Dementia": "#1baf7a"
-  }
+  "content": "aggregated figures only (no individual data point)",
+  "group_palette": {
+    "HC": "#0072B2",
+    "MCI": "#E69F00",
+    "Dementia": "#009E73"
+  },
+  "double_column_width_in": 7.480314960629921
 }

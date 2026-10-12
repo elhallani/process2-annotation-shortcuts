@@ -1,10 +1,9 @@
-"""Inventaire AGRÉGÉ des conventions de transcription : préfixes de locuteur et annotations entre (), [], <>, {}.
+"""Aggregated inventory of transcription markers: speaker labels and annotations in (), [], <>, {}.
 
-Tous les fichiers (train + test, 1200 transcriptions), via load_dataset(). Aucun texte de participant n'est affiché.
-Protection (DUA) : une forme n'est nommée que si elle apparaît dans au moins MIN_FILES fichiers distincts (convention
-de transcription) ; les chiffres sont remplacés par « N » ; les formes plus rares sont seulement comptées.
-Sorties : results/32_marker_inventory/{prefixes,annotations,annotation_categories}.csv (comptes par diagnostic).
-"""
+All 1200 transcripts, loaded through load_dataset(); no participant text is displayed. Protection under the data use
+agreement: a form is named only if it occurs in at least MIN_FILES distinct files, digits are replaced by "N", and
+rarer forms are only counted.
+Outputs: results/32_marker_inventory/ (counts by diagnosis)."""
 
 import json
 import re

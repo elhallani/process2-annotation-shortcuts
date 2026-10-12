@@ -1,13 +1,11 @@
-"""Étape 0c — Suite de l'audit : bande passante × sexe, fréquence de coupure de l'appareil, raccourci par identité vocale.
+"""Channel bandwidth by sex and voice-identity shortcut.
 
-A. Bande passante (bw95) par diagnostic × sexe ; logit Dementia vs HC (train) : bande passante + sexe ;
-   fréquence de coupure estimée sur les zones sans parole (ICC + lien au diagnostic).
-B. Raccourci par identité vocale (train) : ECAPA moyen par participant et ECAPA différence SFT − PFT,
-   PCA dans le fold + régression logistique pondérée ; cibles HC vs MCI+Dementia, 3 classes, sexe (contrôle).
-
-Entrées : caches de 01_audit (VAD, empreintes ECAPA, variables par enregistrement).
-Sorties agrégées dans results/02_channel_identity/ ; spectres de bruit par enregistrement dans results/cache/.
-"""
+A. 95% spectral roll-off by diagnosis and sex; device cut-off frequency estimated on non-speech regions
+   (within-session ICC and association with diagnosis).
+B. Voice-identity shortcut (training set): mean ECAPA embedding per participant and SFT - PFT difference,
+   PCA fitted in the fold and weighted logistic regression; targets HC vs MCI+dementia, three classes, and sex
+   (identity control).
+Inputs: caches of 01_audit. Outputs: results/02_channel_identity/ (noise spectra per recording in results/cache/)."""
 
 import json
 import sys

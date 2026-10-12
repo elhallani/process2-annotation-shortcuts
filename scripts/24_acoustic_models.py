@@ -1,16 +1,12 @@
-"""Nouvelles méthodes acoustiques — TRAIN uniquement, EXPLORATOIRE.
-Modèles acoustiques complémentaires (étapes 3, 4, 6 + contrôle non-parole).
+"""Frozen speech representations and acoustic baselines (training set, exploratory).
 
-Par enregistrement, fenêtre min(durée, 45 s), statistiques moyenne + écart-type :
-  - WavLM-base-plus (gelé, fp32), couches 8, 10, 12, sur les trames de PAROLE (VAD) ; et sur les trames de
-    NON-PAROLE (contrôle de canal) ;
-  - encodeur Whisper-small (gelé, fp16), couches 6, 8, 10, trames de parole seulement (padding exclu) ;
-  - eGeMAPSv02 (openSMILE, fonctionnelles) sur la parole concaténée.
-Participant = concaténation des 3 tâches. Modèles (mêmes 5 × 5 folds que le principal) :
-  embeddings : StandardScaler + [projection hors de la direction « sexe » apprise dans le fold] + PCA(32) + LR ;
-  eGeMAPS : z par sexe vs HC du fold + LR (C = 0,1).
-Rapportés : AUC diagnostic (2 classes), AUC sexe (contrôle d'identité), Nadeau–Bengio vs principal, fusion à poids fixes.
-"""
+Per recording, window min(duration, 45 s), mean and standard deviation over frames:
+  - WavLM-base-plus (layers 8, 10, 12) on speech frames and, as a full-context control, on non-speech frames;
+  - Whisper-small encoder (layers 6, 8, 10) on speech frames;
+  - eGeMAPSv02 functionals (openSMILE) on concatenated speech.
+Participant vector = concatenation of the three tasks. Models on the same 5 x 5 folds: StandardScaler, optional
+removal of the sex direction learned in the fold, PCA(32) and logistic regression; eGeMAPS z-scored by sex against
+fold HC. Reported: diagnostic AUC, sex AUC (identity control), comparison with the decision model, fusion."""
 
 import importlib.util
 import json

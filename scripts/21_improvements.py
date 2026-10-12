@@ -1,14 +1,12 @@
-"""Pistes d'amélioration — TRAIN uniquement, EXPLORATOIRE (le test est consommé).
+"""Additional annotation-free features (training set, exploratory).
 
-Nouvelles mesures sans annotation humaine (Whisper horodaté / Whisper CTD), fenêtre min(durée, 45 s) :
-  SFT : switches/s et taille moyenne des clusters sémantiques (Troyer et al. 1997, approximés par la similarité
-        Wu–Palmer WordNet entre animaux successifs ≥ 0,8), similarité moyenne entre mots successifs ;
-  PFT : switches/s et taille moyenne des clusters phonémiques (mêmes deux premières lettres ou même rime finale) ;
-  CTD : unités d'information (liste fixe de 25 concepts du Cookie Theft) distinctes par seconde et par mot.
-Modèles (mêmes 5 × 5 folds, normes HC réapprises dans chaque fold, sans âge/sexe dans le classifieur) :
-  base (= B_G_nocov), +clusters, +CIU, +les deux ; 3 classes : Frank & Hall vs décision en deux étapes.
-Comparaisons : Nadeau–Bengio sur les folds ; aucune de ces variantes n'est évaluée sur le test.
-"""
+Measures from time-stamped Whisper transcripts, window min(duration, 45 s):
+  SFT: switches per second and mean semantic cluster size (Troyer et al., 1997; WordNet Wu-Palmer similarity >= 0.8
+       between successive animals) and mean similarity of successive words;
+  PFT: switches per second and mean phonemic cluster size (same first two letters or same rhyme);
+  CTD: distinct Cookie Theft information units (fixed list of 25 concepts) per second and per word.
+Models on the same 5 x 5 folds with norms refitted in each fold; three-class Frank-Hall versus a two-stage
+decision. Comparisons by corrected resampled t-test; none of these variants is evaluated on the test set."""
 
 import importlib.util
 import json

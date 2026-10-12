@@ -1,12 +1,9 @@
-"""Étape 0f — Pauses annotées dans les transcriptions vs pauses mesurées dans l'audio (TRAIN uniquement).
+"""Annotated pauses in manual transcripts versus pauses measured in the audio (training set).
 
-Question : à pauses acoustiques égales, les transcriptions des HC contiennent-elles moins d'annotations
-« (N second(s)) » ? Si oui, la densité d'annotation est un artefact de transcription lié au diagnostic.
-
-Pauses annotées : regex « (N second(s)) » dans le .txt (enregistrement entier ; aucun texte écrit ni affiché).
-Pauses acoustiques : silences entre îlots Silero VAD (cache 01_audit), enregistrement entier, seuil 1 s (grille 0,5–2 s).
-Sorties agrégées dans results/06_pause_annotation/.
-"""
+Question: for the same measured pauses, do transcripts of healthy controls contain fewer "(N seconds)" annotations?
+Annotated pauses are counted with a regular expression (no text written or displayed); measured pauses are
+silences between Silero VAD islands (whole recording, threshold 1 s, grid 0.5-2 s).
+Output: results/06_pause_annotation/."""
 
 import json
 import re

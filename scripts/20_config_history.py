@@ -1,5 +1,6 @@
-"""Historique des configurations successives (transparence sur le chemin d'analyse ; CV sur le TRAIN).
-Lit les résultats existants ; n'entraîne rien. Sortie : results/20_config_history/config_history.csv."""
+"""History of the successive decision-model configurations (training-set cross-validation).
+
+Reads existing results and trains nothing. Output: results/20_config_history/config_history.csv."""
 
 from pathlib import Path
 

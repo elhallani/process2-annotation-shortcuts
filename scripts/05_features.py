@@ -1,10 +1,9 @@
-"""Étape 1 — Mesures interprétables par tâche (définies dans configs/features.yaml).
+"""Interpretable per-task measures (defined in configs/features.yaml).
 
-Fenêtre min(durée, 45 s) ; unités = îlots Silero VAD (cache de 01_audit, mêmes paramètres) ;
-F0 (contrôle) et noyaux syllabiques (CTD) via Praat / parselmouth.
-Sorties : valeurs par enregistrement → results/cache/05_features/ (jamais affichées) ;
-agrégats par tâche × diagnosis (train) → results/05_features/.
-"""
+Window min(duration, 45 s); speech units are Silero VAD islands (cache of 01_audit, same parameters); F0 (control)
+and syllable nuclei (CTD) via Praat/parselmouth.
+Outputs: per-recording values in results/cache/05_features/ (not versioned); aggregates by task and diagnosis
+(training set) in results/05_features/."""
 
 import json
 import sys

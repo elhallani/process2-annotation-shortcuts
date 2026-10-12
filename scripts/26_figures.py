@@ -1,16 +1,15 @@
-"""Figures de l'article, version 2 (agrégées uniquement : médianes, intervalles, contours ; aucun point individuel).
+"""Figures 2-7 and the graphical abstract (aggregated data only: medians, intervals, contours).
 
-Style commun : largeur double colonne (7,16 in), police sans empattement, labels de panneau en gras,
-palette validée (3 groupes), encre neutre pour le texte, PNG 300 dpi + PDF vectoriel.
-Fig. 1  Vue d'ensemble : générée par scripts/31_fig1_overview.py
-Fig. 2  Raccourci d'annotation (régimes, densité, texte vs audio, ablation par régime, taxonomie, ablation par catégorie)
-Fig. 3  Ablation texte (CV train + test unique) et poids des tokens de la sonde
-Fig. 4  LLM locaux en zero-shot (effet des annotations, contrefactuel de pauses, niveau global)
-Fig. 5  Embeddings gelés et silence (contexte complet vs non-parole isolée)
-Fig. 6  Modèle interprétable sans annotation (mots valides par tranche, carte G–D, coefficients)
-Fig. 7  Test officiel : comparaison des modèles et équité par sexe
-Fig. 0  Résumé graphique (figure principale de l'article)
-"""
+Elsevier sizes (190 mm double column, 90 mm single column), sans-serif text >= 6 pt, colour-blind-safe palette
+(Okabe-Ito for groups; purple for the annotation shortcut; indigo for the annotation-free model), PNG at 300 dpi
+and vector PDF. Figure 1 is produced by 31_fig1_overview.py.
+  Fig. 2  Annotation shortcut: regimes, density, text vs audio, ablation by regime, taxonomy, ablation by category
+  Fig. 3  Text ablation (training CV and single test evaluation) and token weights of the probe
+  Fig. 4  Zero-shot local language models
+  Fig. 5  Frozen speech embeddings and silence
+  Fig. 6  Annotation-free interpretable model
+  Fig. 7  Official test set and fairness by sex
+Output: results/figures/."""
 
 import importlib.util
 import json
@@ -32,8 +31,8 @@ from src.data import load_dataset  # noqa: E402
 from src.normative import crossfit_scores  # noqa: E402
 
 R = ROOT / "results"
-OUT = R / "figures_v2"
-CACHE = R / "cache" / "26_figures_v2"
+OUT = R / "figures"
+CACHE = R / "cache" / "26_figures"
 MM = 1 / 25.4
 W2 = 190 * MM  # Elsevier : double colonne 190 mm
 W1 = 90 * MM   # simple colonne 90 mm
@@ -79,69 +78,10 @@ def save(fig, name):
     plt.close(fig)
 
 
-# ---------------------------------------------------------------- Fig. 1 : schéma du système
-
-def fig1():
-    fig, ax = plt.subplots(figsize=(W2, 5.0))
-    ax.set_axis_off()
-    ax.set_xlim(0, 100)
-    ax.set_ylim(0, 72)
-
-    def box(x, y, w, h, title, body, edge=INK2, fill="white", tsize=6.4, bsize=5.7):
-        ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle="round,pad=0.2,rounding_size=1.0", fc=fill, ec=edge, lw=.9))
-        ax.text(x + 1.2, y + h - 1.3, title, fontsize=tsize, weight="bold", va="top", color=INK)
-        ax.text(x + 1.2, y + h - 4.6, body, fontsize=bsize, va="top", color=INK2, linespacing=1.32)
-
-    def arrow(p0, p1, color=INK2, rad=0.0):
-        ax.add_patch(FancyArrowPatch(p0, p1, arrowstyle="-|>", mutation_scale=7, color=color, lw=.9,
-                                     connectionstyle=f"arc3,rad={rad}"))
-
-    # données
-    box(0.5, 16, 15, 38, "PROCESS-2", "400 participants\nHC 200\nMCI 150\nDementia 50\n\n3 tasks / session:\n"
-        "SFT  animals\nPFT  letter P\nCTD  picture\n\naudio + manual\ntranscripts\n\ntrain 320\ntest 80")
-    # A. audit (grille 2 × 2)
-    ax.text(19, 71, "A  Shortcut audit", fontsize=7.8, weight="bold", color=ACC_AUDIT, va="top")
-    audits = [("A1  Demographics & channel", "sex, age, duration, noise,\nSNR, bandwidth\n→ weak (AUC ≤ 0.56)"),
-              ("A2  Second voice", "pyannote, ECAPA, transcripts\nvs blind listening (n = 30)\n→ 6 % of sessions, κ ≤ 0.47"),
-              ("A3  Transcription regimes", "annotated vs measured pauses;\nregime depends on diagnosis\n"
-                                            "→ text AUC inflated by 0.07–0.12"),
-              ("A4  Silence-only embeddings", "frozen Whisper / WavLM on\nnon-speech frames only\n→ AUC 0.70–0.73")]
-    for k, (t, bd) in enumerate(audits):
-        box(19 + (k % 2) * 31.5, 54.5 - (k // 2) * 13, 30, 11.5, t, bd, edge=ACC_AUDIT)
-    # B. baseline
-    ax.text(19, 38.5, "B  Annotation-free interpretable baseline", fontsize=7.8, weight="bold", color=ACC_BASE,
-            va="top")
-    box(19, 23, 13, 11.5, "Whisper ASR", "word-level\ntimestamps", edge=ACC_BASE)
-    box(19, 8, 13, 11.5, "Silero VAD", "speech vs\nsilence", edge=ACC_BASE)
-    box(35, 23, 15, 11.5, "Fluency score", "distinct valid\nwords per second\n(first 45 s)", edge=ACC_BASE)
-    box(35, 8, 15, 11.5, "Pauses (VAD)", "median gap,\nlong silences,\nCTD pause rate", edge=ACC_BASE)
-    box(53, 8, 14, 26.5, "HC norms", "Huber regression\non healthy\ncontrols\n(age, sex),\ncross-fitted\n\n"
-        "→ z-scores,\n   global level G\n\n(D tested:\n no gain)", edge=ACC_BASE)
-    box(70, 8, 11.5, 26.5, "Decision", "weighted\nlogistic\nregression\n(no age/sex\npredictors)\n\n"
-        "→ risk score\n+ feature\ncontributions", edge=ACC_BASE)
-    arrow((32, 28.7), (35, 28.7), ACC_BASE)
-    arrow((32, 13.7), (35, 13.7), ACC_BASE)
-    arrow((50, 28.7), (53, 25), ACC_BASE)
-    arrow((50, 13.7), (53, 17), ACC_BASE)
-    arrow((67, 21), (70, 21), ACC_BASE)
-    arrow((15.5, 44), (19, 54), ACC_AUDIT, rad=-.2)
-    arrow((15.5, 30), (19, 28.7), ACC_BASE)
-    arrow((15.5, 20), (19, 13.7), ACC_BASE, rad=.15)
-    # C. évaluation + résultats
-    box(84.5, 41.5, 15, 29.5, "C  Evaluation", "5 × 5 CV (train),\nnorms refit\nper fold\n\nfrozen, dated\n"
-        "configs\n\nNadeau–Bengio\n+ Holm\n\ntest used once,\nbootstrap CI", edge=ACC_EVAL)
-    box(84.5, 2, 15, 36, "Key results", "test AUC 0.81\n[0.70, 0.91]\nBAcc 0.75\n\nG ↔ MMSE\nρ = 0.63\n\n"
-        "manual-text AUC\ninflated by pause\nannotations\n(+0.07 to +0.12)\n\nembeddings read\nsilences (0.73)",
-        edge=INK, fill="#f6f5f2")
-    arrow((81.5, 30), (84.5, 48), ACC_BASE, rad=-.2)
-    arrow((80.5, 54), (84.5, 58), ACC_AUDIT)
-    arrow((92, 41.5), (92, 38.3), INK)
-    save(fig, "fig1_system_overview")
 
 
-# ---------------------------------------------------------------- Fig. 2 : raccourci d'annotation
 
-def fig2():
+def fig2_annotation_shortcut():
     conv = pd.read_csv(R / "06_pause_annotation" / "annotation_by_convention_diagnosis_train.csv")
     auc = pd.read_csv(R / "06_pause_annotation" / "single_variable_auc_train.csv")
     ab = pd.read_csv(R / "17_corrections" / "AB_comparisons_nadeau_bengio_train.csv")
@@ -243,9 +183,8 @@ def fig2():
     save(fig, "fig2_annotation_shortcut")
 
 
-# ---------------------------------------------------------------- Fig. 3 : ablation texte
 
-def fig3():
+def fig3_text_ablation():
     cv8 = pd.read_csv(R / "08_text_asr" / "results_train.csv")
     cv4 = pd.read_csv(R / "04_text_artifact" / "tfidf_results_train.csv")
     te = pd.read_csv(R / "14_final_test" / "test_binary.csv").set_index("modèle")
@@ -312,7 +251,6 @@ def fig3():
     save(fig, "fig3_text_ablation")
 
 
-# ---------------------------------------------------------------- Fig. 4 : baseline interprétable
 
 def words_per_bin(tr):
     path = CACHE / "valid_words_per_bin_train.csv"
@@ -338,7 +276,7 @@ def words_per_bin(tr):
     return d
 
 
-def fig4():
+def fig6_interpretable_model():
     meta = load_dataset()
     tr = meta[meta.Split == "Train"].reset_index(drop=True)
     wb = words_per_bin(tr)
@@ -404,13 +342,12 @@ def fig4():
     ax.set_xlabel("Standardised coefficient")
     ax.grid(axis="y", visible=False)
     panel(ax, "d", "Fluency drives the score")
-    pd.DataFrame({"coef": coef}).round(3).to_csv(OUT / "fig4d_coefficients_train.csv")
+    pd.DataFrame({"coef": coef}).round(3).to_csv(OUT / "fig6d_coefficients_train.csv")
     save(fig, "fig6_interpretable_baseline")
 
 
-# ---------------------------------------------------------------- Fig. 5 : test officiel
 
-def fig5():
+def fig7_test_set():
     te = pd.read_csv(R / "14_final_test" / "test_binary.csv").set_index("modèle")
     rows = [("B_G_nocov", "Main: annotation-free G + CTD", "main"),
             ("B_G", "  + age and sex as predictors", "var"), ("C_G_D", "  + dissociation D", "var"),
@@ -457,9 +394,8 @@ def fig5():
     save(fig, "fig7_test_results")
 
 
-# ---------------------------------------------------------------- Fig. 6 : raccourci des silences
 
-def fig6():
+def fig5_silence():
     a = pd.read_csv(R / "24_acoustic_models" / "cv_results_train.csv").set_index("modèle")
     w = pd.read_csv(R / "24_acoustic_models" / "whisper_nonspeech_control_train.csv").set_index("modèle")
     iso = pd.read_csv(R / "28_nonspeech_isolated" / "cv_results_train.csv").set_index("modèle")
@@ -493,9 +429,8 @@ def fig6():
     save(fig, "fig5_silence_shortcut")
 
 
-# ---------------------------------------------------------------- Fig. 7 : LLM locaux en zero-shot
 
-def fig7():
+def fig4_llm_zero_shot():
     cmp_ = pd.read_csv(R / "27_llm" / "paired_comparisons_train.csv")
     ab = pd.read_csv(R / "17_corrections" / "AB_comparisons_nadeau_bengio_train.csv")
     auc = pd.read_csv(R / "27_llm" / "auc_by_model_task_version_train.csv")
@@ -553,101 +488,6 @@ def fig7():
     save(fig, "fig4_llm_zero_shot")
 
 
-# ---------------------------------------------------------------- Résumé graphique (figure principale)
-
-def graphical_abstract():
-    conv = pd.read_csv(R / "06_pause_annotation" / "annotation_by_convention_diagnosis_train.csv")
-    cv8 = pd.read_csv(R / "08_text_asr" / "results_train.csv")
-    te = pd.read_csv(R / "14_final_test" / "test_binary.csv").set_index("modèle")
-    fig = plt.figure(figsize=(W2, 3.35))
-    gs = fig.add_gridspec(2, 3, height_ratios=[.16, 1], width_ratios=[1.05, 1, 1.05], wspace=.42, hspace=.05,
-                          left=.03, right=.985, top=.97, bottom=.1)
-    heads = [("1", "A hidden shortcut", ACC_AUDIT), ("2", "Models exploit it", ACC_AUDIT),
-             ("3", "An honest baseline", ACC_BASE)]
-    for k, (n, h, col) in enumerate(heads):
-        hx = fig.add_subplot(gs[0, k])
-        hx.set_axis_off()
-        hx.add_patch(FancyBboxPatch((0, .1), 1, .8, boxstyle="round,pad=0,rounding_size=.25", fc=col, ec="none",
-                                    transform=hx.transAxes, alpha=.12))
-        hx.text(.04, .5, n, fontsize=12, weight="bold", color=col, va="center", transform=hx.transAxes)
-        hx.text(.14, .5, h, fontsize=8.3, weight="bold", color=INK, va="center", transform=hx.transAxes)
-
-    # 1. deux régimes de transcription (exemples FICTIFS) + qui est dans quel régime
-    ax = fig.add_subplot(gs[1, 0])
-    ax.set_axis_off()
-    ax.set_xlim(0, 1)
-    ax.set_ylim(0, 1)
-
-    def card(y, title, text, edge):
-        ax.add_patch(FancyBboxPatch((.02, y), .96, .2, boxstyle="round,pad=.01,rounding_size=.03", fc="white",
-                                    ec=edge, lw=.9))
-        ax.text(.05, y + .155, title, fontsize=6.4, weight="bold", color=INK, va="center")
-        ax.text(.05, y + .06, text, fontsize=6.1, color=INK2, va="center", family="DejaVu Sans Mono")
-    card(.76, "Transcriber style A (illustrative)", "Pat: cat … (2 seconds) … dog", ACC_AUDIT)
-    card(.51, "Transcriber style B (illustrative)", "cat … dog", MUTED)
-    ax.text(.02, .43, "Share of files written in style B", fontsize=6.4, color=INK, weight="bold")
-    shares = {g: 100 * conv[(conv.prefix_convention == False) & (conv.diagnosis == g)].n_files.iloc[0] /  # noqa: E712
-              conv[conv.diagnosis == g].n_files.sum() for g in GROUP}
-    for i, (g, v) in enumerate(shares.items()):
-        y = .35 - i * .085
-        ax.add_patch(plt.Rectangle((.3, y - .03), .6, .06, fc=GRID, ec="none"))
-        ax.add_patch(plt.Rectangle((.3, y - .03), .6 * v / 100, .06, fc=GROUP[g], ec="none"))
-        ax.text(.28, y, g, fontsize=6.3, color=INK2, ha="right", va="center")
-        ax.text(.3 + .6 * v / 100 + .015, y, f"{v:.0f}%", fontsize=6.3, color=INK, va="center")
-    ax.text(.02, -.02, "Pause notes exist only in style A → they track\nthe transcriber, not only the patient",
-            fontsize=5.9, color=INK2, va="bottom")
-
-    # 2. effet sur les modèles : texte brut → nettoyé ; silences seuls
-    ax = fig.add_subplot(gs[1, 1])
-    tasks = ["SFT", "PFT", "CTD"]
-    pts = []
-    for i, t in enumerate(tasks):
-        r = cv8[(cv8.task == t) & (cv8.cible == "HC vs MCI+Dementia")].set_index("condition")
-        a, b = r.loc["m_raw"].AUC_mean, r.loc["m_clean"].AUC_mean
-        ax.plot([0, 1], [a, b], color=GRID, lw=1.6, zorder=1)
-        ax.plot(0, a, "o", ms=5, color=ACC_AUDIT, zorder=2)
-        ax.plot(1, b, "o", ms=5, color=INK2, zorder=2)
-        pts.append((a, b, t))
-    for side, k in ((-.08, 0), (1.08, 1)):  # étiquettes écartées si trop proches
-        ys = sorted([(p[k], p[2]) for p in pts])
-        placed = []
-        for y, t in ys:
-            y = max(y, placed[-1] + .013) if placed else y
-            placed.append(y)
-            ax.text(side, y, t, fontsize=6.2, color=INK2, ha="right" if k == 0 else "left", va="center")
-    ax.set_xticks([0, 1], ["with\nannotations", "annotations\nremoved"])
-    ax.set_xlim(-.45, 1.45)
-    ax.set_ylim(.55, .85)
-    ax.set_ylabel("Text model AUC (train CV)")
-    ax.grid(axis="x", visible=False)
-    ax.text(1.42, .832, "−0.07 to −0.11", fontsize=6.6, weight="bold", color=ACC_AUDIT, ha="right")
-    ax.text(1.42, .575, "Same speech via Whisper\n(no annotations): AUC 0.60–0.62", fontsize=6.0, color=INK2, ha="right",
-            bbox=dict(boxstyle="round,pad=.3", fc="#f8eaf2", ec="none"))
-
-    # 3. baseline sans annotation humaine
-    ax = fig.add_subplot(gs[1, 2])
-    ax.set_axis_off()
-    ax.set_xlim(0, 1)
-    ax.set_ylim(0, 1)
-    steps = [("Audio", "speech recording"), ("Whisper + VAD", "valid words, pauses"),
-             ("HC norms", "age/sex-adjusted z"), ("Logistic model", "explainable risk")]
-    for i, (h, s) in enumerate(steps):
-        y = .9 - i * .155
-        ax.add_patch(FancyBboxPatch((.03, y - .055), .56, .11, boxstyle="round,pad=.005,rounding_size=.03",
-                                    fc="#eef4fc", ec=ACC_BASE, lw=.8))
-        ax.text(.06, y + .012, h, fontsize=6.4, weight="bold", color=INK, va="center")
-        ax.text(.06, y - .03, s, fontsize=5.8, color=INK2, va="center")
-        if i < len(steps) - 1:
-            ax.add_patch(FancyArrowPatch((.31, y - .057), (.31, y - .098), arrowstyle="-|>", mutation_scale=6,
-                                         color=ACC_BASE, lw=.8))
-    e = te.loc["B_G_nocov"]
-    ax.text(.82, .78, "Test AUC", fontsize=6.6, color=INK2, ha="center")
-    ax.text(.82, .62, f"{e.AUC:.2f}", fontsize=19, weight="bold", color=ACC_BASE, ha="center")
-    ax.text(.82, .53, f"[{e.AUC_lo:.2f}, {e.AUC_hi:.2f}]", fontsize=6.3, color=INK2, ha="center")
-    ax.text(.82, .36, "no human\nannotation", fontsize=6.2, color=INK, ha="center", linespacing=1.2)
-    ax.text(.82, .2, "G ↔ MMSE\nρ = 0.63", fontsize=6.2, color=INK, ha="center", linespacing=1.2)
-    ax.text(.03, .02, "Official test set used once (n = 80)", fontsize=5.9, color=INK2)
-    save(fig, "fig0_graphical_abstract")
 
 
 def graphical_abstract_elsevier():
@@ -704,11 +544,12 @@ def graphical_abstract_elsevier():
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     CACHE.mkdir(parents=True, exist_ok=True)
-    for f in (graphical_abstract, graphical_abstract_elsevier, fig2, fig3, fig4, fig5, fig6, fig7):
+    for f in (graphical_abstract_elsevier, fig2_annotation_shortcut, fig3_text_ablation, fig4_llm_zero_shot,
+              fig5_silence, fig6_interpretable_model, fig7_test_set):
         f()
         print(f"{f.__name__} ok", flush=True)
-    (OUT / "README.json").write_text(json.dumps({"contenu": "figures agrégées uniquement (aucun point individuel)",
-                                                "palette_groupes": GROUP, "largeur_double_colonne_in": W2},
+    (OUT / "README.json").write_text(json.dumps({"content": "aggregated figures only (no individual data point)",
+                                                "group_palette": GROUP, "double_column_width_in": W2},
                                                indent=2, ensure_ascii=False))
 
 

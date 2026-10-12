@@ -1,6 +1,7 @@
-"""Sensibilité : score clinique de fluence sur min(durée, 60 s) au lieu de 45 s (TRAIN + test pour le cache,
-aucune évaluation sur le test). Mêmes règles que 11_clinical_scores ; écrit results/cache/19_window60/clinical_60s.csv
-(colonne valid_per_s_60) pour configs/model_clinical_v2_60s.yaml."""
+"""Sensitivity analysis: clinical fluency score on min(duration, 60 s) instead of 45 s.
+
+Same rules as 11_clinical_scores. Writes results/cache/19_window60/clinical_60s.csv (column valid_per_s_60), used by
+configs/model_clinical_v2_60s.yaml. The test set is scored for the cache only and never evaluated."""
 
 import importlib.util
 import json

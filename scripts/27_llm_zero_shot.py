@@ -1,11 +1,11 @@
-"""LLM locaux en zero-shot (configs/llm.yaml, figé avant calcul). EXPLORATOIRE, TRAIN uniquement, aucune API.
+"""Zero-shot local language models (configs/llm.yaml, frozen before computation). Training set, no API.
 
-Usage : python scripts/27_llm_zero_shot.py --model qwen3_4b      (calcule et met en cache les scores)
-        python scripts/27_llm_zero_shot.py --analyze             (agrège tous les modèles disponibles)
+Usage: python scripts/27_llm_zero_shot.py --model qwen3_4b      (computes and caches the scores)
+       python scripts/27_llm_zero_shot.py --analyze             (aggregates all available models)
 
-Score par participant = moyenne sur 6 variantes (3 paraphrases × 2 ordres) de log P(« atteint ») − log P(« sain »),
-lu sur le premier token de la réponse (lettres A/B). Aucun texte n'est affiché ni écrit dans results/.
-"""
+Score per participant = mean over six prompt variants (three paraphrases x two option orders) of
+log P("impaired") - log P("healthy"), read on the first answer token (letters A/B). No text is displayed or
+written to results/."""
 
 import argparse
 import faulthandler

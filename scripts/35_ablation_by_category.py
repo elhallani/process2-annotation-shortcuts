@@ -1,10 +1,9 @@
-"""Ablation par catégorie d'annotation (TRAIN uniquement, 5 × 5 CV, TF-IDF + LR de 04_text_artifact).
+"""Ablation by annotation category (training set, 5 x 5 CV, TF-IDF + LR of 04_text_artifact).
 
-Référence : transcription manuelle, préfixes de locuteur retirés, toutes les annotations conservées.
-Versions : retrait d'UNE catégorie (taxonomie finale 34 : règle pour les formes nommées, vote LLM pour les rares) ;
-retrait de toutes les annotations sauf les pauses chronométrées ; retrait de toutes les annotations.
-ΔAUC = référence − version (perte), Nadeau–Bengio, Holm par tâche. Aucun texte affiché ni écrit.
-"""
+Reference: manual transcripts with speaker labels removed and all annotations kept. Versions: removal of one
+category (final taxonomy of 34), removal of all annotations except timed pauses, removal of all annotations.
+Delta AUC = reference - version (loss), corrected resampled t-test, Holm correction within task. No text displayed
+or written."""
 
 import importlib.util
 import json
