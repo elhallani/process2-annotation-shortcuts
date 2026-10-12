@@ -6,7 +6,7 @@
 
 [Anass El Hallani](https://orcid.org/0009-0007-3449-4327) · [Adil Chakhtouna](https://orcid.org/0000-0001-5280-6020) · [Abdellah Adib](https://orcid.org/0000-0002-0670-7221)
 
-Machine Intelligence Laboratory (LIM), Faculty of Sciences and Technologies of Mohammedia, Hassan II University of Casablanca
+Laboratory of Intelligence Machine (LIM), Faculty of Sciences and Technologies of Mohammedia, Hassan II University of Casablanca
 
 ![Python](https://img.shields.io/badge/python-3.11-blue)
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.11-orange)
