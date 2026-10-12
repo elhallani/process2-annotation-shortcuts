@@ -1,0 +1,4 @@
+task,n_vocab,pct_tokens_annotation,pct_masse_coef_annotation,pct_masse_coef_nombres,n_annotation_top20,n_annotation_top20_risque_plus
+CTD,971.0,0.88,3.48,0.03,2.28,2.28
+PFT,803.0,2.57,6.71,1.74,5.72,3.4
+SFT,669.0,3.02,7.52,1.4,4.92,2.92

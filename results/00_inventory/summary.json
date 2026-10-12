@@ -1,0 +1,132 @@
+{
+  "generated": "2026-10-01T11:32:38",
+  "structure": {
+    "n_subdirs_total": 401,
+    "n_participant_dirs": 400,
+    "n_subdirs_not_matching_pattern": 1,
+    "top_level_files": [
+      ".csv",
+      ".md",
+      "<no ext>",
+      "<no ext>",
+      "<no ext>"
+    ],
+    "n_unexpected_files_in_participant_dirs": 0,
+    "n_participants_with_all_6_files": 400,
+    "missing_per_file_type": {
+      "SFT_wav": 0,
+      "SFT_txt": 0,
+      "PFT_wav": 0,
+      "PFT_txt": 0,
+      "CTD_wav": 0,
+      "CTD_txt": 0
+    },
+    "empty_per_file_type": {
+      "SFT_wav": 0,
+      "SFT_txt": 0,
+      "PFT_wav": 0,
+      "PFT_txt": 0,
+      "CTD_wav": 0,
+      "CTD_txt": 0
+    }
+  },
+  "metadata": {
+    "file": "meta-info.csv",
+    "n_rows": 400,
+    "columns_raw": [
+      "IDs",
+      "diagnosis",
+      "age",
+      "gender",
+      "MMSE",
+      "Split"
+    ],
+    "columns": [
+      "participant_id",
+      "diagnosis",
+      "age",
+      "gender",
+      "MMSE",
+      "Split"
+    ],
+    "dtypes": {
+      "participant_id": "str",
+      "diagnosis": "str",
+      "age": "int64",
+      "gender": "str",
+      "MMSE": "float64",
+      "Split": "str"
+    },
+    "missing_per_column": {
+      "participant_id": 0,
+      "diagnosis": 0,
+      "age": 0,
+      "gender": 0,
+      "MMSE": 226,
+      "Split": 0
+    },
+    "expected_columns_absent": [],
+    "n_duplicate_participant_id": 0,
+    "n_meta_rows_without_folder": 0,
+    "n_folders_without_meta_row": 0,
+    "diagnosis_levels": {
+      "HC": 200,
+      "MCI": 150,
+      "Dementia": 50
+    },
+    "gender_levels": {
+      "male": 202,
+      "female": 198
+    },
+    "Split_levels": {
+      "Train": 320,
+      "Test": 80
+    }
+  },
+  "split_x_diagnosis": {
+    "Dementia": {
+      "Test": 10,
+      "Train": 40
+    },
+    "HC": {
+      "Test": 40,
+      "Train": 160
+    },
+    "MCI": {
+      "Test": 30,
+      "Train": 120
+    }
+  },
+  "split_x_diagnosis_minus_expected": {
+    "Dementia": {
+      "Train": 0,
+      "Test": 0
+    },
+    "MCI": {
+      "Train": 0,
+      "Test": 0
+    },
+    "HC": {
+      "Train": 0,
+      "Test": 0
+    }
+  },
+  "audio": {
+    "n_wav_readable": 1200,
+    "n_wav_unreadable": 0,
+    "sample_rates": {
+      "16000": 1200
+    },
+    "channels": {
+      "1": 1200
+    },
+    "duration_min_s": 8.56,
+    "duration_max_s": 260.66,
+    "n_fluency_recordings_under_threshold": {
+      "SFT": 7,
+      "PFT": 3
+    },
+    "n_participants_with_any_fluency_under_threshold": 10,
+    "n_participants_with_both_fluencies_under_threshold": 0
+  }
+}

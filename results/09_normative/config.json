@@ -1,0 +1,20 @@
+{
+  "seed": 42,
+  "split": "Train",
+  "huber_epsilon": 1.35,
+  "crossfit_splits": 5,
+  "n_boot": 1000,
+  "primary": "units_per_s",
+  "measures": {
+    "units_per_s": "none",
+    "median_gap_s": "log",
+    "long_silences_per_min": "log1p",
+    "units_slope": "none"
+  },
+  "channel_vars": [
+    "noise_db",
+    "snr_db",
+    "bw95_hz"
+  ],
+  "dissociation_threshold": 1.96
+}

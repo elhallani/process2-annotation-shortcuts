@@ -1,0 +1,22 @@
+{
+  "generated": "2026-10-02T15:46:25",
+  "config_bert": {
+    "model": "distilbert-base-uncased",
+    "max_len": 256,
+    "batch_size": 8,
+    "lr": 5e-05,
+    "epochs": 4,
+    "weight_decay": 0.01,
+    "fp16": true,
+    "n_splits": 5,
+    "n_repeats": 5,
+    "versions": [
+      "a_raw",
+      "b_nomarks"
+    ],
+    "head": "3 classes ; score binaire = 1 − P(HC)",
+    "loss": "entropie croisée pondérée (classes équilibrées)"
+  },
+  "n_new_fits": 150,
+  "mean_s_per_fit": 14.709912428855896
+}

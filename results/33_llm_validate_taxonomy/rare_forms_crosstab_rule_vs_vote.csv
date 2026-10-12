@@ -1,0 +1,7 @@
+règle,timed,untimed,nonverbal,uncertain,procedure,word
+timed,2,0,0,0,0,0
+untimed,0,0,0,0,0,0
+nonverbal,0,1,4,0,0,0
+uncertain,0,0,0,3,0,0
+procedure,0,0,1,0,3,0
+word,2,6,13,1,8,0

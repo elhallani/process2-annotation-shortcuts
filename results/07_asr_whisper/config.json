@@ -1,0 +1,9 @@
+{
+  "model": "openai/whisper-medium",
+  "language": "en",
+  "task": "transcribe",
+  "dtype": "float16",
+  "decoding": "generate long-form séquentiel, return_timestamps=True, condition_on_prev_tokens=False, batch 1",
+  "output_dir": "data/derived/asr_whisper/{participant_id}__{task}.txt",
+  "wer_reference": "transcription manuelle passée par src.text.clean_for_model, minuscules, sans ponctuation"
+}

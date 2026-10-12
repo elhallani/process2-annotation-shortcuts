@@ -1,0 +1,28 @@
+{
+  "generated": "2026-10-12T11:57:47",
+  "statut": "train uniquement, contrôle de non-parole isolée",
+  "margin_s": 0.1,
+  "min_seg_s": 0.2,
+  "window_s": 45.0,
+  "n_recordings": 960,
+  "n_too_short_nonspeech": 7,
+  "nonspeech_seconds_median_by_group": {
+    "HC": 17.09999999999997,
+    "MCI": 19.64999999999997,
+    "Dementia": 21.74999999999997
+  },
+  "rappel_24_full_context": [
+    {
+      "modèle": "wavlm_L8_NON_PAROLE",
+      "AUC_diag": 0.6948
+    },
+    {
+      "modèle": "wavlm_L10_NON_PAROLE",
+      "AUC_diag": 0.6835
+    },
+    {
+      "modèle": "wavlm_L12_NON_PAROLE",
+      "AUC_diag": 0.66
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+étape,date,config,motif,modèle,AUC_2c,AUC_2c_sd,BAcc_2c,AUC_3c,macroF1_3c
+1,2026-10-02,configs/model.yaml,"Unités VAD (purement acoustique), figé avant calcul",B_G,0.649,0.071,0.609,0.608,0.319
+1,2026-10-02,configs/model.yaml,"Unités VAD (purement acoustique), figé avant calcul",C_G_D,0.633,0.071,0.596,0.604,0.341
+2,2026-10-02,configs/model_clinical.yaml,Avenant 1 : score clinique Whisper (D n'ajoutait rien avec VAD),B_G,0.756,0.053,0.674,0.682,0.386
+2,2026-10-02,configs/model_clinical.yaml,Avenant 1 : score clinique Whisper (D n'ajoutait rien avec VAD),C_G_D,0.746,0.052,0.664,0.678,0.42
+3,2026-10-02,configs/model_clinical_v2.yaml,Avenant 2 : âge/sexe retirés du classifieur (parcimonie) → modèle principal B_G_nocov,B_G_nocov,0.746,0.052,0.678,0.661,0.332
+3,2026-10-02,configs/model_clinical_v2.yaml,Avenant 2 : âge/sexe retirés du classifieur (parcimonie) → modèle principal B_G_nocov,B_G,0.756,0.053,0.674,0.682,0.386
+3,2026-10-02,configs/model_clinical_v2.yaml,Avenant 2 : âge/sexe retirés du classifieur (parcimonie) → modèle principal B_G_nocov,C_G_D,0.746,0.052,0.664,0.678,0.42
+S,2026-10-02,configs/model_clinical_v2_60s.yaml,"Sensibilité (après test, train) : fenêtre 60 s",B_G_nocov,0.735,0.053,0.677,0.649,0.33
+S,2026-10-02,configs/model_clinical_v2_60s.yaml,"Sensibilité (après test, train) : fenêtre 60 s",B_G,0.745,0.052,0.668,0.671,0.374
+S,2026-10-02,configs/model_clinical_v2_60s.yaml,"Sensibilité (après test, train) : fenêtre 60 s",C_G_D,0.729,0.051,0.666,0.662,0.407

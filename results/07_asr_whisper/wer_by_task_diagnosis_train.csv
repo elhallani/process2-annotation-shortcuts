@@ -1,0 +1,10 @@
+task,diagnosis,n,WER_pooled,median_ref_words,median_hyp_words,n_empty_hyp
+CTD,Dementia,40,0.202,117.5,102.0,0
+CTD,HC,160,0.146,151.0,137.5,0
+CTD,MCI,120,0.206,123.5,105.0,0
+PFT,Dementia,40,0.451,25.0,21.5,0
+PFT,HC,160,0.307,26.0,22.5,0
+PFT,MCI,120,0.452,27.0,20.0,0
+SFT,Dementia,40,0.363,36.5,27.0,0
+SFT,HC,160,0.282,41.0,33.0,0
+SFT,MCI,120,0.343,38.0,33.0,0

@@ -1,0 +1,13 @@
+Split,diagnosis,gender,n
+Test,Dementia,female,3
+Test,Dementia,male,7
+Test,HC,female,21
+Test,HC,male,19
+Test,MCI,female,15
+Test,MCI,male,15
+Train,Dementia,female,12
+Train,Dementia,male,28
+Train,HC,female,86
+Train,HC,male,74
+Train,MCI,female,61
+Train,MCI,male,59

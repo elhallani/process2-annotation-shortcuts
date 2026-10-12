@@ -1,0 +1,13 @@
+variante,décision 3 classes,AUC_2c,AUC_2c_sd,BAcc_2c,AUC_3c,BAcc_3c,macroF1_3c
+base,-,0.7456,0.0517,0.6781,,,
+base,Frank & Hall,,,,0.6611,0.4706,0.3319
+base,deux étapes,,,,0.6785,0.4438,0.384
++clusters,-,0.7434,0.0514,0.6775,,,
++clusters,Frank & Hall,,,,0.6487,0.4651,0.3328
++clusters,deux étapes,,,,0.6734,0.4375,0.3909
++CIU,-,0.7414,0.0516,0.6738,,,
++CIU,Frank & Hall,,,,0.6438,0.4738,0.3358
++CIU,deux étapes,,,,0.6681,0.4417,0.3972
++clusters+CIU,-,0.7406,0.0511,0.6731,,,
++clusters+CIU,Frank & Hall,,,,0.638,0.4642,0.333
++clusters+CIU,deux étapes,,,,0.6669,0.4424,0.4043

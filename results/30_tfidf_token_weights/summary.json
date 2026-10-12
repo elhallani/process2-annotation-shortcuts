@@ -1,0 +1,6 @@
+{
+  "generated": "2026-10-12T12:16:56",
+  "statut": "train uniquement, 25 folds d'entraînement",
+  "règle_annotation": ">= 90 % des occurrences entre (), [], <>, {}",
+  "coef_positif": "augmente le risque (MCI+Dementia)"
+}

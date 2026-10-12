@@ -1,0 +1,10 @@
+task,diagnosis,n_files,pct_files_with_paren,paren_per_file_mean,pct_tokens_in_paren,pct_paren_nonverbal_kw,pct_paren_single_token
+CTD,Dementia,40,80.0,4.62,6.4,6.49,12.97
+CTD,HC,160,49.38,2.27,2.42,8.26,18.18
+CTD,MCI,120,83.33,4.38,5.15,7.03,15.02
+PFT,Dementia,40,85.0,7.28,29.5,10.31,15.12
+PFT,HC,160,61.88,5.78,27.45,10.16,10.7
+PFT,MCI,120,85.0,8.57,34.25,8.85,11.19
+SFT,Dementia,40,87.5,8.93,27.08,15.69,21.01
+SFT,HC,160,63.75,5.43,18.13,16.34,19.45
+SFT,MCI,120,89.17,8.22,24.38,11.97,16.63

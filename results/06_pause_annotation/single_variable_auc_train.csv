@@ -1,0 +1,10 @@
+task,variable,AUC_HC_vs_MCI+Dem
+SFT,n_annot,0.679
+SFT,n_gaps_1.0,0.56
+SFT,gaps_s_1.0,0.604
+PFT,n_annot,0.642
+PFT,n_gaps_1.0,0.423
+PFT,gaps_s_1.0,0.541
+CTD,n_annot,0.685
+CTD,n_gaps_1.0,0.596
+CTD,gaps_s_1.0,0.619

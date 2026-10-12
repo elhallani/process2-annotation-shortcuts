@@ -1,0 +1,27 @@
+{
+  "generated": "2026-10-12T15:06:47",
+  "modèles": [
+    "qwen3_4b",
+    "phi4_mini",
+    "medgemma_4b"
+  ],
+  "catégories": {
+    "timed": "a timed pause (a silence with its duration)",
+    "untimed": "an untimed pause or silence",
+    "nonverbal": "a non-verbal vocal event (e.g. sigh, laugh, cough, tongue click)",
+    "uncertain": "uncertain or inaudible speech",
+    "procedure": "a sound from the recording procedure or environment (device, timer, noise)",
+    "word": "a spoken word or other speech content"
+  },
+  "n_formes": 57,
+  "n_formes_rares": 44,
+  "fichiers_formes_rares_par_catégorie_LLM": {
+    "timed": 5,
+    "untimed": 8,
+    "nonverbal": 33,
+    "uncertain": 4,
+    "procedure": 14,
+    "word": 0
+  },
+  "note": "formes rares jamais écrites ; présentation N = 3 ; 2 ordres d'options"
+}

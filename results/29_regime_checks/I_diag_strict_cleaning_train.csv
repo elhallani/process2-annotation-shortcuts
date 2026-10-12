@@ -1,0 +1,7 @@
+task,version,AUC_diag,AUC_sd
+SFT,manuel nettoyé,0.6963,0.0632
+SFT,manuel nettoyé strict,0.6612,0.0526
+PFT,manuel nettoyé,0.6274,0.059
+PFT,manuel nettoyé strict,0.6104,0.0552
+CTD,manuel nettoyé,0.6575,0.0573
+CTD,manuel nettoyé strict,0.6261,0.0532

@@ -1,0 +1,7 @@
+comparaison,cible,dAUC,p_dAUC,dBAcc,p_dBAcc
+wavlm_centered − wavlm_raw,HC vs MCI+Dementia,-0.0518,0.016,-0.0306,0.1389
+wavlm_centered − wavlm_raw,3 classes,-0.0035,0.8721,0.0062,0.8112
+wavlm_centered − B_G,HC vs MCI+Dementia,-0.1292,0.001,-0.0788,0.001
+wavlm_centered − B_G,3 classes,-0.0538,0.0759,-0.0393,0.2597
+fusion − B_G,HC vs MCI+Dementia,-0.023,0.1119,-0.005,0.8022
+fusion − B_G,3 classes,0.0068,0.7992,-0.0021,0.954

@@ -1,0 +1,45 @@
+# Expérience LLM locaux (figée le 2026-10-03, AVANT tout calcul). EXPLORATOIRE : train uniquement (n = 320),
+# zero-shot sans aucun ajustement sur les étiquettes ; le test officiel n'est pas utilisé.
+# Données strictement locales (DUA PROCESS-2) : modèles open-weights exécutés sur la machine, aucune API.
+
+seed: 42
+split: Train
+models:
+  - {id: Qwen/Qwen3-4B-Instruct-2507, short: qwen3_4b}
+  - {id: microsoft/Phi-4-mini-instruct, short: phi4_mini}
+  - {id: google/medgemma-1.5-4b-it, short: medgemma_4b}
+quantization: {load_in_4bit: true, quant_type: nf4, double_quant: true, compute_dtype: float16}
+max_input_tokens: 1024
+batch_size: 4
+
+tasks:
+  SFT: "The person was asked to name as many animals as possible in one minute."
+  PFT: "The person was asked to say as many words beginning with the letter P as possible in one minute."
+  CTD: "The person was asked to describe the 'Cookie Theft' picture (a kitchen scene)."
+
+# Versions du texte (même participant, même tâche)
+versions:
+  m_raw: "transcription manuelle brute (préfixes et annotations « (N seconds) » conservés)"
+  m_clean: "transcription manuelle nettoyée (src.text.clean_for_model)"
+  asr: "Whisper-medium (aucune annotation)"
+  asr_pauses: "Whisper + « (N seconds) » inséré à chaque pause mesurée par VAD ≥ 1 s (contrefactuel uniforme)"
+  asr_random_pauses: "Whisper + même nombre d'annotations, durées permutées, positions aléatoires (contrôle)"
+
+# 3 paraphrases × 2 ordres des options = 6 variantes ; score = log P(lettre « atteint ») − log P(lettre « sain »)
+prompts:
+  - "You are an experienced neuropsychologist. {task} Here is the transcript of the response:\n\n\"{text}\"\n\nBased only on this transcript, is the speaker cognitively healthy or cognitively impaired (mild cognitive impairment or dementia)?\nA) {opt_a}\nB) {opt_b}\nAnswer with a single letter."
+  - "{task} Transcript:\n\"{text}\"\n\nQuestion: Does this speech sample suggest cognitive impairment (MCI or dementia) or normal cognition?\nA) {opt_a}\nB) {opt_b}\nReply with A or B only."
+  - "Clinical screening task. {task}\nSpeech transcript: \"{text}\"\nClassify the speaker.\nA) {opt_a}\nB) {opt_b}\nAnswer:"
+options: {healthy: "cognitively healthy", impaired: "cognitively impaired (MCI or dementia)"}
+option_orders: [[healthy, impaired], [impaired, healthy]]
+
+primary_hypothesis: "ΔAUC(m_raw − m_clean) > 0 pour au moins une tâche (HC vs MCI+Dementia), score moyen des 6 variantes"
+equivalence_margin: 0.03
+tests: "bootstrap apparié 2000 (IC 95 %) + permutation appariée 1000 ; Holm sur les 3 tâches par modèle"
+secondary: ["asr_pauses − asr (effet causal d'annotations uniformes)", "asr_pauses − asr_random_pauses (position)",
+            "analyse à régime égal (régime « Pat: » vs sans préfixe)", "dispersion des AUC entre les 6 variantes"]
+
+# Avenant technique (2026-10-03, après manque de mémoire GPU sur la CTD avec Phi-4-mini, embeddings non quantifiés
+# de 1,23 Go) : embeddings + lm_head sur CPU pour ce modèle. SFT et PFT de Phi-4-mini ont été calculées avec les
+# embeddings sur GPU ; différence purement numérique (fp32 CPU vs fp16 GPU pour la projection de sortie).
+cpu_embeddings: [microsoft/Phi-4-mini-instruct, google/medgemma-1.5-4b-it]  # MedGemma : aussi vision sur CPU (texte seul)

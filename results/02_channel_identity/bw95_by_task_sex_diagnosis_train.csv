@@ -1,0 +1,7 @@
+task,gender,Dementia,HC,MCI
+CTD,female,1547.0,2156.0,2031.0
+CTD,male,1375.0,1641.0,1875.0
+PFT,female,1406.0,2031.0,1781.0
+PFT,male,1281.0,1766.0,1844.0
+SFT,female,1719.0,2438.0,1969.0
+SFT,male,1328.0,1609.0,2062.0

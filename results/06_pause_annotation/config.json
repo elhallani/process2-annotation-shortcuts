@@ -1,0 +1,11 @@
+{
+  "split": "Train",
+  "pause_regex": "\\((\\d+)\\s*seconds?\\)",
+  "acoustic_gap_s": 1.0,
+  "gap_grid_s": [
+    0.5,
+    1.0,
+    2.0
+  ],
+  "glm": "Poisson, n_annot ~ log1p(n_gaps) + diagnosis + task, erreurs robustes groupées par participant"
+}

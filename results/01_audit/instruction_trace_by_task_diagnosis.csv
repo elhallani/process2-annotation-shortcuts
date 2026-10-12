@@ -1,0 +1,10 @@
+task,diagnosis,n,sv_in_first_10s
+CTD,Dementia,50,6.0
+CTD,HC,200,4.0
+CTD,MCI,150,6.7
+PFT,Dementia,50,16.0
+PFT,HC,200,15.5
+PFT,MCI,150,18.0
+SFT,Dementia,50,18.0
+SFT,HC,200,15.0
+SFT,MCI,150,23.3

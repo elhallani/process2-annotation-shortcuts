@@ -1,0 +1,38 @@
+{
+  "seed": 42,
+  "transcripts": {
+    "encoding": "utf-8 (errors=replace)",
+    "patterns": {
+      "speaker_prefix": "(?m)^\\s*\\*?([A-Za-z][A-Za-z0-9 _.\\-]{0,15}):",
+      "square_brackets": "\\[[^\\]\\n]{0,80}\\]",
+      "parentheses": "\\([^)\\n]{0,80}\\)",
+      "angle_tags": "<[^>\\n]{1,40}>",
+      "curly_braces": "\\{[^}\\n]{0,80}\\}",
+      "timestamps": "\\b\\d{1,2}:\\d{2}(?::\\d{2})?\\b"
+    },
+    "dialogue_rule": "≥ 2 préfixes de locuteur distincts dans le fichier"
+  },
+  "diarization": {
+    "model": "pyannote/speaker-diarization-community-1",
+    "output": "exclusive_speaker_diarization",
+    "second_speaker_min_s": 3.0,
+    "grid_s": [
+      1.0,
+      2.0,
+      3.0,
+      5.0,
+      10.0
+    ]
+  },
+  "manual_check": {
+    "split": "Train",
+    "n_flagged": 15,
+    "n_unflagged": 15,
+    "flag": "session pyannote ≥ 3 s"
+  },
+  "ecapa_strict": {
+    "similarity_threshold": 0.3,
+    "max_sim_to_main": 0.25,
+    "min_s": 3.0
+  }
+}

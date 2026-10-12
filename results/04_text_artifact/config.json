@@ -1,0 +1,78 @@
+{
+  "seed": 42,
+  "split": "Train",
+  "n_splits": 5,
+  "n_repeats": 5,
+  "n_permutations": 1000,
+  "tfidf": {
+    "lowercase": true,
+    "sublinear_tf": true,
+    "min_df": 2,
+    "ngram_range": [
+      1,
+      1
+    ]
+  },
+  "logreg": {
+    "class_weight": "balanced",
+    "C": 1.0,
+    "max_iter": 5000
+  },
+  "comparisons": [
+    [
+      "a_raw",
+      "b_nomarks"
+    ],
+    [
+      "official",
+      "b_nomarks"
+    ],
+    [
+      "b_nomarks",
+      "c_partic"
+    ],
+    [
+      "a_raw",
+      "b1_noprefix"
+    ],
+    [
+      "b1_noprefix",
+      "b_nomarks"
+    ]
+  ],
+  "nonverbal_keywords": [
+    "laugh",
+    "cough",
+    "buzzer",
+    "inaudible",
+    "unclear",
+    "unintelligible",
+    "noise",
+    "pause",
+    "sigh",
+    "throat",
+    "background",
+    "interrupt",
+    "crosstalk",
+    "silence",
+    "beep",
+    "breath"
+  ],
+  "bert": {
+    "model": "distilbert-base-uncased",
+    "max_len": 256,
+    "batch_size": 8,
+    "lr": 5e-05,
+    "epochs": 4,
+    "weight_decay": 0.01,
+    "fp16": true,
+    "n_splits": 5,
+    "n_repeats": 1,
+    "versions": [
+      "a_raw",
+      "b_nomarks"
+    ],
+    "head": "3 classes ; score binaire = 1 − P(HC)",
+    "loss": "entropie croisée pondérée (classes équilibrées)"
+  }
+}

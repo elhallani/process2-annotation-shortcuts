@@ -1,0 +1,13 @@
+{
+  "generated": "2026-10-12T14:56:43",
+  "n_fichiers": 1200,
+  "seuil_nommage_fichiers": 5,
+  "préfixes_rares_non_nommés": {
+    "formes": 2,
+    "occurrences": 3
+  },
+  "annotations_rares_non_nommées": {
+    "formes": 44,
+    "occurrences": 73
+  }
+}

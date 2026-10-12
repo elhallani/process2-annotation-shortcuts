@@ -1,0 +1,7 @@
+cible,task,diff,dAUC,p_dAUC,dBAcc,p_dBAcc
+HC vs MCI+Dementia,SFT,a_raw − b_nomarks,0.0365,0.0579,0.05,0.045
+3 classes,SFT,a_raw − b_nomarks,0.0358,0.0729,0.0049,0.8392
+HC vs MCI+Dementia,PFT,a_raw − b_nomarks,0.0461,0.004,0.0594,0.006
+3 classes,PFT,a_raw − b_nomarks,0.0341,0.045,-0.0049,0.8971
+HC vs MCI+Dementia,CTD,a_raw − b_nomarks,0.0102,0.6633,-0.0281,0.2827
+3 classes,CTD,a_raw − b_nomarks,0.0052,0.8072,-0.0479,0.1179

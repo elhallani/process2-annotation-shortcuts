@@ -1,0 +1,6 @@
+{
+  "statut": "exploratoire, train uniquement, post-test",
+  "seed": 42,
+  "n_perm": 1000,
+  "n_boot": 2000
+}

@@ -1,0 +1,20 @@
+# Configuration FINALE, figée le 2026-10-02 avant toute lecture du test officiel (validée par l'utilisateur).
+# Tout est appris sur les 320 participants du TRAIN ; le test (80) est évalué UNE SEULE FOIS par scripts/14_final_test.py.
+# Toute analyse ultérieure du test est exploratoire et doit être signalée comme telle.
+
+seed: 42
+n_boot: 2000
+threshold: 0.5                       # classe prédite = argmax des probabilités (LR pondérée)
+
+main_model:
+  name: B_G_nocov
+  config: configs/model_clinical_v2.yaml   # G (score clinique, silence médian, longs silences, pente) + z CTD (pauses,
+                                           # vitesse d'articulation) ; normes HC ajustées sur tout le train ;
+                                           # âge et sexe seulement dans les normes ; LR pondérée / Frank & Hall
+secondary_models:
+  acoustic: [B_G, C_G_D]                   # avec âge + sexe en prédicteurs (v1) ; C ajoute D
+  wavlm: [wavlm_centered, fusion]          # scripts/12_wavlm.py (fusion = B_G + PCA(32) du profil WavLM centré)
+  text: [m_raw, m_clean, asr, asr_pauses]  # scripts/08_text_asr.py, par tâche (SFT, PFT, CTD), TF-IDF + LR
+primary_metrics: "HC vs MCI+Dementia : AUC, accuracy équilibrée, sensibilité, spécificité (IC 95 % bootstrap)"
+secondary_metrics: "3 classes : AUC macro OvR, accuracy équilibrée, macro-F1 ; équité par sexe ; différences
+  appariées (bootstrap) modèle principal − autres"

@@ -1,0 +1,12 @@
+# Data covered by the PROCESS-2 data use agreement: never versioned
+data/
+results/cache/
+*.wav
+*.npz
+notes/manual_check.csv
+results/01_audit/manual_check_ids.txt
+
+# Local models and temporary files
+models/
+__pycache__/
+.ipynb_checkpoints/

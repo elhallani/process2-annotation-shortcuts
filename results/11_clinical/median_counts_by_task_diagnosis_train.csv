@@ -1,0 +1,7 @@
+task,diagnosis,valid_45s,repetitions_45s,intrusions_45s,valid_full_asr,valid_full_manual
+PFT,Dementia,6.5,0.0,3.0,7.5,7.5
+PFT,HC,12.0,1.0,2.0,15.0,16.0
+PFT,MCI,9.0,0.0,3.0,11.0,13.0
+SFT,Dementia,14.0,1.0,2.5,16.0,18.0
+SFT,HC,19.0,0.0,2.0,23.0,24.0
+SFT,MCI,15.0,0.0,3.0,17.0,18.0

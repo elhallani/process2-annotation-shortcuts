@@ -1,0 +1,31 @@
+cible,task,diff,dAUC,p_dAUC,dBAcc,p_dBAcc
+HC vs MCI+Dementia,SFT,a_raw − b_nomarks,0.0963,0.001,0.0737,0.003
+HC vs MCI+Dementia,SFT,official − b_nomarks,0.0998,0.001,0.0763,0.005
+HC vs MCI+Dementia,SFT,b_nomarks − c_partic,0.0032,0.03,0.0,1.0
+HC vs MCI+Dementia,SFT,a_raw − b1_noprefix,0.0027,0.0689,0.0006,1.0
+HC vs MCI+Dementia,SFT,b1_noprefix − b_nomarks,0.0936,0.001,0.0731,0.002
+HC vs MCI+Dementia,PFT,a_raw − b_nomarks,0.1012,0.001,0.0725,0.003
+HC vs MCI+Dementia,PFT,official − b_nomarks,0.1044,0.001,0.0713,0.006
+HC vs MCI+Dementia,PFT,b_nomarks − c_partic,0.0042,0.046,0.0006,0.99
+HC vs MCI+Dementia,PFT,a_raw − b1_noprefix,0.0006,0.8382,0.0056,0.0739
+HC vs MCI+Dementia,PFT,b1_noprefix − b_nomarks,0.1006,0.001,0.0669,0.005
+HC vs MCI+Dementia,CTD,a_raw − b_nomarks,0.0733,0.001,0.065,0.001
+HC vs MCI+Dementia,CTD,official − b_nomarks,0.1041,0.001,0.0875,0.001
+HC vs MCI+Dementia,CTD,b_nomarks − c_partic,-0.003,0.1309,-0.0031,0.4695
+HC vs MCI+Dementia,CTD,a_raw − b1_noprefix,0.0034,0.0859,0.0006,0.7612
+HC vs MCI+Dementia,CTD,b1_noprefix − b_nomarks,0.0699,0.001,0.0644,0.001
+3 classes,SFT,a_raw − b_nomarks,0.0709,0.001,0.0592,0.004
+3 classes,SFT,official − b_nomarks,0.0763,0.001,0.0692,0.002
+3 classes,SFT,b_nomarks − c_partic,-0.0004,0.8382,-0.0061,0.1828
+3 classes,SFT,a_raw − b1_noprefix,0.0022,0.034,0.0014,0.8002
+3 classes,SFT,b1_noprefix − b_nomarks,0.0686,0.001,0.0578,0.001
+3 classes,PFT,a_raw − b_nomarks,0.0805,0.001,0.0744,0.001
+3 classes,PFT,official − b_nomarks,0.0868,0.001,0.0871,0.001
+3 classes,PFT,b_nomarks − c_partic,-0.001,0.7812,0.0133,0.2048
+3 classes,PFT,a_raw − b1_noprefix,0.0043,0.2298,0.0069,0.3936
+3 classes,PFT,b1_noprefix − b_nomarks,0.0761,0.001,0.0675,0.003
+3 classes,CTD,a_raw − b_nomarks,0.0511,0.001,0.0378,0.009
+3 classes,CTD,official − b_nomarks,0.0749,0.001,0.0706,0.001
+3 classes,CTD,b_nomarks − c_partic,0.0008,0.6204,0.0049,0.2478
+3 classes,CTD,a_raw − b1_noprefix,0.0064,0.005,0.0004,0.9431
+3 classes,CTD,b1_noprefix − b_nomarks,0.0447,0.001,0.0374,0.005

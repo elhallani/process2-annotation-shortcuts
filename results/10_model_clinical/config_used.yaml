@@ -1,0 +1,53 @@
+seed: 42
+split: Train
+output_dir: results/10_model_clinical
+extra_feature_files:
+- results/cache/11_clinical/clinical_per_recording.csv
+cv:
+  n_splits: 5
+  n_repeats: 5
+n_permutations: 1000
+normative:
+  huber_epsilon: 1.35
+  inner_crossfit_splits: 5
+fluency_measures:
+  valid_per_s: none
+  median_gap_s: log
+  long_silences_per_min: log1p
+  units_slope: none
+ctd_measures:
+  pause_rate_per_min: log1p
+  articulation_rate: none
+covariates:
+- age
+- male
+models:
+  A_cov:
+  - cov
+  B_G:
+  - cov
+  - G
+  - ctd
+  C_G_D:
+  - cov
+  - G
+  - D
+  - ctd
+  D_only:
+  - cov
+  - D
+  Z_tasks:
+  - cov
+  - z_SFT
+  - z_PFT
+  - ctd
+main_comparison:
+- C_G_D
+- B_G
+classifier:
+  binary: StandardScaler + LogisticRegression(class_weight=balanced, C=1)
+  three_class: 'ordinal Frank & Hall : LR(y > HC), LR(y > MCI), class_weight=balanced,
+    C=1'
+metrics:
+  primary: 'HC vs MCI+Dementia : AUC, accuracy équilibrée'
+  secondary: '3 classes : macro-F1, accuracy équilibrée, AUC macro OvR'

@@ -1,0 +1,31 @@
+{
+  "seed": 42,
+  "model": "openai/whisper-medium",
+  "language": "en",
+  "window_s": 45.0,
+  "word_timing": "interpolation uniforme dans le segment Whisper",
+  "sft_rule": "nom dont un synset WordNet a animal.n.01 dans ses hyperonymes ; le mot « animal(s) » exclu ; bigrammes (ex. polar bear) testés avant les unigrammes ; distinct par lemme",
+  "pft_rule": "commence par p ; présent dans WordNet (toute catégorie) ou nltk words ; nom propre exclu (majuscule hors début de segment) ; distinct par racine Porter",
+  "fillers": [
+    "um",
+    "uh",
+    "er",
+    "erm",
+    "ah",
+    "oh",
+    "hmm",
+    "mm",
+    "mhm",
+    "okay",
+    "ok",
+    "yeah",
+    "yes",
+    "no",
+    "well",
+    "so",
+    "like",
+    "right",
+    "oops",
+    "sorry"
+  ]
+}

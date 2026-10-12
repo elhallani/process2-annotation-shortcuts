@@ -1,0 +1,8 @@
+Split,diagnosis,female,male,All
+Test,Dementia,3,7,10
+Test,HC,21,19,40
+Test,MCI,15,15,30
+Train,Dementia,12,28,40
+Train,HC,86,74,160
+Train,MCI,61,59,120
+All,,198,202,400

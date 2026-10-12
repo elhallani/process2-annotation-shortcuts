@@ -1,0 +1,17 @@
+groupe,prédicteurs,AUC_régime,AUC_sd
+HC,"canal (bruit, SNR, bw95 × 3 tâches)",0.4915,0.0795
+HC,variables du modèle principal (6),0.3726,0.0925
+HC,durées (3 tâches),0.4268,0.1039
+HC,"WavLM L8 non-parole, contexte complet (24)",0.5265,0.0826
+HC,"WavLM L12 non-parole, contexte complet (24)",0.5149,0.0933
+HC,wavlm8_iso non-parole ISOLÉE (28),0.615,0.0755
+HC,wavlm12_iso non-parole ISOLÉE (28),0.6925,0.0843
+HC,whisper8_iso non-parole ISOLÉE (28),0.65,0.0766
+MCI+Dementia,"canal (bruit, SNR, bw95 × 3 tâches)",0.4533,0.1231
+MCI+Dementia,variables du modèle principal (6),0.5375,0.1094
+MCI+Dementia,durées (3 tâches),0.4328,0.0832
+MCI+Dementia,"WavLM L8 non-parole, contexte complet (24)",0.4802,0.1413
+MCI+Dementia,"WavLM L12 non-parole, contexte complet (24)",0.4688,0.104
+MCI+Dementia,wavlm8_iso non-parole ISOLÉE (28),0.495,0.0996
+MCI+Dementia,wavlm12_iso non-parole ISOLÉE (28),0.4395,0.1008
+MCI+Dementia,whisper8_iso non-parole ISOLÉE (28),0.5707,0.1056

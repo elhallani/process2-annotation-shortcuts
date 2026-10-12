@@ -1,0 +1,14 @@
+modèle,AUC,AUC_sd,AUC_fusion_durée
+"durée de non-parole (3 tâches, log)",0.6573,0.0562,
+wavlm8_iso,0.6389,0.0513,0.6622
+wavlm8_mask,0.6957,0.0446,0.7059
+wavlm10_iso,0.6667,0.0637,0.6798
+wavlm10_mask,0.659,0.05,0.6774
+wavlm12_iso,0.6379,0.0581,0.658
+wavlm12_mask,0.6755,0.043,0.6938
+whisper6_iso,0.6691,0.0467,0.6796
+whisper6_mask,0.6795,0.0434,0.6888
+whisper8_iso,0.6791,0.0526,0.6902
+whisper8_mask,0.6682,0.0516,0.6862
+whisper10_iso,0.6671,0.05,0.6815
+whisper10_mask,0.669,0.0478,0.6866

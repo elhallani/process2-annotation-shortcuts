@@ -1,0 +1,13 @@
+measure,diagnosis,n,pct_D_above,pct_D_below
+units_per_s,HC,160,3.8,3.1
+units_per_s,MCI,120,0.8,5.0
+units_per_s,Dementia,40,0.0,2.5
+median_gap_s,HC,160,3.8,3.8
+median_gap_s,MCI,120,10.0,3.3
+median_gap_s,Dementia,40,20.0,2.5
+long_silences_per_min,HC,160,0.0,0.0
+long_silences_per_min,MCI,120,0.0,0.0
+long_silences_per_min,Dementia,40,0.0,0.0
+units_slope,HC,160,5.6,5.0
+units_slope,MCI,120,5.8,10.0
+units_slope,Dementia,40,5.0,2.5

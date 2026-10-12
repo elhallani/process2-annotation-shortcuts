@@ -1,0 +1,32 @@
+{
+  "generated": "2026-10-02T15:18:05",
+  "statut": "exploratoire, train uniquement",
+  "wup_threshold": 0.8,
+  "ciu_concepts": [
+    "boy",
+    "girl",
+    "woman",
+    "cookie",
+    "jar",
+    "stool",
+    "fall",
+    "sink",
+    "water",
+    "overflow",
+    "dish",
+    "wash",
+    "cupboard",
+    "window",
+    "curtain",
+    "floor",
+    "garden",
+    "tap",
+    "kitchen",
+    "reach",
+    "hand",
+    "shh",
+    "unaware",
+    "puddle",
+    "apron"
+  ]
+}

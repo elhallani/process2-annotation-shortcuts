@@ -1,0 +1,40 @@
+{
+  "generated": "2026-10-02T14:57:51",
+  "C_overdispersion": {
+    "poisson_pearson_chi2_per_df_regime_Pat": 0.9366055822515966,
+    "negbin_alpha_regime_Pat": 7.015083552394112e-08,
+    "n_files": 960,
+    "n_files_regime_Pat": 631,
+    "note": "OR (logit) dans la colonne RR pour le modèle de régime"
+  },
+  "D_calibration_train_cv": {
+    "AUC": 0.7485546875,
+    "Brier": 0.20263264704204512,
+    "calibration_slope": 0.9191558240667608,
+    "calibration_intercept": -0.005601741390740933,
+    "mean_pred": 0.5010936568998707,
+    "observed_rate": 0.5
+  },
+  "E": {
+    "AUC_HC_vs_MCI_OOF": 0.7338541666666667,
+    "AUC_HC_vs_Dementia_OOF": 0.79265625,
+    "spearman_G_MMSE_MCI+Dem": 0.6287530398633736,
+    "p_G_MMSE": 3.1912015094720394e-14,
+    "spearman_D_MMSE_MCI+Dem": 0.5635393495058773,
+    "p_D_MMSE": 3.716868896892056e-11,
+    "spearman_z_SFT_MMSE_MCI+Dem": 0.576117783279749,
+    "p_z_SFT_MMSE": 1.0737502076465782e-11,
+    "spearman_z_PFT_MMSE_MCI+Dem": 0.5144536453286972,
+    "p_z_PFT_MMSE": 2.968336792083189e-09,
+    "n_MMSE_MCI+Dem": 117
+  },
+  "F_EXPLORATORY_test_calibration": {
+    "AUC": 0.8106250000000002,
+    "Brier": 0.17969841988121454,
+    "calibration_slope": 1.0250073341055645,
+    "calibration_intercept": -0.21685042305131466,
+    "mean_pred": 0.5393579913744646,
+    "observed_rate": 0.5
+  },
+  "note": "A–E : train uniquement ; F : test, exploratoire, pipeline figé, aucune décision"
+}

@@ -1,0 +1,25 @@
+{
+  "pct_sessions_consistent_convention": 98.4,
+  "pct_sessions_with_prefix_by_diag": {
+    "Dementia": 70.0,
+    "HC": 51.9,
+    "MCI": 82.5
+  },
+  "AUC_convention_HC_vs_MCI+Dem": 0.639,
+  "AUC_convention_Dem_vs_HC": 0.597,
+  "noise_db_median_with_vs_without_prefix": [
+    -47.4,
+    -48.8
+  ],
+  "noise_db_p_MannWhitney": 0.5709,
+  "snr_db_median_with_vs_without_prefix": [
+    39.9,
+    40.8
+  ],
+  "snr_db_p_MannWhitney": 0.7452,
+  "bw95_hz_median_with_vs_without_prefix": [
+    2057.3,
+    1895.8
+  ],
+  "bw95_hz_p_MannWhitney": 0.7389
+}

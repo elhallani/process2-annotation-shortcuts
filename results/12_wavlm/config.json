@@ -1,0 +1,28 @@
+{
+  "seed": 42,
+  "model": "microsoft/wavlm-base-plus",
+  "layer": 6,
+  "window_s": 45.0,
+  "pooling": "moyenne trames VAD",
+  "pca_components": 32,
+  "cv": {
+    "n_splits": 5,
+    "n_repeats": 5
+  },
+  "n_permutations": 1000,
+  "fusion_base": "B_G de configs/model_clinical.yaml",
+  "comparisons": [
+    [
+      "wavlm_centered",
+      "wavlm_raw"
+    ],
+    [
+      "wavlm_centered",
+      "B_G"
+    ],
+    [
+      "fusion",
+      "B_G"
+    ]
+  ]
+}

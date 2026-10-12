@@ -1,0 +1,14 @@
+crochets,forme,n_fichiers,règle,qwen3_4b,phi4_mini,medgemma_4b,vote_LLM
+( ),N second,696,timed,timed,timed,untimed,timed
+( ),N seconds,677,timed,timed,timed,untimed,timed
+( ),sighs,201,nonverbal,nonverbal,nonverbal,nonverbal,nonverbal
+( ),laughs,170,nonverbal,nonverbal,nonverbal,nonverbal,nonverbal
+( ),tuts,146,nonverbal,nonverbal,uncertain,procedure,nonverbal
+( ),?,111,uncertain,uncertain,uncertain,untimed,uncertain
+( ),buzzer sounds,81,procedure,procedure,procedure,procedure,procedure
+( ),clears throat,20,nonverbal,nonverbal,nonverbal,procedure,nonverbal
+( ),sniffs,10,nonverbal,nonverbal,nonverbal,untimed,nonverbal
+( ),coughs,10,nonverbal,nonverbal,nonverbal,nonverbal,nonverbal
+[ ],?,9,uncertain,uncertain,uncertain,untimed,uncertain
+( ),laughter,5,nonverbal,nonverbal,nonverbal,nonverbal,nonverbal
+< >,laugh,5,nonverbal,nonverbal,nonverbal,nonverbal,nonverbal

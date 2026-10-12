@@ -1,0 +1,13 @@
+comparaison,famille,n,AUC_1_fold_mean,AUC_2_fold_mean,dAUC_fold_mean,t_NB,p_NadeauBengio,dAUC_pooled,p_perm_pooled,task,régime,n_HC,n_patients,p_NB_Holm
+"brut − nettoyé, SFT, tous",artefact,320,0.7947,0.6963,0.0984,4.2325,0.0003,0.0997,[0.000999 0.000999],SFT,tous,160.0,160.0,0.0009
+"brut − nettoyé, SFT, régime « Pat: »",artefact (régime),210,0.741,0.6339,0.1071,3.9989,0.0005,0.1089,[0.000999 0.000999],SFT,régime « Pat: »,83.0,127.0,0.0026
+"brut − nettoyé, SFT, régime sans préfixe",artefact (régime),110,0.7738,0.7633,0.0104,0.6486,0.5227,0.0106,[0.32867133 0.54645355],SFT,régime sans préfixe,77.0,33.0,1.0
+"brut − nettoyé, PFT, tous",artefact,320,0.7359,0.6274,0.1085,3.8133,0.0008,0.1076,[0.000999   0.00899101],PFT,tous,160.0,160.0,0.0009
+"brut − nettoyé, PFT, régime « Pat: »",artefact (régime),210,0.6632,0.5293,0.1339,4.4321,0.0002,0.1291,[0.000999 0.000999],PFT,régime « Pat: »,83.0,127.0,0.0011
+"brut − nettoyé, PFT, régime sans préfixe",artefact (régime),110,0.7623,0.7655,-0.0032,-0.4213,0.6773,-0.0013,[0.68231768 0.91808192],PFT,régime sans préfixe,77.0,33.0,1.0
+"brut − nettoyé, CTD, tous",artefact,320,0.726,0.6575,0.0685,4.2097,0.0003,0.0712,[0.000999   0.01198801],CTD,tous,160.0,160.0,0.0009
+"brut − nettoyé, CTD, régime « Pat: »",artefact (régime),210,0.6827,0.6436,0.0391,2.7677,0.0107,0.0412,[0.000999   0.07092907],CTD,régime « Pat: »,83.0,127.0,0.0428
+"brut − nettoyé, CTD, régime sans préfixe",artefact (régime),110,0.6191,0.62,-0.0009,-0.1704,0.8662,-0.0006,[0.82217782 1.        ],CTD,régime sans préfixe,77.0,33.0,1.0
+C_G_D − B_G,modèle,320,0.7455,0.7556,-0.0102,-1.614,0.1196,-0.0103,[0.02697303 0.27772228],,,,,0.2392
+B_G_nocov − B_G,modèle,320,0.7456,0.7556,-0.01,-0.7462,0.4628,-0.0077,[0.32767233 0.75324675],,,,,0.4628
+B_G_nocov − A_cov,modèle,320,0.7456,0.4991,0.2465,4.4561,0.0002,0.251,[0.000999 0.000999],,,,,0.0005

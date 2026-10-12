@@ -1,0 +1,10 @@
+task,diagnosis,f0_sd_semitones,pause_rate_per_min,articulation_rate,units_per_s,units_per_s_bin1,units_per_s_bin2,units_per_s_bin3,units_slope,median_gap_s,long_silences_per_min
+CTD,Dementia,2.603,15.819,3.108,,,,,,,
+CTD,HC,3.019,12.0,3.269,,,,,,,
+CTD,MCI,2.827,14.667,3.176,,,,,,,
+PFT,Dementia,2.982,,,0.289,0.333,0.267,0.251,-0.067,1.4,2.667
+PFT,HC,3.135,,,0.378,0.467,0.333,0.333,-0.067,1.225,2.667
+PFT,MCI,2.936,,,0.333,0.433,0.267,0.267,-0.067,1.45,2.667
+SFT,Dementia,2.578,,,0.411,0.5,0.4,0.333,-0.1,1.0,2.667
+SFT,HC,2.804,,,0.444,0.533,0.467,0.333,-0.1,0.7,1.333
+SFT,MCI,2.657,,,0.422,0.533,0.4,0.333,-0.067,0.825,1.333

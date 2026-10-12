@@ -1,0 +1,15 @@
+modèle,cible,AUC_mean,AUC_sd,BAcc_mean,BAcc_sd,macroF1_mean,macroF1_sd
+A_cov,HC vs MCI+Dementia,0.4991,0.0788,0.5188,0.0751,,
+A_cov,3 classes,0.5694,0.0366,0.4108,0.0659,0.2805,0.0399
+B_G_nocov,HC vs MCI+Dementia,0.735,0.0531,0.6769,0.0514,,
+B_G_nocov,3 classes,0.649,0.0583,0.4685,0.0491,0.3301,0.0257
+B_G_age,HC vs MCI+Dementia,0.7348,0.0527,0.6769,0.0446,,
+B_G_age,3 classes,0.6585,0.0546,0.4706,0.0564,0.3406,0.0348
+B_G,HC vs MCI+Dementia,0.7453,0.0523,0.6681,0.0501,,
+B_G,3 classes,0.6712,0.0539,0.4978,0.0582,0.3742,0.0448
+C_G_D,HC vs MCI+Dementia,0.7289,0.0511,0.6656,0.0526,,
+C_G_D,3 classes,0.6623,0.0456,0.5111,0.0606,0.407,0.053
+D_only,HC vs MCI+Dementia,0.7034,0.0679,0.6581,0.0447,,
+D_only,3 classes,0.6594,0.0412,0.4706,0.0595,0.3553,0.0469
+Z_tasks,HC vs MCI+Dementia,0.731,0.0504,0.6669,0.0529,,
+Z_tasks,3 classes,0.6616,0.0463,0.5142,0.0649,0.4106,0.0587

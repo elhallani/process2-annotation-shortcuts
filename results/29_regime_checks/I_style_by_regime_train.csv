@@ -1,0 +1,19 @@
+task,diagnosis,régime,n,n_tokens,hésitations_pour100,fragments_pour100,ponctuation_pour100,majuscules_pour100,lignes
+SFT,Dementia,sans préfixe,12,44.0,12.68,0.0,61.59,7.83,1.5
+SFT,Dementia,Pat:,28,31.0,12.7,0.0,37.28,7.79,6.0
+SFT,HC,sans préfixe,77,39.0,8.11,0.0,71.43,3.77,1.0
+SFT,HC,Pat:,83,43.0,14.63,0.0,53.12,6.25,1.0
+SFT,MCI,sans préfixe,21,45.0,13.16,0.0,54.24,12.0,1.0
+SFT,MCI,Pat:,99,38.0,13.64,0.0,47.06,8.06,6.0
+PFT,Dementia,sans préfixe,12,25.0,13.96,0.0,67.42,16.0,1.0
+PFT,Dementia,Pat:,28,25.0,10.66,0.0,33.85,14.92,5.0
+PFT,HC,sans préfixe,77,25.0,3.45,0.0,79.31,7.5,1.0
+PFT,HC,Pat:,83,26.0,11.54,0.0,43.48,6.25,1.0
+PFT,MCI,sans préfixe,21,30.0,10.0,0.0,47.92,14.29,1.0
+PFT,MCI,Pat:,99,26.0,8.33,0.0,39.13,9.68,5.0
+CTD,Dementia,sans préfixe,12,124.0,4.18,0.0,14.08,4.05,1.0
+CTD,Dementia,Pat:,28,117.5,2.87,0.0,12.35,4.98,8.0
+CTD,HC,sans préfixe,77,143.0,1.4,0.0,10.99,6.47,1.0
+CTD,HC,Pat:,83,162.0,4.24,0.0,12.44,4.76,1.0
+CTD,MCI,sans préfixe,21,117.0,2.84,0.0,11.32,5.22,2.0
+CTD,MCI,Pat:,99,125.0,3.67,0.0,13.22,5.29,10.0

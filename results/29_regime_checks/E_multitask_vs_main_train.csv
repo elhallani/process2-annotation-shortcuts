@@ -1,0 +1,9 @@
+comparaison,dAUC,p_NB,p_Holm
+"manuel brut, concaténation − principal",0.0594,0.0457,0.2741
+"manuel brut, fusion tardive − principal",0.0576,0.0492,0.2741
+"manuel nettoyé, concaténation − principal",-0.0396,0.3174,0.6347
+"manuel nettoyé, fusion tardive − principal",-0.0305,0.4379,0.6347
+"Whisper, concaténation − principal",-0.0981,0.0103,0.082
+"Whisper, fusion tardive − principal",-0.0902,0.0222,0.1556
+"Whisper + pauses mesurées, concaténation − principal",-0.0673,0.0489,0.2741
+"Whisper + pauses mesurées, fusion tardive − principal",-0.0456,0.097,0.291

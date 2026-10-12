@@ -1,0 +1,11 @@
+comparaison,cible,dAUC,p_dAUC,dBAcc,p_dBAcc
+C_G_D − B_G,HC vs MCI+Dementia,-0.0164,0.013,-0.0125,0.1618
+C_G_D − B_G,3 classes,-0.0038,0.8122,0.0082,0.5714
+B_G − A_cov,HC vs MCI+Dementia,0.1535,0.001,0.09,0.006
+B_G − A_cov,3 classes,0.0484,0.017,0.0271,0.3017
+C_G_D − A_cov,HC vs MCI+Dementia,0.137,0.001,0.0775,0.014
+C_G_D − A_cov,3 classes,0.0447,0.0769,0.0353,0.2048
+D_only − A_cov,HC vs MCI+Dementia,0.0833,0.017,0.0425,0.1638
+D_only − A_cov,3 classes,0.0445,0.04,0.001,0.983
+Z_tasks − C_G_D,HC vs MCI+Dementia,0.0,0.994,-0.0044,0.4026
+Z_tasks − C_G_D,3 classes,-0.0,0.994,0.0044,0.3626

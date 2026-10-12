@@ -1,0 +1,6 @@
+modèle,terme,RR,RR_lo,RR_hi,p
+Logit : régime « Pat: » ~ diagnostic (sessions),diagnosis[T.MCI],4.9315,2.7612,8.8078,0.0
+Logit : régime « Pat: » ~ diagnostic (sessions),diagnosis[T.Dementia],2.4458,1.1436,5.2307,0.0211
+Poisson dans le régime « Pat: » (fichiers),diagnosis[T.MCI],1.0359,0.9623,1.1152,0.3485
+Poisson dans le régime « Pat: » (fichiers),diagnosis[T.Dementia],1.144,1.0403,1.258,0.0055
+Poisson dans le régime « Pat: » (fichiers),log_gaps,2.1611,1.9913,2.3454,0.0

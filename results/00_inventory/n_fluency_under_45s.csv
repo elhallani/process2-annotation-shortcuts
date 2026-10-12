@@ -1,0 +1,6 @@
+Split,Test,Test,Test,Train,Train,Train,All
+diagnosis,Dementia,HC,MCI,Dementia,HC,MCI,
+task,,,,,,,
+PFT,0,0,0,1,0,2,3
+SFT,0,1,1,1,2,2,7
+All,0,1,1,2,2,4,10

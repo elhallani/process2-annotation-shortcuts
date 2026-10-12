@@ -1,0 +1,8 @@
+{
+  "generated": "2026-10-01T12:01:43",
+  "n_recordings": 1200,
+  "n_embedding_units": 18937,
+  "n_recordings_noise_below_-100dB": 6,
+  "n_recordings_without_nonspeech_frames": 0,
+  "pct_sessions_second_voice": 52.0
+}

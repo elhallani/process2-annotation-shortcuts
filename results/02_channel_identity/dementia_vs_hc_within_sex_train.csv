@@ -1,0 +1,5 @@
+variable,gender,n_Dementia,n_HC,median_Dementia,median_HC,p_MannWhitney_Dem_vs_HC
+bw95_hz,male,28,74,1317.7083,1770.8333,0.1984
+bw95_hz,female,12,86,1796.875,2453.125,0.0773
+cutoff_20db_hz,male,28,74,8000.0,8000.0,0.2786
+cutoff_20db_hz,female,12,86,8000.0,8000.0,0.3953

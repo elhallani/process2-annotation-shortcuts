@@ -1,0 +1,13 @@
+modèle,cible,AUC_mean,AUC_sd,BAcc_mean,BAcc_sd,macroF1_mean,macroF1_sd
+wavlm_raw,HC vs MCI+Dementia,0.6787,0.0416,0.6256,0.0376,,
+wavlm_raw,3 classes,0.6304,0.0425,0.4626,0.0583,0.4207,0.0586
+wavlm_raw,sexe (contrôle),0.9973,0.0043,0.9834,0.0132,,
+wavlm_centered,HC vs MCI+Dementia,0.6234,0.037,0.595,0.0428,,
+wavlm_centered,3 classes,0.6288,0.045,0.4689,0.0516,0.4363,0.0459
+wavlm_centered,sexe (contrôle),0.9382,0.0306,0.862,0.0535,,
+B_G,HC vs MCI+Dementia,0.7556,0.0528,0.6738,0.0493,,
+B_G,3 classes,0.682,0.0555,0.5082,0.0672,0.3855,0.0527
+B_G,sexe (contrôle),1.0,0.0,1.0,0.0,,
+fusion,HC vs MCI+Dementia,0.7325,0.0566,0.6688,0.0453,,
+fusion,3 classes,0.6866,0.0491,0.5061,0.0757,0.4859,0.0662
+fusion,sexe (contrôle),1.0,0.0,1.0,0.0,,

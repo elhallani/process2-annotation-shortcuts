@@ -1,0 +1,3 @@
+modèle,AUC_diag,AUC_sd
+whisper_small_L8_NON_PAROLE,0.7296,0.0466
+whisper_small_L10_NON_PAROLE,0.7334,0.0481

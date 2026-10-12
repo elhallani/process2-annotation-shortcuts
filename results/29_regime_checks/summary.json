@@ -1,0 +1,13 @@
+{
+  "generated": "2026-10-12T12:01:45",
+  "parties": [
+    "C"
+  ],
+  "régime": "session ; « Pat: » si ≥ 2 des 3 fichiers portent un préfixe de locuteur",
+  "note": "A–G train uniquement ; H test EXPLORATOIRE, pipeline figé, aucune décision",
+  "H_EXPLORATORY_F1_par_classe_test": {
+    "HC": 0.765,
+    "MCI": 0.0,
+    "Dementia": 0.286
+  }
+}

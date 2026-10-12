@@ -1,0 +1,43 @@
+{
+  "seed": 42,
+  "split": "Train",
+  "n_splits": 5,
+  "n_repeats": 5,
+  "n_permutations": 1000,
+  "tfidf": {
+    "lowercase": true,
+    "sublinear_tf": true,
+    "min_df": 2,
+    "ngram_range": [
+      1,
+      1
+    ]
+  },
+  "logreg": {
+    "class_weight": "balanced",
+    "C": 1.0,
+    "max_iter": 5000
+  },
+  "pause_features": [
+    "gaps_ge1s_per_min",
+    "gaps_ge1s_s_per_min"
+  ],
+  "comparisons": [
+    [
+      "m_raw",
+      "m_clean"
+    ],
+    [
+      "m_clean",
+      "asr"
+    ],
+    [
+      "m_raw",
+      "asr"
+    ],
+    [
+      "asr_pauses",
+      "asr"
+    ]
+  ]
+}

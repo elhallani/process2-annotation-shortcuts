@@ -1,0 +1,10 @@
+task,diagnosis,switch_per_s,cluster_size,succ_similarity,ciu_per_s,ciu_per_word,ciu_count
+CTD,Dementia,,,,0.214,0.119,13.0
+CTD,HC,,,,0.235,0.115,16.0
+CTD,MCI,,,,0.209,0.125,14.0
+PFT,Dementia,0.111,1.333,,,,
+PFT,HC,0.178,1.408,,,,
+PFT,MCI,0.133,1.268,,,,
+SFT,Dementia,0.156,1.774,0.765,,,
+SFT,HC,0.222,1.733,0.764,,,
+SFT,MCI,0.178,1.785,0.777,,,

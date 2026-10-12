@@ -1,0 +1,4 @@
+task,n_files,n_with_prefix,n_dialogue_files,participant_rule_known_label,participant_rule_most_words,median_tokens_official,median_tokens_a_raw,median_tokens_b1_noprefix,median_tokens_b_nomarks,median_tokens_c_partic,pct_tokens_removed_b_vs_a,pct_tokens_removed_c_vs_b
+SFT,320,211,17,17,0,51.5,55.5,55.0,40.0,40.0,24.91,0.71
+PFT,320,209,21,21,0,38.0,41.0,40.0,26.0,26.0,34.98,2.15
+CTD,320,211,13,13,0,132.5,139.5,139.0,131.0,131.0,4.55,0.3

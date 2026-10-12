@@ -1,0 +1,5 @@
+variable,covariables,n,OR_per_SD_alone,p_alone,OR_per_SD_adjusted,OR_lo,OR_hi,p_wald_adjusted,LR_stat,p_LR
+bw95_hz,male,200,0.5675,0.01,0.6132,0.3958,0.9502,0.0286,5.4528,0.0195
+bw95_hz,male+age,200,0.5675,0.01,0.6535,0.4186,1.0204,0.0613,3.8719,0.0491
+cutoff_20db_hz,male,200,1.0198,0.9145,1.0051,0.6917,1.4605,0.9786,0.0007,0.9786
+cutoff_20db_hz,male+age,200,1.0198,0.9145,1.081,0.7366,1.5865,0.6908,0.1697,0.6804

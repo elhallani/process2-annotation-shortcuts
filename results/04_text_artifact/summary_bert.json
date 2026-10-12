@@ -1,0 +1,9 @@
+{
+  "generated": "2026-10-01T14:13:26",
+  "n_train": 320,
+  "distilbert_timing": {
+    "n_fits": 30,
+    "mean_seconds_per_fit": 18.778192973136903,
+    "max_vram_gb": 1.669720576
+  }
+}

@@ -1,0 +1,7 @@
+Split,diagnosis,n,pct_male,age_mean,age_sd,age_missing,mmse_available_pct,mmse_n,mmse_mean,mmse_sd,mmse_min,mmse_max,mmse_n_below_10
+Test,Dementia,10,70.0,70.3,7.65,0,90.0,9,23.44,6.67,10.0,29.0,0
+Test,HC,40,47.5,73.97,6.94,0,10.0,4,29.0,0.82,28.0,30.0,0
+Test,MCI,30,50.0,70.47,8.91,0,80.0,24,26.42,2.7,19.0,30.0,0
+Train,Dementia,40,70.0,75.0,8.15,0,82.5,33,24.36,4.2,13.0,29.0,0
+Train,HC,160,46.25,72.21,6.92,0,12.5,20,28.95,0.89,27.0,30.0,0
+Train,MCI,120,49.17,71.3,8.82,0,70.0,84,26.74,2.13,19.0,30.0,0

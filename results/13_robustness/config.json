@@ -1,0 +1,11 @@
+{
+  "seed": 42,
+  "model": "B_G (configs/model_clinical.yaml)",
+  "n_boot": 2000,
+  "second_voice_union": [
+    "pyannote session ≥ 3 s",
+    "ECAPA strict (sim < 0,25, ≥ 3 s)",
+    "transcription dialoguée"
+  ],
+  "short": "au moins une fluence < 45 s"
+}

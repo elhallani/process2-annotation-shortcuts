@@ -1,0 +1,27 @@
+comparaison,dAUC,p_NB,p_Holm
+wavlm_L8 − principal,-0.0364,0.2247,1.0
+fusion(wavlm_L8) − principal,0.0063,0.6723,1.0
+wavlm_L8_sans_sexe − principal,-0.036,0.2189,1.0
+fusion(wavlm_L8_sans_sexe) − principal,0.0059,0.6968,1.0
+wavlm_L10 − principal,-0.0441,0.1558,1.0
+fusion(wavlm_L10) − principal,0.0007,0.964,1.0
+wavlm_L10_sans_sexe − principal,-0.0432,0.1753,1.0
+fusion(wavlm_L10_sans_sexe) − principal,0.0034,0.8205,1.0
+wavlm_L12 − principal,-0.0643,0.0588,1.0
+fusion(wavlm_L12) − principal,-0.0087,0.5775,1.0
+wavlm_L12_sans_sexe − principal,-0.0676,0.0435,1.0
+fusion(wavlm_L12_sans_sexe) − principal,-0.0091,0.5701,1.0
+whisper_small_L6 − principal,-0.0525,0.1467,1.0
+fusion(whisper_small_L6) − principal,-0.0014,0.9362,1.0
+whisper_small_L6_sans_sexe − principal,-0.0461,0.1593,1.0
+fusion(whisper_small_L6_sans_sexe) − principal,0.0011,0.9463,1.0
+whisper_small_L8 − principal,-0.0071,0.8049,1.0
+fusion(whisper_small_L8) − principal,0.02,0.2266,1.0
+whisper_small_L8_sans_sexe − principal,-0.0023,0.9352,1.0
+fusion(whisper_small_L8_sans_sexe) − principal,0.0227,0.1725,1.0
+whisper_small_L10 − principal,-0.0021,0.9269,1.0
+fusion(whisper_small_L10) − principal,0.0186,0.198,1.0
+whisper_small_L10_sans_sexe − principal,0.0021,0.9274,1.0
+fusion(whisper_small_L10_sans_sexe) − principal,0.0204,0.1673,1.0
+egemaps_z_sexe − principal,-0.1281,0.0104,0.2695
+fusion(egemaps_z_sexe) − principal,-0.0314,0.2694,1.0

@@ -1,0 +1,17 @@
+modèle,AUC_diag,AUC_diag_sd,AUC_sexe,AUC_fusion_avec_principal
+wavlm_L8,0.7092,0.0394,0.9951,0.752
+wavlm_L8_sans_sexe,0.7096,0.0389,0.9166,0.7516
+wavlm_L8_NON_PAROLE,0.6948,0.0536,0.9632,0.7407
+wavlm_L10,0.7015,0.0403,0.9933,0.7463
+wavlm_L10_sans_sexe,0.7025,0.0389,0.9462,0.749
+wavlm_L10_NON_PAROLE,0.6835,0.054,0.9551,0.7349
+wavlm_L12,0.6813,0.0422,0.9893,0.7369
+wavlm_L12_sans_sexe,0.678,0.0424,0.9434,0.7365
+wavlm_L12_NON_PAROLE,0.66,0.0623,0.9148,0.7218
+whisper_small_L6,0.6931,0.0594,0.9938,0.7443
+whisper_small_L6_sans_sexe,0.6995,0.0574,0.9017,0.7468
+whisper_small_L8,0.7386,0.0452,0.9904,0.7656
+whisper_small_L8_sans_sexe,0.7433,0.047,0.8864,0.7684
+whisper_small_L10,0.7435,0.0527,0.9747,0.7642
+whisper_small_L10_sans_sexe,0.7477,0.0504,0.8521,0.766
+egemaps_z_sexe,0.6176,0.0599,0.7748,0.7142

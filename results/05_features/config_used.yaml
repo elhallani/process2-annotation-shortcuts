@@ -1,0 +1,54 @@
+window:
+  rule: min(duration, 45 s)
+  max_s: 45.0
+  short_recording_flag: 'fluences (SFT, PFT) seulement : duration_s < 45'
+  normalisation: per_second
+units:
+  definition: îlot de parole Silero VAD (≈ mot en fluence)
+  vad:
+    threshold: 0.5
+    min_speech_duration_ms: 250
+    min_silence_duration_ms: 100
+    speech_pad_ms: 30
+  source: results/cache/01_audit/vad_segments.json (mêmes paramètres que l'audit)
+features:
+  fluency:
+  - name: units_per_s
+    description: nombre d'unités dans la fenêtre / durée de la fenêtre
+  - name: units_per_bin
+    description: unités par seconde dans chaque tranche de 15 s (0–15, 15–30, 30–45)
+      ; tranche partielle = taux sur la partie disponible
+    bin_s: 15.0
+  - name: units_slope
+    description: pente (unités/s par tranche) de la régression linéaire sur les tranches
+      disponibles
+  - name: median_gap_s
+    description: silence médian entre unités consécutives dans la fenêtre
+  - name: long_silences_per_min
+    description: nombre de silences > 3 s entre unités, par minute de fenêtre
+    threshold_s: 3.0
+  - name: f0_sd_semitones
+    role: control
+    description: écart-type de F0 en demi-tons (réf. médiane du locuteur), Praat via
+      parselmouth, trames voisées
+    pitch_floor_hz:
+      male: 75
+      female: 100
+    pitch_ceiling_hz:
+      male: 300
+      female: 500
+  ctd:
+  - name: pause_rate_per_min
+    description: nombre de pauses ≥ 0,25 s entre unités, par minute de fenêtre
+    pause_min_s: 0.25
+  - name: articulation_rate
+    description: noyaux syllabiques (de Jong & Wempe 2009, parselmouth) / temps de
+      phonation (somme des unités)
+  - name: f0_sd_semitones
+    role: control
+removed:
+- name: initial_latency
+  reason: début coupé (parole dans les 0,5 premières s) dans 22–32 % des enregistrements
+    (audit 01)
+- name: noise_centroid_hz
+  reason: variable de canal instable entre les tâches (ICC(2,1) = 0,29, audit 01)

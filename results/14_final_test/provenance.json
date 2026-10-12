@@ -1,0 +1,23 @@
+{
+  "generated": "2026-10-02T13:48:24",
+  "n_train": 320,
+  "n_test": 80,
+  "test_counts": {
+    "HC": 40,
+    "MCI": 30,
+    "Dementia": 10
+  },
+  "sha256": {
+    "configs/final.yaml": "f87280c4a14ffda10740b13de270815c0764df7ffc698a307c88dd56df9c9f14",
+    "configs/model_clinical_v2.yaml": "ae212d71c755ff9e587ce2d34c9ea9f5b7da9f2d90f69770952485d38406ecca",
+    "configs/features.yaml": "9d21467503a8865b1b62324829157ca4124baee1f852d1e2b327b8cff7fc196a",
+    "scripts/14_final_test.py": "dba682aa6f4f9fffa7cff30843773dda2eff0fe6e3edf78c4a539a0a05930fbd",
+    "scripts/10_model.py": "b92f5aad59b98f41b9e29036264d607bc32f806fae4a76a49d1850c9b02dd583",
+    "scripts/12_wavlm.py": "5ea6c5a9d8a7cfc06d40b06dc1efa7a45d1956d45da2fa086ec8b3153a11b576",
+    "scripts/08_text_asr.py": "e222ca9683a5ebccc6a4d13b7736b07f5d292c00929908349a4e92f17b4bac53",
+    "scripts/04_text_artifact.py": "ec67d2202bbb5f7ce333f675a623559c7461e1912ecbee30d4b7ccefcfca4ccb",
+    "src/normative.py": "9118890ed9d58134946312476448ab89ecc36b99b39a53d9750d736513bc4845",
+    "src/text.py": "9a8a208464678a24c7631973a619ddeea030e821bf44dfe4008f2270613fb0a2",
+    "src/data.py": "55d2175dc40d9e18f7b3827c7961ed5e54dfdb4bb4f1b05bb7041ac6ed4a5fcd"
+  }
+}

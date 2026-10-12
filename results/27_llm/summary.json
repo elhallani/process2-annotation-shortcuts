@@ -1,0 +1,9 @@
+{
+  "generated": "2026-10-04T11:31:22",
+  "statut": "exploratoire, train, zero-shot, inférence locale",
+  "modèles_analysés": [
+    "medgemma_4b",
+    "phi4_mini",
+    "qwen3_4b"
+  ]
+}

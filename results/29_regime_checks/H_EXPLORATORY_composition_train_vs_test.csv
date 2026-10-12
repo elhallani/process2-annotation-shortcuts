@@ -1,0 +1,7 @@
+split,diagnosis,n,pct_regime_Pat,n_sessions_mixtes,MMSE_moy,MMSE_n,SFT_valid_per_s_med,PFT_valid_per_s_med,CTD_durée_med_s
+Train,HC,160,51.875,0,28.95,20,0.433,0.267,66.12
+Train,MCI,120,82.5,4,26.738,84,0.333,0.2,58.47
+Train,Dementia,40,70.0,1,24.364,33,0.311,0.144,56.07
+Test,HC,40,40.0,1,29.0,4,0.444,0.256,72.559
+Test,MCI,30,76.667,2,26.417,24,0.311,0.133,58.92
+Test,Dementia,10,100.0,0,23.444,9,0.222,0.122,50.989

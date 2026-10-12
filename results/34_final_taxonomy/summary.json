@@ -1,0 +1,6 @@
+{
+  "n_fichiers": 1200,
+  "n_annotations": 6815,
+  "n_annotations_train": 5551,
+  "formes_rares_reclassées_par_vote_LLM": 44
+}

@@ -1,0 +1,7 @@
+Split,diagnosis,n_CTD,n_PFT,n_SFT,sv_task_flag_CTD,sv_task_flag_PFT,sv_task_flag_SFT,n_sessions,pct_sessions
+Test,Dementia,10,10,10,0.0,40.0,20.0,10,40.0
+Test,HC,40,40,40,5.0,22.5,32.5,40,55.0
+Test,MCI,30,30,30,10.0,13.3,33.3,30,50.0
+Train,Dementia,40,40,40,15.0,22.5,35.0,40,57.5
+Train,HC,160,160,160,7.5,19.4,28.7,160,50.6
+Train,MCI,120,120,120,6.7,19.2,34.2,120,52.5

@@ -1,0 +1,7 @@
+prefix_convention,diagnosis,n_files,pct_files_with_pause_annot,annot_per_acoustic_gap
+False,Dementia,35,5.714,0.007
+False,HC,231,0.0,0.0
+False,MCI,63,6.349,0.05
+True,Dementia,85,98.824,1.014
+True,HC,249,94.378,0.901
+True,MCI,297,95.623,0.912

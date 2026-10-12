@@ -1,0 +1,10 @@
+task,prédicteurs,AUC_régime,AUC_sd
+SFT,6 traits de style (HC),0.8001,0.0629
+SFT,longueur seule (HC),0.61,0.0948
+SFT,"TF-IDF mots, nettoyé STRICT (HC)",0.6636,0.0628
+PFT,6 traits de style (HC),0.8738,0.0595
+PFT,longueur seule (HC),0.5289,0.0908
+PFT,"TF-IDF mots, nettoyé STRICT (HC)",0.6204,0.0772
+CTD,6 traits de style (HC),0.8565,0.0561
+CTD,longueur seule (HC),0.5527,0.0633
+CTD,"TF-IDF mots, nettoyé STRICT (HC)",0.7778,0.076

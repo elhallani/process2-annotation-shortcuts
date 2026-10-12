@@ -1,0 +1,17 @@
+modèle,task,AUC,AUC_sd
+B_G_nocov (principal),-,0.7456,0.0517
+distilbert_asr,SFT,0.6757,0.0599
+distilbert_asr_pauses,SFT,0.6855,0.0597
+roberta_asr_pauses,SFT,0.6989,0.0718
+mpnet_asr_pauses,SFT,0.6596,0.0667
+fusion_roberta_asr_pauses,SFT,0.7504,0.0535
+distilbert_asr,PFT,0.6756,0.0525
+distilbert_asr_pauses,PFT,0.6767,0.0521
+roberta_asr_pauses,PFT,0.6675,0.0643
+mpnet_asr_pauses,PFT,0.5926,0.0483
+fusion_distilbert_asr_pauses,PFT,0.7477,0.0417
+distilbert_asr,CTD,0.6039,0.0683
+distilbert_asr_pauses,CTD,0.6233,0.0735
+roberta_asr_pauses,CTD,0.6175,0.0608
+mpnet_asr_pauses,CTD,0.6066,0.0593
+fusion_distilbert_asr_pauses,CTD,0.7411,0.0542

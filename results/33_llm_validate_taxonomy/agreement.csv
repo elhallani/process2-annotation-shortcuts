@@ -1,0 +1,22 @@
+sous-ensemble,comparaison,n_formes,accord_%,kappa
+formes nommées (≥ 5 fichiers),règle vs qwen3_4b,13,100.0,1.0
+formes nommées (≥ 5 fichiers),règle vs phi4_mini,13,92.308,0.873
+formes nommées (≥ 5 fichiers),règle vs medgemma_4b,13,46.154,0.278
+formes nommées (≥ 5 fichiers),règle vs vote_LLM,13,100.0,1.0
+formes nommées (≥ 5 fichiers),qwen3_4b vs phi4_mini,13,92.308,0.873
+formes nommées (≥ 5 fichiers),qwen3_4b vs medgemma_4b,13,46.154,0.278
+formes nommées (≥ 5 fichiers),phi4_mini vs medgemma_4b,13,46.154,0.305
+formes rares (< 5 fichiers),règle vs qwen3_4b,44,27.273,0.214
+formes rares (< 5 fichiers),règle vs phi4_mini,44,29.545,0.209
+formes rares (< 5 fichiers),règle vs medgemma_4b,44,20.455,0.149
+formes rares (< 5 fichiers),règle vs vote_LLM,44,27.273,0.21
+formes rares (< 5 fichiers),qwen3_4b vs phi4_mini,44,68.182,0.588
+formes rares (< 5 fichiers),qwen3_4b vs medgemma_4b,44,54.545,0.405
+formes rares (< 5 fichiers),phi4_mini vs medgemma_4b,44,36.364,0.26
+"toutes, pondérées par fichiers",règle vs qwen3_4b,57,98.141,0.965
+"toutes, pondérées par fichiers",règle vs phi4_mini,57,91.519,0.845
+"toutes, pondérées par fichiers",règle vs medgemma_4b,57,22.222,0.178
+"toutes, pondérées par fichiers",règle vs vote_LLM,57,98.141,0.965
+"toutes, pondérées par fichiers",qwen3_4b vs phi4_mini,57,92.562,0.863
+"toutes, pondérées par fichiers",qwen3_4b vs medgemma_4b,57,23.084,0.182
+"toutes, pondérées par fichiers",phi4_mini vs medgemma_4b,57,22.676,0.19

@@ -1,0 +1,10 @@
+version,multi-tâches,AUC,AUC_sd
+manuel brut,concaténation,0.805,0.0445
+manuel brut,fusion tardive,0.8032,0.0487
+manuel nettoyé,concaténation,0.7061,0.0589
+manuel nettoyé,fusion tardive,0.7152,0.0585
+Whisper,concaténation,0.6475,0.0477
+Whisper,fusion tardive,0.6554,0.0503
+Whisper + pauses mesurées,concaténation,0.6783,0.051
+Whisper + pauses mesurées,fusion tardive,0.7,0.0455
+modèle principal (sans annotation),3 tâches,0.7456,0.0517

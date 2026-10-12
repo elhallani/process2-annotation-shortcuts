@@ -1,0 +1,10 @@
+comptage,groupe,n,pearson_r,spearman_rho,partial_r_age_sexe
+"manuel, enregistrement entier",HC,160,0.209,0.199,0.158
+"manuel, enregistrement entier",MCI,120,0.604,0.62,0.605
+"manuel, enregistrement entier",Dementia,40,0.264,0.317,0.19
+"Whisper, enregistrement entier",HC,160,0.116,0.109,0.093
+"Whisper, enregistrement entier",MCI,120,0.532,0.564,0.527
+"Whisper, enregistrement entier",Dementia,40,0.342,0.353,0.283
+"Whisper, fenêtre 45 s",HC,160,0.121,0.095,0.09
+"Whisper, fenêtre 45 s",MCI,120,0.468,0.489,0.468
+"Whisper, fenêtre 45 s",Dementia,40,0.238,0.224,0.204

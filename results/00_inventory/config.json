@@ -1,0 +1,60 @@
+{
+  "data_dir": "data/PROCESS-2",
+  "tasks": [
+    "SFT",
+    "PFT",
+    "CTD"
+  ],
+  "extensions": [
+    "wav",
+    "txt"
+  ],
+  "fluency_tasks": [
+    "SFT",
+    "PFT"
+  ],
+  "min_fluency_duration_s": 45.0,
+  "percentiles": [
+    0,
+    1,
+    5,
+    10,
+    25,
+    50,
+    75,
+    90,
+    95,
+    99,
+    100
+  ],
+  "dir_pattern": "^PROCESS-2_rec__\\d+$",
+  "expected": {
+    "n_participants": 400,
+    "split_counts": {
+      "Train": {
+        "Dementia": 40,
+        "MCI": 120,
+        "HC": 160
+      },
+      "Test": {
+        "Dementia": 10,
+        "MCI": 30,
+        "HC": 40
+      }
+    },
+    "metadata_columns": [
+      "participant_id",
+      "diagnosis",
+      "age",
+      "gender",
+      "MMSE",
+      "Split"
+    ],
+    "sample_rate": 16000,
+    "channels": 1,
+    "duration_range_s": [
+      8.6,
+      261.0
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+diagnosis,gender,n,median,q25,q75
+Dementia,female,12,8000.0,7653.6,8000.0
+Dementia,male,28,8000.0,8000.0,8000.0
+HC,female,86,8000.0,7802.1,8000.0
+HC,male,74,8000.0,7773.4,8000.0
+MCI,female,61,8000.0,7781.2,8000.0
+MCI,male,59,8000.0,7812.5,8000.0

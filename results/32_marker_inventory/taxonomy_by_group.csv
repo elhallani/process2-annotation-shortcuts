@@ -1,0 +1,9 @@
+catégorie,n_fichiers,pct_fichiers_HC,pct_fichiers_MCI,pct_fichiers_Dementia
+1 Speaker labels: other speaker (Oth:),69,1.0,9.8,12.7
+1 Speaker labels: participant (Pat:),774,49.3,80.9,76.0
+1 Speaker labels: rare label,3,0.5,0.0,0.0
+2 Timed pauses,752,46.3,79.8,76.7
+3 Non-verbal vocal events,437,30.8,41.3,44.0
+4 Uncertain or inaudible speech,120,7.5,10.4,18.7
+5 Recording procedure or environment,81,10.5,2.2,5.3
+6 Rare forms (not named),60,5.3,5.3,2.7

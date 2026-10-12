@@ -1,0 +1,4 @@
+task,f0_sd_semitones,pause_rate_per_min,articulation_rate,units_per_s,units_per_s_bin1,units_per_s_bin2,units_per_s_bin3,units_slope,median_gap_s,long_silences_per_min
+CTD,0,0,0,400,400,400,400,400,400,400
+PFT,0,400,400,0,0,0,1,0,0,0
+SFT,0,400,400,0,0,0,2,0,0,0

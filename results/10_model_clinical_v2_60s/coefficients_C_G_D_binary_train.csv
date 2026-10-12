@@ -1,0 +1,13 @@
+,coef_standardise
+cov__age,-0.085
+cov__male,0.282
+G__valid_per_s_60,-0.904
+G__median_gap_s,0.226
+G__long_silences_per_min,-0.189
+G__units_slope,-0.043
+D__valid_per_s_60,-0.063
+D__median_gap_s,0.016
+D__long_silences_per_min,0.006
+D__units_slope,0.027
+ctd__pause_rate_per_min,0.271
+ctd__articulation_rate,-0.088

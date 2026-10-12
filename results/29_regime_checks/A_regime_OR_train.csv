@@ -1,0 +1,5 @@
+définition,terme,OR,OR_lo,OR_hi,p
+regime,diagnosis[T.MCI],4.3735,2.4886,7.6859,0.0
+regime,diagnosis[T.Dementia],2.1647,1.0287,4.555,0.0419
+regime_any,diagnosis[T.MCI],4.9315,2.7612,8.8078,0.0
+regime_any,diagnosis[T.Dementia],2.4458,1.1436,5.2307,0.0211

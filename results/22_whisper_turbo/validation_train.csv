@@ -1,0 +1,5 @@
+task,asr,ICC_vs_manual,spearman_vs_manual,mean_diff_vs_manual,AUC_count_HC_vs_MCI+Dem
+SFT,medium,0.985,0.99,-0.625,0.725
+SFT,turbo,0.99,0.993,-0.475,0.725
+PFT,medium,0.794,0.828,-1.184,0.7
+PFT,turbo,0.731,0.752,-1.272,0.73

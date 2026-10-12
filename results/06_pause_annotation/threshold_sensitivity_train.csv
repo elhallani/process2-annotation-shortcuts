@@ -1,0 +1,4 @@
+diagnosis,n_gaps_0.5,n_gaps_1.0,n_gaps_2.0,n_annot,annot_per_gap_0.5,annot_per_gap_1.0,annot_per_gap_2.0
+Dementia,1651,1032,498,745,0.451,0.722,1.496
+HC,7105,3964,1684,1821,0.256,0.459,1.081
+MCI,5161,3090,1373,2390,0.463,0.773,1.741

@@ -1,0 +1,2 @@
+comparaison,macroF1_fusion,macroF1_B_G,d_macroF1,p_macroF1,dAUC,p_AUC,dBAcc,p_BAcc
+"fusion − B_G (3 classes, OOF regroupé)",0.4879,0.3885,0.0994,0.001,0.0068,0.8132,-0.0021,0.964

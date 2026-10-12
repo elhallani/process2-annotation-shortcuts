@@ -1,0 +1,17 @@
+groupe,métrique,valeur,IC_lo,IC_hi
+hommes,AUC,0.679,0.595,0.759
+hommes,BAcc,0.624,0.549,0.698
+hommes,sensibilité,0.667,0.568,0.768
+hommes,spécificité,0.581,0.462,0.697
+femmes,AUC,0.812,0.738,0.879
+femmes,BAcc,0.737,0.67,0.805
+femmes,sensibilité,0.671,0.557,0.778
+femmes,spécificité,0.802,0.718,0.886
+tous,AUC,0.756,0.702,0.808
+tous,BAcc,0.684,0.635,0.735
+tous,sensibilité,0.669,0.597,0.744
+tous,spécificité,0.7,0.627,0.771
+écart,AUC,-0.133,-0.243,-0.026
+écart,BAcc,-0.113,-0.214,-0.008
+écart,sensibilité,-0.005,-0.148,0.144
+écart,spécificité,-0.221,-0.372,-0.083

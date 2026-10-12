@@ -1,0 +1,37 @@
+# Étape 4 — Modèle de décision (figé le 2026-10-02, AVANT tout calcul prédictif).
+# Variables = ensemble COMPLET des mesures de configs/features.yaml (pas de sélection sur les résultats).
+# Transparence : les AUC univariées descriptives du train (étape 3, 09_normative) avaient déjà été vues ;
+# le test officiel n'a jamais été utilisé. Toute modification doit être datée dans notes/journal.md.
+
+seed: 42
+split: Train
+cv: {n_splits: 5, n_repeats: 5}          # mêmes folds pour tous les modèles (comparaisons appariées)
+n_permutations: 1000
+
+normative:                                 # réappris DANS chaque fold, sur les HC du train du fold
+  huber_epsilon: 1.35
+  inner_crossfit_splits: 5                 # HC du train du fold scorés sans eux-mêmes
+fluency_measures:                          # → indices G et D (src/normative.py)
+  units_per_s: none
+  median_gap_s: log
+  long_silences_per_min: log1p
+  units_slope: none
+ctd_measures:                              # → z vs HC (âge, sexe)
+  pause_rate_per_min: log1p
+  articulation_rate: none
+covariates: [age, male]
+
+models:                                    # emboîtés pour répondre à « D apporte-t-il quelque chose à G ? »
+  A_cov: [cov]
+  B_G: [cov, G, ctd]
+  C_G_D: [cov, G, D, ctd]                  # modèle principal (≈ 12 variables)
+  D_only: [cov, D]
+  Z_tasks: [cov, z_SFT, z_PFT, ctd]        # paramétrisation par tâche (sans G/D), pour comparaison
+main_comparison: [C_G_D, B_G]
+
+classifier:
+  binary: "StandardScaler + LogisticRegression(class_weight=balanced, C=1)"
+  three_class: "ordinal Frank & Hall : LR(y > HC), LR(y > MCI), class_weight=balanced, C=1"
+metrics:
+  primary: "HC vs MCI+Dementia : AUC, accuracy équilibrée"
+  secondary: "3 classes : macro-F1, accuracy équilibrée, AUC macro OvR"

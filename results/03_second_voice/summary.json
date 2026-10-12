@@ -1,0 +1,15 @@
+{
+  "generated": "2026-10-01T14:12:47",
+  "pct_sessions_pyannote": 6.0,
+  "kappa_recording_pyannote_vs_transcript_dialogue": 0.1440329218106996,
+  "crosstab_recording": {
+    "false": {
+      "false": 1114,
+      "true": 17
+    },
+    "true": {
+      "false": 61,
+      "true": 8
+    }
+  }
+}

@@ -1,0 +1,5 @@
+measure,transform,n,n_HC,n_dropped_missing,r_SFT_PFT_HC,beta_PFT,gamma_age,gamma_male,sd_resid_D
+units_per_s,none,320,160,0,0.3649,0.3405,-0.0015,0.0132,0.0933
+median_gap_s,log,320,160,0,0.4244,0.345,0.0053,0.0151,0.3465
+long_silences_per_min,log1p,320,160,0,0.3096,0.3208,0.0044,0.0338,0.8
+units_slope,none,320,160,0,0.042,-0.0166,-0.0017,0.0008,0.0745

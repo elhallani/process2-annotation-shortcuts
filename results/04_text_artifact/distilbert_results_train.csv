@@ -1,0 +1,13 @@
+cible,task,version,AUC_mean,AUC_sd,BAcc_mean,BAcc_sd
+HC vs MCI+Dementia,SFT,a_raw,0.7688,0.0494,0.7156,0.0676
+HC vs MCI+Dementia,SFT,b_nomarks,0.7404,0.0812,0.6656,0.0778
+3 classes,SFT,a_raw,0.7106,0.0347,0.4681,0.0395
+3 classes,SFT,b_nomarks,0.6816,0.0738,0.4632,0.0741
+HC vs MCI+Dementia,PFT,a_raw,0.7635,0.0662,0.7062,0.0523
+HC vs MCI+Dementia,PFT,b_nomarks,0.7195,0.0739,0.6469,0.0704
+3 classes,PFT,a_raw,0.7113,0.0692,0.5007,0.0602
+3 classes,PFT,b_nomarks,0.6653,0.0546,0.5056,0.0795
+HC vs MCI+Dementia,CTD,a_raw,0.7529,0.0721,0.6656,0.0778
+HC vs MCI+Dementia,CTD,b_nomarks,0.7359,0.0414,0.6938,0.014
+3 classes,CTD,a_raw,0.6994,0.0716,0.4111,0.0595
+3 classes,CTD,b_nomarks,0.6871,0.056,0.459,0.0481

@@ -1,0 +1,4 @@
+sous-ensemble,n_HC,n_patients,AUC_principal_moy_rép,AUC_lo,AUC_hi
+tous,160,160,0.7459,0.694,0.8011
+régime « Pat: »,83,127,0.7534,0.6865,0.8137
+régime sans préfixe,77,33,0.6978,0.5932,0.8065
