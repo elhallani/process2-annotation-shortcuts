@@ -1,0 +1,10 @@
+catégorie,pct_annotated_HC,n_files_annotated_HC,pct_annotated_MCI,n_files_annotated_MCI,pct_annotated_Dementia,n_files_annotated_Dementia,pct_not_annotated_HC,n_files_not_annotated_HC,pct_not_annotated_MCI,n_files_not_annotated_MCI,pct_not_annotated_Dementia,n_files_not_annotated_Dementia
+Speaker label: participant (Pat:),100.0,249,99.0,297,100.0,84,0.0,231,1.6,63,0.0,36
+Speaker label: other speaker (Oth:),1.6,249,10.8,297,15.5,84,0.0,231,3.2,63,2.8,36
+Speaker label: rare,0.8,249,0.0,297,0.0,84,0.0,231,0.0,63,0.0,36
+Timed pauses,94.0,249,96.0,297,100.0,84,0.0,231,4.8,63,5.6,36
+Untimed pauses,0.4,249,0.3,297,0.0,84,0.4,231,1.6,63,2.8,36
+Non-verbal vocal events,49.8,249,44.1,297,47.6,84,16.5,231,23.8,63,36.1,36
+Uncertain or inaudible speech,7.6,249,10.4,297,17.9,84,9.1,231,9.5,63,22.2,36
+Recording procedure or environment,22.1,249,4.0,297,4.8,84,1.7,231,0.0,63,0.0,36
+Other content,0.0,249,0.0,297,0.0,84,0.0,231,0.0,63,0.0,36

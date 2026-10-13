@@ -86,6 +86,25 @@ def main():
         rows.append(r)
     T = pd.DataFrame(rows)
     T.to_csv(OUT / "final_taxonomy.csv", index=False)
+
+    # Training set by transcription convention (session annotated when >= 2 of its 3 transcripts carry a speaker
+    # label) and group: percentage of files containing each category.
+    m = pd.read_csv(ROOT / "results" / "cache" / "03_second_voice" / "transcript_markers.csv", dtype={"participant_id": str})
+    conv = m[m.Split == "Train"].groupby("participant_id").has_speaker_prefix.sum().ge(2)
+    tr_files = [(p, t) for p in meta.participant_id[meta.Split == "Train"] for t in TASKS]
+    crow = []
+    for k in order:
+        fs = files.get(k, set())
+        r = {"catégorie": labels[k]}
+        for cname, cval in (("annotated", True), ("not_annotated", False)):
+            for g in GROUPS:
+                sel = [f for f in tr_files if conv[f[0]] == cval and diag[f[0]] == g]
+                r[f"pct_{cname}_{g}"] = round(100 * sum(f in fs for f in sel) / len(sel), 1)
+                r[f"n_files_{cname}_{g}"] = len(sel)
+        crow.append(r)
+    C = pd.DataFrame(crow)
+    C.to_csv(OUT / "by_convention_train.csv", index=False)
+    print(C[[c for c in C.columns if c.startswith(("catégorie", "pct_"))]].to_string(index=False))
     (OUT / "summary.json").write_text(json.dumps({"n_fichiers": 3 * len(meta), "n_annotations": n_ann,
                                                   "n_annotations_train": n_ann_tr,
                                                   "formes_rares_reclassées_par_vote_LLM": int(F.rare.sum())},
