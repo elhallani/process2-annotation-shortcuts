@@ -389,7 +389,7 @@ def main():
 def graphical_abstract():
     """Graphical abstract, Elsevier format (13 x 5.2 cm): problem -> evidence -> annotation-free control."""
     sess = pd.read_csv(R / "29_regime_checks" / "A_regime_sessions_train.csv").set_index("diagnosis")
-    no_ann = {g: 100 - sess.loc[g, "pct_sessions_regime_Pat_majorité"] for g in ("HC", "MCI", "Dementia")}
+    ann = {g: sess.loc[g, "pct_sessions_regime_Pat_majorité"] for g in ("HC", "MCI", "Dementia")}
     tok = pd.read_csv(R / "30_tfidf_token_weights" / "named_annotation_tokens_train.csv")
     sft = tok[tok.task == "SFT"].set_index("token").coef_median
     te = pd.read_csv(R / "14_final_test" / "test_binary.csv").set_index("modèle").loc["B_G_nocov"]
@@ -403,7 +403,7 @@ def graphical_abstract():
     ax.set_axis_off()
     txt(ax, GW / 2, 48.6, "Do speech benchmarks measure cognition, or how the speech was transcribed?", 7.6, INK,
         "bold", "center")
-    cards = [(2, OR, OR_BG, "1", "Two ways to transcribe"), (45.5, OR, OR_BG, "2", "Text models learn them"),
+    cards = [(2, OR, OR_BG, "1", "Two conventions"), (45.5, OR, OR_BG, "2", "Text models learn them"),
              (89, BL, BL_BG, "3", "Annotation-free control")]
     for x0, ec, fc, k, title in cards:
         card(ax, x0, 8.5, 39, 36, fc, ec, lw=.9, ls=(0, (4, 2)), r=2)
@@ -413,17 +413,24 @@ def graphical_abstract():
     arrow(ax, 41.3, 26.5, 45.2, 26.5, OR, 1.6, ms=9)
     arrow(ax, 84.8, 26.5, 88.7, 26.5, OR, 1.6, ms=9)
 
-    # 1 : deux conventions, inégales entre groupes
-    doc(ax, 6, 25, 10, 12, INK2, tag="3 s", tag_rows=(1, 3), n=5)
-    doc(ax, 25, 25, 10, 12, INK2, n=5)
-    txt(ax, 11, 22.8, "pauses written", 6, OR, "bold", "center")
-    txt(ax, 30, 22.8, "no pauses", 6, INK2, "bold", "center")
-    txt(ax, 4.5, 19.4, "sessions without annotations", 6, INK2)
-    for k, (g, c) in enumerate([("HC", GH), ("MCI", GM), ("Dementia", GR)]):
-        yy = 16.6 - k * 2.6
-        txt(ax, 4.5, yy, g if g != "Dementia" else "Dem.", 6, INK2)
-        ax.add_patch(Rectangle((12, yy - .9), no_ann[g] / 100 * 22, 1.8, fc=c, ec="none", zorder=5))
-        txt(ax, 12.6 + no_ann[g] / 100 * 22, yy, f"{no_ann[g]:.0f}%", 6, INK, "bold")
+    # 1 : deux conventions, inégales entre groupes (même exemple que la Fig. 1, fictif)
+    for y0, lab, col, segs in [(29.8, "Convention 1", OR, [("Pat: cat ", INK, False), ("(3 seconds)", OR, True)]),
+                               (21.2, "Convention 2", INK2, [("cat dog lion horse cow", INK, False)])]:
+        card(ax, 4.5, y0, 34.5, 7.6, "white", col, lw=.7, r=1, z=4)
+        txt(ax, 6, y0 + 5.6, lab, 6, col, "bold")
+        xx = 6
+        for t, c, bold in segs:
+            ax.text(xx, y0 + 2.2, t, fontsize=6.2, family="monospace", color=c, weight="bold" if bold else "normal",
+                    va="center", ha="left", zorder=7)
+            xx += len(t) * 1.32
+    txt(ax, 4.5, 17.8, "sessions with convention 1", 6, INK2)
+    for k, g in enumerate(["HC", "MCI", "Dementia"]):
+        yy = 15 - k * 2.4
+        txt(ax, 4.5, yy, "Dem." if g == "Dementia" else g, 6, INK2)
+        ax.add_patch(Rectangle((12, yy - .95), ann[g] / 100 * 25, 1.9, fc=OR, ec="none", zorder=5))
+        ax.add_patch(Rectangle((12 + ann[g] / 100 * 25, yy - .95), (1 - ann[g] / 100) * 25, 1.9, fc="#d9d8d3",
+                               ec="none", zorder=5))
+        txt(ax, 12.5, yy, f"{ann[g]:.0f}%", 6, "white", "bold")
 
     # 2 : la sonde transparente lit les annotations
     z0 = 66.5
