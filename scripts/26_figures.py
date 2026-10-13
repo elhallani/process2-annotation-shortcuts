@@ -3,7 +3,7 @@
 Elsevier sizes (190 mm double column, 90 mm single column), sans-serif text >= 6 pt, colour-blind-safe palette
 (Okabe-Ito for groups; purple for the annotation shortcut; indigo for the annotation-free model), PNG at 300 dpi
 and vector PDF. Figure 1 and the graphical abstract are produced by 31_fig1_overview.py.
-  Fig. 2  Annotation shortcut: regimes, density, text vs audio, ablation by regime, taxonomy, ablation by category
+  Fig. 2  Annotation shortcut: conventions, density, text vs audio, ablation by convention, taxonomy, ablation by category
   Fig. 3  Text ablation (training CV and single test evaluation) and token weights of the probe
   Fig. 4  Zero-shot local language models
   Fig. 5  Frozen speech embeddings and silence
@@ -94,14 +94,14 @@ def fig2_annotation_shortcut():
 
     # a, b : régime de transcription
     for ax, col, ylab, L, T in [(fig.add_subplot(g1[0, 0]), "pct_files_with_pause_annot",
-                                 "Files with ≥ 1 annotated pause (%)", "a", "Annotations: one regime only"),
+                                 "Files with ≥ 1 annotated pause (%)", "a", "Annotations: one convention only"),
                                 (fig.add_subplot(g1[0, 1]), "annot_per_acoustic_gap",
                                  "Annotations per measured pause ≥ 1 s", "b", "Where written, they track pauses")]:
         for j, g in enumerate(groups):
             vals = [conv[(conv.prefix_convention == pc) & (conv.diagnosis == g)][col].iloc[0] for pc in (False, True)]
             ax.bar(np.arange(2) + (j - 1) * .27, vals, width=.25, color=GROUP[g], label=g, edgecolor=SURF, lw=.6)
         ax.set_xticks([0, 1], ["not annotated", "annotated"])
-        ax.set_xlabel("Transcription regime")
+        ax.set_xlabel("Transcription convention")
         ax.set_ylabel(ylab)
         ax.grid(axis="x", visible=False)
         panel(ax, L, T)
