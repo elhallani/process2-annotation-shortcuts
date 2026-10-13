@@ -158,7 +158,8 @@ def main():
     abl = abl[abl.task == "SFT"].set_index("version")
     te = pd.read_csv(R / "14_final_test" / "test_binary.csv").set_index("modèle").loc["B_G_nocov"]
 
-    W_, H_ = 190, 178
+    W_, H_ = 190, 206
+    D = 28  # décalage vertical des blocs A et B (le bloc C est plus haut)
     fig = plt.figure(figsize=(W_ * MM, H_ * MM))
     ax = fig.add_axes([0, 0, 1, 1])
     ax.set_xlim(0, W_)
@@ -166,94 +167,105 @@ def main():
     ax.set_axis_off()
 
     # ------------------------------------------------------------ colonne corpus
-    card(ax, 2, 24, 36, 152, GY_BG, MUTED, lw=.7)
-    txt(ax, 20, 171, "PROCESS-2 corpus", 7.4, INK, "bold", "center")
-    db(ax, 14, 152, 12, 13, BL)
-    txt(ax, 20, 146, "400 participants", 6.8, INK, "bold", "center")
+    card(ax, 2, 24 + D, 36, 152, GY_BG, MUTED, lw=.7)
+    txt(ax, 20, 171 + D, "PROCESS-2 corpus", 7.4, INK, "bold", "center")
+    db(ax, 14, 152 + D, 12, 13, BL)
+    txt(ax, 20, 146 + D, "400 participants", 6.8, INK, "bold", "center")
     for k, (g, n, c) in enumerate([("HC", 200, GH), ("MCI", 150, GM), ("Dementia", 50, GR)]):
-        yy = 138 - k * 7
+        yy = 138 + D - k * 7
         person(ax, 7.5, yy - 1.6, 4.2, c)
         txt(ax, 11.5, yy, g, 6.3, INK)
         txt(ax, 34.5, yy, f"{n}", 6.3, INK, "bold", "right")
-    ax.plot([5, 35], [118, 118], color=GRID, lw=.6)
-    txt(ax, 20, 113.5, "3 tasks, one session", 6.5, INK, "bold", "center")
+    ax.plot([5, 35], [118 + D, 118 + D], color=GRID, lw=.6)
+    txt(ax, 20, 113.5 + D, "3 tasks, one session", 6.5, INK, "bold", "center")
     for k, (t, d) in enumerate([("SFT", "semantic fluency\n(animals, 60 s)"), ("PFT", "phonemic fluency\n(letter P, 60 s)"),
                                 ("CTD", "picture description\n(Cookie Theft)")]):
-        yy = 104 - k * 11
+        yy = 104 + D - k * 11
         card(ax, 4.5, yy - 3, 9, 6, "white", INK2, lw=.6, r=1)
         txt(ax, 9, yy, t, 6, INK, "bold", "center")
         txt(ax, 15, yy, d, 6, INK2)
-    ax.plot([5, 35], [74, 74], color=GRID, lw=.6)
-    card(ax, 4.5, 58, 31, 12, "white", INK2, lw=.6, r=1.2)
-    wave(ax, 6.5, 60.5, 27, 7, INK2, silences=[(.3, .42), (.7, .8)])
-    txt(ax, 20, 55, "audio (16 kHz)", 6, INK2, ha="center")
-    doc(ax, 8.5, 33, 9.5, 13, INK2, tag="3 s", tag_rows=(2,), n=4)
-    doc(ax, 22.5, 33, 9.5, 13, INK2, n=4)
-    txt(ax, 20, 29.5, "manual transcripts", 6, INK2, ha="center")
-    card(ax, 2, 4, 36, 16, "white", MUTED, lw=.7)
-    txt(ax, 20, 15.8, "official split", 6, INK2, ha="center")
-    ax.add_patch(Rectangle((4.5, 7.5), 24.6, 4.5, fc=INK2, ec="none", zorder=5))
-    ax.add_patch(Rectangle((29.1, 7.5), 6.4, 4.5, fc=OR, ec="none", zorder=5))
-    txt(ax, 16.8, 9.75, "train 320", 6, "white", "bold", "center")
-    txt(ax, 32.3, 9.75, "80", 6, "white", "bold", "center")
-    txt(ax, 32.3, 5.2, "test", 6, OR, "bold", "center")
-    for y in (152, 88):
+    ax.plot([5, 35], [74 + D, 74 + D], color=GRID, lw=.6)
+    card(ax, 4.5, 58 + D, 31, 12, "white", INK2, lw=.6, r=1.2)
+    wave(ax, 6.5, 60.5 + D, 27, 7, INK2, silences=[(.3, .42), (.7, .8)])
+    txt(ax, 20, 55 + D, "audio (16 kHz)", 6, INK2, ha="center")
+    doc(ax, 8.5, 33 + D, 9.5, 13, INK2, tag="3 s", tag_rows=(2,), n=4)
+    doc(ax, 22.5, 33 + D, 9.5, 13, INK2, n=4)
+    txt(ax, 20, 29.5 + D, "manual transcripts", 6, INK2, ha="center")
+    # partage officiel
+    card(ax, 2, 31, 36, 16, "white", MUTED, lw=.7)
+    txt(ax, 20, 42.8, "official split", 6, INK2, ha="center")
+    ax.add_patch(Rectangle((4.5, 34.5), 24.6, 4.5, fc=INK2, ec="none", zorder=5))
+    ax.add_patch(Rectangle((29.1, 34.5), 6.4, 4.5, fc=OR, ec="none", zorder=5))
+    txt(ax, 16.8, 36.75, "train 320", 6, "white", "bold", "center")
+    txt(ax, 32.3, 36.75, "80", 6, "white", "bold", "center")
+    txt(ax, 32.3, 32.6, "test", 6, OR, "bold", "center")
+    # légende des couleurs
+    card(ax, 2, 3, 36, 25, "white", MUTED, lw=.7)
+    txt(ax, 20, 24.5, "colour key", 6, INK2, ha="center")
+    for k, (c, lab) in enumerate([(OR, "annotation shortcut"), (BL, "annotation-free model"),
+                                  (GH, "HC"), (GM, "MCI"), (GR, "dementia")]):
+        yy = 20.5 - k * 3.6
+        ax.add_patch(Rectangle((5, yy - 1.1), 3, 2.2, fc=c, ec="none", zorder=5))
+        txt(ax, 9.5, yy, lab, 6, INK)
+    for y in (152 + D, 88 + D):
         arrow(ax, 38.3, y, 41.7, y, INK2, 1.3)
-    arrow(ax, 38.3, 12, 41.7, 12, INK2, 1.3)
+    arrow(ax, 38.3, 39, 41.7, 39, INK2, 1.3)
 
     # ------------------------------------------------------------ A. le problème
     X0 = 42
-    card(ax, X0, 128, 146, 48, OR_BG, OR, lw=.9, ls=(0, (4, 2)))
-    txt(ax, X0 + 3, 172, "A", 9, OR, "bold")
-    txt(ax, X0 + 8, 172, "The problem: the same speech is transcribed in two ways, and the way depends on diagnosis",
+    card(ax, X0, 128 + D, 146, 48, OR_BG, OR, lw=.9, ls=(0, (4, 2)))
+    txt(ax, X0 + 3, 172 + D, "A", 9, OR, "bold")
+    txt(ax, X0 + 8, 172 + D, "The problem: the same speech is transcribed in two ways, and the way depends on diagnosis",
         7.3, INK, "bold")
-    txt(ax, X0 + 8, 167.6, "Illustrative example (not corpus data)", 6, INK2, style="italic")
-    card(ax, 45, 131, 27, 33, "white", MUTED, lw=.6, r=1.4)
-    txt(ax, 58.5, 160.6, "What the participant", 6.2, INK, "bold", "center")
-    txt(ax, 58.5, 157.6, "says", 6.2, INK, "bold", "center")
-    wave(ax, 47, 144, 23, 9, INK2, seed=4, silences=[(.36, .62)])
-    txt(ax, 58.5, 140.5, "“cat … dog, lion”", 6.4, INK, ha="center", style="italic")
-    txt(ax, 58.5, 136.4, "3-s silence", 6, INK2, ha="center")
-    txt(ax, 58.5, 133.6, "after “cat”", 6, INK2, ha="center")
-    arrow(ax, 72.3, 152, 75.2, 154, INK2, 1.1)
-    arrow(ax, 72.3, 141, 75.2, 139, INK2, 1.1)
-    transcript_box(ax, 75.5, 148, 38, 16, "Convention 1: pauses written",
-                   [[("Pat: cat ", INK, False), ("(3 seconds)", OR, True)], [("     dog lion", INK, False)]], OR, OR)
-    transcript_box(ax, 75.5, 131, 38, 14.5, "Convention 2: never written",
-                   [[("cat dog lion", INK, False)]], MUTED, INK2)
-    txt(ax, 117, 161, "Sessions with convention 1", 6.3, INK, "bold")
+    txt(ax, X0 + 8, 167.6 + D, "Illustrative example (not corpus data): five animals named in the semantic fluency task",
+        6, INK2, style="italic")
+    card(ax, 45, 131 + D, 27, 33, "white", MUTED, lw=.6, r=1.4)
+    txt(ax, 58.5, 160.6 + D, "What the participant", 6.2, INK, "bold", "center")
+    txt(ax, 58.5, 157.6 + D, "says", 6.2, INK, "bold", "center")
+    wave(ax, 47, 144 + D, 23, 9, INK2, seed=4, silences=[(.18, .42)])
+    txt(ax, 58.5, 141 + D, "“cat … dog, lion,", 6.3, INK, ha="center", style="italic")
+    txt(ax, 58.5, 138 + D, "horse, cow”", 6.3, INK, ha="center", style="italic")
+    txt(ax, 58.5, 134 + D, "3-s silence after “cat”", 6, INK2, ha="center")
+    arrow(ax, 72.3, 152 + D, 75.2, 154 + D, INK2, 1.1)
+    arrow(ax, 72.3, 141 + D, 75.2, 139 + D, INK2, 1.1)
+    transcript_box(ax, 75.5, 148 + D, 38, 16, "Convention 1: pauses written",
+                   [[("Pat: cat ", INK, False), ("(3 seconds)", OR, True)],
+                    [("dog lion horse cow", INK, False)]], OR, OR)
+    transcript_box(ax, 75.5, 131 + D, 38, 14.5, "Convention 2: never written",
+                   [[("cat dog lion horse cow", INK, False)]], MUTED, INK2)
+    txt(ax, 117, 161 + D, "Sessions with convention 1", 6.3, INK, "bold")
     for k, g in enumerate(["HC", "MCI", "Dementia"]):
-        yy = 155.5 - k * 6
+        yy = 155.5 + D - k * 6
         txt(ax, 117, yy, "Dem." if g == "Dementia" else g, 6.3, INK2)
         x0, L = 127, 31
         ax.add_patch(Rectangle((x0, yy - 1.6), L * ann[g] / 100, 3.2, fc=OR, ec="none", zorder=5))
         ax.add_patch(Rectangle((x0 + L * ann[g] / 100, yy - 1.6), L * (1 - ann[g] / 100), 3.2, fc="#d9d8d3",
                                ec="none", zorder=5))
         txt(ax, x0 + 1, yy, f"{ann[g]:.0f}%", 6.1, "white", "bold")
-    txt(ax, 117, 138, "Missing annotations are", 6, INK2)
-    txt(ax, 117, 135, "not missing pauses: HC pause", 6, INK2)
-    txt(ax, 117, 132, "as much in the audio", 6, INK2)
-    arrow(ax, 158.6, 149.5, 161.4, 149.5, OR, 1.2)
-    card(ax, 162, 131, 23.5, 33, "white", OR, lw=1, r=1.4)
-    ax.add_patch(Polygon([(173.75, 160.5), (170.75, 155), (176.75, 155)], closed=True, fc=OR, ec="none", zorder=5))
-    txt(ax, 173.75, 156.6, "!", 7, "white", "bold", "center")
-    txt(ax, 173.75, 150.5, "A text model", 6.3, INK, "bold", "center")
-    txt(ax, 173.75, 147.3, "can learn:", 6.3, INK, ha="center")
-    txt(ax, 173.75, 142, "“seconds”", 7, OR, "bold", "center")
-    txt(ax, 173.75, 137.6, "→ impaired", 7, OR, "bold", "center")
+    txt(ax, 117, 138 + D, "Missing annotations are", 6, INK2)
+    txt(ax, 117, 135 + D, "not missing pauses: HC pause", 6, INK2)
+    txt(ax, 117, 132 + D, "as much in the audio", 6, INK2)
+    arrow(ax, 158.6, 149.5 + D, 161.4, 149.5 + D, OR, 1.2)
+    card(ax, 162, 131 + D, 23.5, 33, "white", OR, lw=1, r=1.4)
+    ax.add_patch(Polygon([(173.75, 160.5 + D), (170.75, 155 + D), (176.75, 155 + D)], closed=True, fc=OR, ec="none",
+                         zorder=5))
+    txt(ax, 173.75, 156.6 + D, "!", 7, "white", "bold", "center")
+    txt(ax, 173.75, 150.5 + D, "A text model", 6.3, INK, "bold", "center")
+    txt(ax, 173.75, 147.3 + D, "can learn:", 6.3, INK, ha="center")
+    txt(ax, 173.75, 142 + D, "“seconds”", 7, OR, "bold", "center")
+    txt(ax, 173.75, 137.6 + D, "→ impaired", 7, OR, "bold", "center")
 
     # ------------------------------------------------------------ B. l'audit (2 x 2)
-    card(ax, X0, 52, 146, 73, OR_BG, OR, lw=.9, ls=(0, (4, 2)))
-    txt(ax, X0 + 3, 121, "B", 9, OR, "bold")
-    txt(ax, X0 + 8, 121, "The audit: is the gain due to the annotations or to the speech?", 7.3, INK, "bold")
-    cells = [(45, 86.5, "1", "What does the model read?"), (116.5, 86.5, "2", "Remove the annotations"),
-             (45, 55, "3", "Which annotations matter?"), (116.5, 55, "4", "Other checks")]
+    card(ax, X0, 52 + D, 146, 73, OR_BG, OR, lw=.9, ls=(0, (4, 2)))
+    txt(ax, X0 + 3, 121 + D, "B", 9, OR, "bold")
+    txt(ax, X0 + 8, 121 + D, "The audit: is the gain due to the annotations or to the speech?", 7.3, INK, "bold")
+    cells = [(45, 86.5 + D, "1", "What does the model read?"), (116.5, 86.5 + D, "2", "Remove the annotations"),
+             (45, 55 + D, "3", "Which annotations matter?"), (116.5, 55 + D, "4", "Other checks")]
     for cx, cy, k, t in cells:
         card(ax, cx, cy, 69, 30, "white", "#e3b3cd", lw=.6, r=1.6)
         num(ax, cx + 4, cy + 26, k, OR)
         txt(ax, cx + 8, cy + 26, t, 6.6, INK, "bold")
-    # 1 : poids signés de la sonde
-    cx, cy = 45, 86.5
+    cx, cy = 45, 86.5 + D
     z0 = cx + 33
     txt(ax, z0 - .6, cy + 20.8, "← healthy", 6, BL, ha="right")
     txt(ax, z0 + .6, cy + 20.8, "impaired →", 6, OR)
@@ -266,17 +278,15 @@ def main():
     ax.plot([z0, z0], [cy + 7.5, cy + 19], color=INK2, lw=.6, zorder=6)
     txt(ax, cx + 34.5, cy + 3.6, f"“seconds” is the top word in {first}/3 tasks and 25/25 folds", 6, INK, "bold",
         "center")
-    # 2 : barres groupées avec / sans annotations
-    cx, cy = 116.5, 86.5
+    cx, cy = 116.5, 86.5 + D
     base, scale = cy + 7, 15.5 / .35
     ax.add_patch(Rectangle((cx + 43, cy + 25.2), 2.4, 2.2, fc=OR, ec="none", zorder=5))
     txt(ax, cx + 46.2, cy + 26.3, "with", 6, INK2)
     ax.add_patch(Rectangle((cx + 54, cy + 25.2), 2.4, 2.2, fc="#bdbcb6", ec="none", zorder=5))
     txt(ax, cx + 57.2, cy + 26.3, "without", 6, INK2)
     ax.plot([cx + 3, cx + 66], [base, base], color=INK2, lw=.6, zorder=6)
-    groups = [("all sessions", "tous", INK), ("convention 1", "régime « Pat: »", OR),
-              ("convention 2", "régime sans préfixe", INK2)]
-    for k, (lab, key, col) in enumerate(groups):
+    for k, (lab, key, col) in enumerate([("all sessions", "tous", INK), ("convention 1", "régime « Pat: »", OR),
+                                         ("convention 2", "régime sans préfixe", INK2)]):
         a, b = ab.loc[key, "AUC_1_fold_mean"], ab.loc[key, "AUC_2_fold_mean"]
         gx = cx + 7 + k * 21
         ax.add_patch(Rectangle((gx, base), 6, (a - .5) * scale, fc=OR, ec="none", zorder=5))
@@ -284,11 +294,10 @@ def main():
         txt(ax, gx + 3, base + (a - .5) * scale - 1.6, f"{a:.2f}", 6, "white", "bold", "center")
         txt(ax, gx + 9.6, base + (b - .5) * scale - 1.6, f"{b:.2f}", 6, INK, "bold", "center")
         d = a - b
-        txt(ax, gx + 6.3, base + (a - .5) * scale + 2.2,
-            f"−{d:.2f}" if d >= .005 else "≈ 0", 6.6, OR if d >= .05 else INK2, "bold", "center")
+        txt(ax, gx + 6.3, base + (a - .5) * scale + 2.2, f"−{d:.2f}" if d >= .005 else "≈ 0", 6.6,
+            OR if d >= .05 else INK2, "bold", "center")
         txt(ax, gx + 6.3, base - 2.6, lab, 6, col, "bold", "center")
-    # 3 : par catégorie
-    cx, cy = 45, 55
+    cx, cy = 45, 55 + D
     for k, (lab, v, c) in enumerate([("timed pauses", "sans timed", OR), ("timer “buzzer”", "sans procedure", OR),
                                      ("sighs, laughs", "sans nonverbal", MUTED), ("uncertain “(?)”", "sans uncertain", MUTED)]):
         yy = cy + 20.5 - k * 4.1
@@ -298,8 +307,7 @@ def main():
         txt(ax, cx + 26 + loss * 420, yy, f"−{loss:.2f}" if loss >= .005 else "0.00", 6.2,
             OR if c == OR else INK2, "bold" if c == OR else "normal")
     txt(ax, cx + 34.5, cy + 3.6, "AUC lost when one category is removed: two carry it", 6, INK, "bold", "center")
-    # 4 : autres contrôles (deux colonnes)
-    cx, cy = 116.5, 55
+    cx, cy = 116.5, 55 + D
     items = [("demographics, channel", "weak (AUC ≤ 0.56)"), ("zero-shot LLMs", "no prior use"),
              ("silence alone to audio", "≈ amount of pausing"), ("cleaned transcripts", "other habits remain")]
     for k, (a, b) in enumerate(items):
@@ -309,32 +317,68 @@ def main():
         txt(ax, xx + 2, yy, a, 6, INK)
         txt(ax, xx + 2, yy - 3, b, 6, INK2, "bold")
 
-    # ------------------------------------------------------------ C. le contrôle
-    card(ax, X0, 3, 146, 46, BL_BG, BL, lw=.9, ls=(0, (4, 2)))
-    txt(ax, X0 + 3, 45, "C", 9, BL, "bold")
-    txt(ax, X0 + 8, 45, "The control: a model that never reads a human annotation", 7.3, INK, "bold")
-    boxes = [(45, "Audio only", "same for everyone"), (73.5, "Voice activity", "pauses from audio"),
-             (102, "Speech recognition", "valid words / s"), (130.5, "Healthy norms", "z by age and sex"),
-             (159, "Risk score", "6 visible weights")]
-    for i, (x0, t, d) in enumerate(boxes):
-        card(ax, x0, 22, 26, 18, "white", "#c3bfe6", lw=.6, r=1.4)
-        txt(ax, x0 + 13, 37, t, 6.4, INK, "bold", "center")
-        txt(ax, x0 + 13, 24.3, d, 6, INK2, ha="center")
-        if i < len(boxes) - 1:
-            arrow(ax, x0 + 26.2, 31, x0 + 28.3, 31, BL, 1.1, ms=5)
-    wave(ax, 47, 28, 22, 6, BL, seed=5, silences=[(.3, .45), (.7, .8)])
-    for a, b in [(.0, .3), (.45, .7), (.8, 1.)]:
-        ax.add_patch(Rectangle((75.5 + a * 22, 29), (b - a) * 22, 4, fc=BL, ec="none", alpha=.85, zorder=5))
-    for a, b in [(.3, .45), (.7, .8)]:
-        ax.add_patch(Rectangle((75.5 + a * 22, 29), (b - a) * 22, 4, fc="#d9d8d3", ec="none", zorder=5))
-    ax.text(115, 31, "cat dog lion", fontsize=6.4, family="monospace", ha="center", va="center", color=INK, zorder=6)
-    bell(ax, 136.25, 28, 14.5, 6.5, BL)
-    gauge(ax, 172, 28.4, 5)
-    card(ax, 58, 5.5, 114, 12.5, "white", BL, lw=1.1, r=1.6)
-    txt(ax, 115, 13.9, f"Official test set, evaluated once:  AUC {te.AUC:.2f} [{te.AUC_lo:.2f}, {te.AUC_hi:.2f}]", 7.3,
+    # ------------------------------------------------------------ C. la méthode sans annotation
+    card(ax, X0, 3, 146, 74, BL_BG, BL, lw=.9, ls=(0, (4, 2)))
+    txt(ax, X0 + 3, 73, "C", 9, BL, "bold")
+    txt(ax, X0 + 8, 73, "The control: a model that never reads a human annotation", 7.3, INK, "bold")
+    txt(ax, X0 + 8, 68.6, "Same example; every step is automatic and identical for all participants (values illustrative)",
+        6, INK2, style="italic")
+    # entrée audio
+    card(ax, 45, 25, 24, 39, "white", "#c3bfe6", lw=.6, r=1.4)
+    txt(ax, 57, 60.5, "Input", 6.6, INK, "bold", "center")
+    wave(ax, 46.5, 42, 21, 9, BL, seed=4, silences=[(.18, .42)])
+    txt(ax, 57, 36.5, "audio only", 6.2, INK, "bold", "center")
+    txt(ax, 57, 32.5, "no transcript,", 6, INK2, ha="center")
+    txt(ax, 57, 29.5, "no annotation", 6, INK2, ha="center")
+    arrow(ax, 69.3, 52, 73.7, 55, BL, 1.1)
+    arrow(ax, 69.3, 37, 73.7, 34, BL, 1.1)
+    # branche 1 : pauses (VAD)
+    card(ax, 74, 46, 45, 18, "white", "#c3bfe6", lw=.6, r=1.4)
+    num(ax, 77.5, 60.5, "1", BL)
+    txt(ax, 81, 60.5, "Voice activity detection", 6.5, INK, "bold")
+    segs = [(0, .14, True), (.14, .40, False), (.40, .55, True), (.55, .62, False), (.62, .74, True),
+            (.74, .80, False), (.80, .89, True), (.89, .93, False), (.93, 1, True)]
+    for a, b, sp in segs:
+        ax.add_patch(Rectangle((77 + a * 39, 54), (b - a) * 39, 3.6, fc=BL if sp else "#d9d8d3", ec="none",
+                               zorder=5, alpha=.85 if sp else 1))
+    txt(ax, 77 + .27 * 39, 55.8, "3 s", 6, INK, "bold", "center")
+    txt(ax, 77, 50.8, "→ silences measured in the audio", 6, INK2)
+    txt(ax, 77, 48, "→ median pause, long silences", 6, INK2, "bold")
+    # branche 2 : fluence (ASR)
+    card(ax, 74, 25, 45, 18, "white", "#c3bfe6", lw=.6, r=1.4)
+    num(ax, 77.5, 39.5, "2", BL)
+    txt(ax, 81, 39.5, "Speech recognition", 6.5, INK, "bold")
+    ax.text(77, 34.3, "cat dog lion horse cow", fontsize=6.6, family="monospace", va="center", color=INK, zorder=6)
+    txt(ax, 77, 30.4, "→ 5 valid animals in 45 s", 6, INK2)
+    txt(ax, 77, 27.6, "→ fluency = 0.11 words/s", 6, INK2, "bold")
+    arrow(ax, 119.3, 55, 123.2, 47, BL, 1.1)
+    arrow(ax, 119.3, 34, 123.2, 42, BL, 1.1)
+    # normes
+    card(ax, 123.5, 25, 30, 39, "white", "#c3bfe6", lw=.6, r=1.4)
+    num(ax, 127, 60.5, "3", BL)
+    txt(ax, 130.5, 60.5, "Healthy norms", 6.5, INK, "bold")
+    bell(ax, 126.5, 46, 24, 9, BL)
+    txt(ax, 138.5, 42.5, "compare with healthy", 6, INK2, ha="center")
+    txt(ax, 138.5, 39.8, "people of same age, sex", 6, INK2, ha="center")
+    txt(ax, 138.5, 34.8, "fluency  z = −1.5", 6.2, INK, "bold", "center")
+    txt(ax, 138.5, 31.5, "pauses   z = +1.2", 6.2, INK, "bold", "center")
+    txt(ax, 138.5, 27.8, "(6 measures in total)", 6, INK2, ha="center")
+    arrow(ax, 153.8, 44.5, 157.2, 44.5, BL, 1.1)
+    # score
+    card(ax, 157.5, 25, 28, 39, "white", "#c3bfe6", lw=.6, r=1.4)
+    num(ax, 161, 60.5, "4", BL)
+    txt(ax, 164.5, 60.5, "Risk score", 6.5, INK, "bold")
+    gauge(ax, 171.5, 47, 6.5, frac=.78)
+    txt(ax, 171.5, 39.6, "6 visible weights", 6, INK2, ha="center")
+    txt(ax, 171.5, 34.8, "fewer words and", 6, INK, ha="center")
+    txt(ax, 171.5, 32, "longer pauses", 6, INK, ha="center")
+    txt(ax, 171.5, 28.6, "→ higher risk", 6.2, BL, "bold", "center")
+    # résultat
+    card(ax, 58, 5.5, 114, 15.5, "white", BL, lw=1.1, r=1.6)
+    txt(ax, 115, 16.4, f"Official test set, evaluated once:  AUC {te.AUC:.2f} [{te.AUC_lo:.2f}, {te.AUC_hi:.2f}]", 7.3,
         BL, "bold", "center")
-    txt(ax, 115, 8.9, "same under both transcription conventions; all choices made on the training set", 6.1, INK2,
-        ha="center")
+    txt(ax, 115, 11.6, "same under both transcription conventions", 6.1, INK2, ha="center")
+    txt(ax, 115, 8.4, "all choices made by cross-validation on the training set", 6.1, INK2, ha="center")
 
     for ext in ("png", "pdf"):
         fig.savefig(f26.OUT / f"fig1_system_overview.{ext}", dpi=400 if ext == "png" else None)
